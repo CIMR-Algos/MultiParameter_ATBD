@@ -1,35 +1,13 @@
 # Background and justification of selected algorithm
 
-Text describing background
 
-Example figure. Figure numbering should be chronological, following the numbering of the figures in previous chapters.
+The multi parameter retrieval consists of several empirical and physical models
+which are applied and inverted using a specific cost function. Each individual
+algorithm and method was applied and validated to some extent for previous
+satellite missions in the past. For ocean surface this includes contributions
+from {cite}`Meissner2014,Meissner2018,Wentz200,Wentz1998` and for sea ice
+{cite}`Tonboe2005,Tonboe2010a,Mathew2009,Kaleschke2012,Huntemann2014,Tiankunze2014`.
+The inversion of the compositional forward model is then performed using an
+optimal estimation scheme. The method is based on the works of
+{cite}`Pedersen1991,Scarlat2017,Scarlat2018,Scarlat2020`.
 
-Starting points for the optimisation are sampled on a length-angle
-regular grid around point $(0,0)$ as on {numref}`startpoints`.
-
-
-```{figure} ./startpoints.png
---- 
-name: startpoints
----
-Location of the preliminary function evaluations for choosing starting points to the Nelder Mead algorithm. The circle locates the limit of vality domain $\mathbf{D}$.
-```
-
-We can also refer to the figure this way: {ref}`Starting points for the optimisation <startpoints>`
-
-Here is a math block
-$
-  \int_0^\infty \frac{x^3}{e^x-1}\,dx = \frac{\pi^4}{15}
-$
-
-Here are labeled and numbered equations
-
-```{math}
-:label: my_label
-w_{t+1} = (1 + r_{t+1}) s(w_t) + y_{t+1}
-```
-
-```{math}
-:label: my_other_label
-w_{t+2} = (1 + r_{t+2}) s(w_t) + y_{t+2}
-```
