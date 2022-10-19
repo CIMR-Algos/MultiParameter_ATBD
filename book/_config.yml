@@ -1,14 +1,15 @@
 # Book settings
 # Learn more at https://jupyterbook.org/customize/config.html
 
-title: ATBD Template
+title: ATBD Multi Parameter Retrieval
 author: CIMR Devalgo
 logo: logo.jpg
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
 execute:
-  execute_notebooks: force
+  execute_notebooks: cache
+  timeout: 120
 
 # Define the name of the latex output file for PDF builds
 latex:
@@ -17,12 +18,20 @@ latex:
 
 # Add a bibtex file so that we can create citations
 bibtex_bibfiles:
-  - cryoS.bib
+  - references.bib
 
 # Format the citation style
 sphinx:
   config:
+    nb_render_markdown_format: myst
     bibtex_reference_style: author_year
+  extra_extensions:
+    - sphinxcontrib.mermaid
+  
+parse:
+  myt_enable_extensions:
+  - deflist
+  - dollarmath
 
 
 # Information about where the book exists on the web
