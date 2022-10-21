@@ -60,4 +60,12 @@ Advanced Microwave Scanning Radiometer EOS
 Japan Aerospace Exploration Agency
     The Japan Aerospace Exploration Agency is a Japanese government agency responsible for space exploration.
 
+2 Meter Air Temperature
+    The 2 Meter Air Temperature is the temperature of the air at 2 meters above the ground. It is usually expressed in Kelvin and one of the surface parameres from the {term}`ECMWF` models.
+
+Skin Temperature
+    The Skin Temperature is the temperature of the ground surface to air interface. It is usually expressed in Kelvin and one of the surface parameres from the {term}`ECMWF` models.
+
+```
+
 ```

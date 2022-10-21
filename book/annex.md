@@ -1,6 +1,12 @@
 # Annex
 ## Forward model coefficients
 ## Tables 
+The tables listed here are part of the forward model used in the multi parameter
+retrieval. The following Tables {numref}`%s <tab:mc_atmo>`, {numref}`%s
+<tab:RayMie>`, {numref}`%s <tab:mc_geo>`, {numref}`%s <tab:mc_m>` are reprinted
+from {cite}`Wentz2000` with the corresponding formulae are described in
+{ref}`fw-model`.  
+
 ```{table} Coefficients for atmospheric model 
 :name: tab:mc_atmo
 | Frequency GHz   | 6.9           | 10.7          | 18.7          | 23.8          | 36.5          | 89.0          |
@@ -70,10 +76,21 @@
 :name: tab:fy_thick
 | Frequency GHz | 6.9          | 10.7         | 18.7         | 23.8         | 36.5         | 89.0      |
 | ------------  | ------------ | ------------ | ------------ | ------------ | ------------ | ---       |
-| eq_a_v        | 250.170      | 241.434      | 247.310      | 248.773      | 250.338      | 252.346   |
-| eq_b_v        | 121.778      | 9846.905     | 629.706      | 17586.945    | 12532.980    | 190.665   |
-| eq_c_v        | 6.667        | 0.123        | 0.060        | 0.106        | 0.117        | 1.823     |
-| eq_a_h        | 220.703      | 228.617      | 238.249      | 240.193      | 242.620      | 238.396   |
-| eq_b_h        | -16.118      | -0.404       | 29.602       | 62.125       | 83.872       | 15333.029 |
-| eq_c_h        | 7.183        | 7.402        | 7.215        | 7.280        | 6.707        | 0.037     |
+| a_v        | 251.170      | 241.434      | 247.310      | 248.773      | 250.338      | 252.346   |
+| b_v        | 121.778      | 9846.905     | 629.706      | 17586.945    | 12532.980    | 190.665   |
+| c_v        | 6.667        | 0.123        | 0.060        | 0.106        | 0.117        | 1.823     |
+| a_h        | 220.703      | 228.617      | 238.249      | 240.193      | 242.620      | 238.396   |
+| b_h        | -16.118      | -0.404       | 29.602       | 62.125       | 83.872       | 15333.029 |
+| c_h        | 7.183        | 7.402        | 7.215        | 7.280        | 6.707        | 0.037     |
+```
+
+
+```{table} linear regression Coefficients for emitting layer temperature calculation for DFJM
+:name: tab:emtemp
+| Frequency GHz | 6.9          | 10.7         | 18.7         | 23.8         | 36.5         | 89.0      |
+| ------------  | ------------ | ------------ | ------------ | ------------ | ------------ | ---       |
+| a_fyi        | 0.23          | 0.26         | 0.29         | 0.29         | 0.30         | 0.37      |
+| b_fyi        | -5.5          | -5.2         | -5.0         | -4.9         | -4.9         | -4.2      |
+| a_myi        | 0.27          | 0.34         | 0.42         | 0.43         | 0.45         | 0.49      |
+| b_myi        | -11.5         | -10.5        | -9.5         | -9.2         | - 8.9        | -8.4      | 
 ```

@@ -32,7 +32,7 @@ SIC
 SIT
     {term}`Sea Ice Thickness`
 
-MYIF 
+MYIF
     {term}`Multi Year Ice Fraction`
 
 WSP
@@ -52,6 +52,12 @@ IST
 
 SSS
     {term}`Sea Surface Salinity`
+
+T2M
+    {term}`2 Meter Air Temperature`
+
+TSK
+    {term}`Skin Temperature`
 
 CIMR
     {term}`Copernicus Imaging Microwave Radiometer`

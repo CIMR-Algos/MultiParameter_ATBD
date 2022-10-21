@@ -6,8 +6,6 @@ root: intro
 chapters:
 - file: abstract
   title: Abstract
-- file: applicable_ref_docs
-  title: Applicable and Reference Documents
 - file: acronyms
   title: Acronyms
 - file: definitions
@@ -27,7 +25,7 @@ chapters:
 - file: OEM_SIT.ipynb
   title: OEM SIT
 - file: references
-  title: References (example)
+  title: References
 - file: annex
   title: Annex
 
