@@ -110,7 +110,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    ATBD Template
+                    ATBD Multi Parameter Retrieval
                 </a>
             </li>
         </ul>
@@ -118,11 +118,6 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="abstract.html">
    Abstract
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="applicable_ref_docs.html">
-   Applicable and Reference Documents
   </a>
  </li>
  <li class="toctree-l1">
@@ -172,7 +167,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="references.html">
-   References (example)
+   References
   </a>
  </li>
  <li class="toctree-l1">
@@ -325,25 +320,32 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Algorithm Input and Output Data Definition (IODD)
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#input-data">
    Input data
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#output-data">
-   Output data
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#auxiliary-data">
-   Auxiliary data
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ancillary-data">
-   Ancillary data
-  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#output-data">
+     Output data
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#auxiliary-data">
+     Auxiliary data
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ancillary-data">
+     Ancillary data
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -364,25 +366,32 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Algorithm Input and Output Data Definition (IODD)
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#input-data">
    Input data
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#output-data">
-   Output data
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#auxiliary-data">
-   Auxiliary data
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ancillary-data">
-   Ancillary data
-  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#output-data">
+     Output data
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#auxiliary-data">
+     Auxiliary data
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ancillary-data">
+     Ancillary data
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -396,21 +405,24 @@ title="Print to PDF"
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="algorithm-input-and-output-data-definition-iodd">
 <h1>Algorithm Input and Output Data Definition (IODD)<a class="headerlink" href="#algorithm-input-and-output-data-definition-iodd" title="Permalink to this headline">#</a></h1>
-<div class="section" id="input-data">
-<h2>Input data<a class="headerlink" href="#input-data" title="Permalink to this headline">#</a></h2>
-<p>Subsection text</p>
 </div>
+<div class="tex2jax_ignore mathjax_ignore section" id="input-data">
+<h1>Input data<a class="headerlink" href="#input-data" title="Permalink to this headline">#</a></h1>
+<p>The input data for the multi-parameter retrieval includes all channels at horizontal and vertical polarization and their uncertainties coming from the L1b processor. In addition, time and location is required for calculation of field of resampled TBs. The uncertainties are assumed gaussian in the retrieval.</p>
 <div class="section" id="output-data">
 <h2>Output data<a class="headerlink" href="#output-data" title="Permalink to this headline">#</a></h2>
-<p>Subsection text</p>
+<p>The output data consist of the parameters, namely <a class="reference internal" href="acronyms.html#term-WSP"><span class="xref std std-term">WSP</span></a>, <a class="reference internal" href="acronyms.html#term-TWV"><span class="xref std std-term">TWV</span></a>,
+<a class="reference internal" href="acronyms.html#term-CLW"><span class="xref std std-term">CLW</span></a>, <a class="reference internal" href="acronyms.html#term-SST"><span class="xref std std-term">SST</span></a>, <a class="reference internal" href="acronyms.html#term-IST"><span class="xref std std-term">IST</span></a>, <a class="reference internal" href="acronyms.html#term-SIC"><span class="xref std std-term">SIC</span></a>, <a class="reference internal" href="acronyms.html#term-MYIF"><span class="xref std std-term">MYIF</span></a> and
+<a class="reference internal" href="acronyms.html#term-SIT"><span class="xref std std-term">SIT</span></a>. Time and location for the resampling. The uncertainties are assumed
+gaussian in the retrieval and are provided along with the parameters.</p>
 </div>
 <div class="section" id="auxiliary-data">
 <h2>Auxiliary data<a class="headerlink" href="#auxiliary-data" title="Permalink to this headline">#</a></h2>
-<p>Subsection text</p>
+<p>Auxillary data includes the <a class="reference internal" href="acronyms.html#term-TEC"><span class="xref std std-term">TEC</span></a> for the transformation to account for the pol
+arization rotation as part of the atmospheric model. <a class="reference internal" href="acronyms.html#term-ECMWF"><span class="xref std std-term">ECMWF</span></a> surface analysis data is used as background values for the retrieval. The variables used are <a class="reference internal" href="acronyms.html#term-WSP"><span class="xref std std-term">WSP</span></a>, <a class="reference internal" href="acronyms.html#term-TWV"><span class="xref std std-term">TWV</span></a>, <a class="reference internal" href="acronyms.html#term-CLW"><span class="xref std std-term">CLW</span></a>, <a class="reference internal" href="acronyms.html#term-T2M"><span class="xref std std-term">T2M</span></a>, <a class="reference internal" href="acronyms.html#term-TSK"><span class="xref std std-term">TSK</span></a>.</p>
 </div>
 <div class="section" id="ancillary-data">
 <h2>Ancillary data<a class="headerlink" href="#ancillary-data" title="Permalink to this headline">#</a></h2>
-<p>Subsection text</p>
 </div>
 </div>
 

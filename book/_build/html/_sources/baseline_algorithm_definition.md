@@ -12,24 +12,24 @@ graph TD
 			TBs[TBs]
 			TBe[TB error]
 		end
-		subgraph external
+		subgraph External
 			TEC[TEC]
 			ECMWF[ECMWF analysis]
-			ERA5["historical ERA5 (historical)"]
+			ERA5["Historical ERA5"]
 		end
 	end
-	subgraph inversion
+	subgraph Inversion
 		F[Forward model]
-		cost[cost function]
+		cost[Cost function]
 		apriori[A priori] 
-		OS[optimal state]
+		OS[Optimal state]
 
 	end
 
 	subgraph Output data L1R
-		geo[geophysical variables]
-		unc[geophsysical uncertainties]
-		outtb[brightness tempreature residuals]
+		geo[Geophysical variables]
+		unc[Geophsysical uncertainties]
+		outtb[Grightness tempreature residuals]
 	end
 
 	resampling[Resampling processor L1R]
@@ -144,7 +144,40 @@ ocean water, first year ice, and multi year ice, respectively. $T_{\text{ow}}$,
 $T_{\text{fyi}}$, and $T_{\text{myi}}$ are the brightness temperature of ocean
 water, first year ice, and multi year ice, respectively. $C_{\text{ow}}$,
 $C_{\text{fyi}}$, and $C_{\text{myi}}$ are adding up to one. With the fruequency dependent emissivities
-for first year ice and multi year ice derived by {cite}`Mathew2009`.  With
+for first year ice and multi year ice derived by {cite}`Mathew2009`. 
+```{math}
+:label: eq:Nizy
+U_{T, t, p}=(a_{t}*T_{C}+b_{t}+273.15)*ε_{t, p}
+```
+with $U_{t,h}$ being the temperature corrected upwelling brightness temperature for the polarization $p$
+at the air temperature at the surface $T_{C}$ (in °C), $a_{t}$ and $b_{t}$ are the frequency
+dependent coefficients from {cite}`Mathew2009` (see {numref}`tab:emtemp`), and
+$ε_{t,p}$ is the frequency dependent emissivity for the polarization $p$ from {numref}`tab:c_ice`
+
+The ice thickness dependence at all frequencies is introduced via modification of the emission from the ice surface.
+The ice emissivity is modified by the ice thickness $\text{SIT}$ according to
+```{math}
+:label: eq:ice_thickness
+T_{b,p} = a_{p}-(a_{p}-b_{p})*\exp\left(-\frac{\text{SIT}}{c_{p}}\right)
+```
+with the index $p$ indicate polarization ($h$ or $v$) the coefficients $a_{p}$,
+$b_{p}$, and $c_{p}$ from {cite}`Scarlat2020` (see {numref}`tab:fy_thick`). To
+combine ice temperatuer and ice thickness dependence, the ice emissivity is
+modified by the ice thickness  by substituting $a_{p}$ with the ice temperature
+dependent $U_{T, t, p}$ from {eq}`eq:Nizy` for $t=\text{FYI}$. This was not performed in
+{cite}`Scarlat2020` but is essential for the minimization of the cost function
+to not introduce discontinuities in the forward model. The MYI emissivity is not
+affected by the ice thickness in this forward model, as it was not part of the
+thickness sensitivity study in {cite}`Scarlat2020`. 
+
+To get back to emissivity in order to account for the atmospheric contribution
+to the brightness temperatures at surface level, the brightness temperature is just devided by the ice surface temperature
+```{math}
+:label: eq:ist
+ε_p = \frac{T_{b,p}}{\text{IST}}
+```
+
+With
 $C_{\text{myi}}+C_{\text{fyi}}=\text{SIC}$ and $\text{SIC}*C_\text{myi} =
 \text{MYIF}$ being part of the state vector {eq}`eqxy`, the state defines
 the surface area fraction of all three considered surface types.
@@ -157,6 +190,50 @@ R_{\text{surf}} = 1 -
 ε_{\text{ow}}*C_{\text{ow}} - ε_{\text{fyi}}*C_{\text{fyi}} -
 ε_{\text{myi}}*C_{\text{myi}}.
 ```
+
+The atmospheric contribution to the brightness temperature is calculated from
+the parametrization from {cite}`Wentz2000`. They fitted the donwelling and
+upwelling effective temperature using a least squares fit to the {term}`TWV`.
+The fit is given by 
+```{math}
+:label: eq:atm
+\begin{align}
+T_D=b_0+b_1V+b_2V^2+b_3V^3+b_4V^4+b_5\zeta(T_s-T_v)\\
+D_U=T_D+b_6+b7V\\
+\end{align}
+```
+where $T_v = 273.16+0.8337 V - 3.029\cdot 10^{-5}V^{3.33}$ for V<48 and
+$T_v=301.16$ for V>48 and $\zeta(x)=1.05x*(1-x^2)/1200$ for $|x|<20\ \text{K}$ and
+$\zeta(x)=\text{sign}(x)*14\ \text{K}$ for $|x|>20\ \text{K}$. 
+
+The absorption by oxygen is given by 
+```{math}
+:label: eq:abs_oxy
+A_o = a_{O1}+a_{O2}(T_{D}-270)
+```
+
+The vapor absorption is given by
+```{math}
+:label: eq:abs_vap
+A_V = a_{V1}V+a_{V2}V^2
+```
+
+The liquid water absorption is given by
+```{math}
+:label: eq:abs_liq
+A_L = a_{L1}(x-a_{L2}(T_L - 283))L
+```
+
+with $L$ being the liquid water path.
+
+The total atmospheric attenuation is given by a combination of the individual terms as from {eq}`eq:abs_oxy`, {eq}`eq:abs_vap`, and {eq}`eq:abs_liq`:
+
+```{math}
+:label: eq:abs_tot
+\tau = \exp\left(-\frac{A_o+A_V+A_L}{\cos\theta}\right)
+```
+with $\theta$ being the incidence angle.
+
 
 ## L-band forward model
 The addition for 1.4GHz was done by {cite}`Scarlat2020` and is based on {cite}`Ruf2003`. 

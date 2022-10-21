@@ -112,7 +112,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    ATBD Template
+                    ATBD Multi Parameter Retrieval
                 </a>
             </li>
         </ul>
@@ -120,11 +120,6 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="abstract.html">
    Abstract
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="applicable_ref_docs.html">
-   Applicable and Reference Documents
   </a>
  </li>
  <li class="toctree-l1">
@@ -174,7 +169,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="references.html">
-   References (example)
+   References
   </a>
  </li>
  <li class="toctree-l1">
@@ -553,24 +548,24 @@ divided into several steps, which are described in the following.</p>
 			TBs[TBs]
 			TBe[TB error]
 		end
-		subgraph external
+		subgraph External
 			TEC[TEC]
 			ECMWF[ECMWF analysis]
-			ERA5[&quot;historical ERA5 (historical)&quot;]
+			ERA5[&quot;Historical ERA5&quot;]
 		end
 	end
-	subgraph inversion
+	subgraph Inversion
 		F[Forward model]
-		cost[cost function]
+		cost[Cost function]
 		apriori[A priori] 
-		OS[optimal state]
+		OS[Optimal state]
 
 	end
 
 	subgraph Output data L1R
-		geo[geophysical variables]
-		unc[geophsysical uncertainties]
-		outtb[brightness tempreature residuals]
+		geo[Geophysical variables]
+		unc[Geophsysical uncertainties]
+		outtb[Grightness tempreature residuals]
 	end
 
 	resampling[Resampling processor L1R]
@@ -671,20 +666,70 @@ ocean water, first year ice, and multi year ice, respectively. <span class="math
 <span class="math notranslate nohighlight">\(T_{\text{fyi}}\)</span>, and <span class="math notranslate nohighlight">\(T_{\text{myi}}\)</span> are the brightness temperature of ocean
 water, first year ice, and multi year ice, respectively. <span class="math notranslate nohighlight">\(C_{\text{ow}}\)</span>,
 <span class="math notranslate nohighlight">\(C_{\text{fyi}}\)</span>, and <span class="math notranslate nohighlight">\(C_{\text{myi}}\)</span> are adding up to one. With the fruequency dependent emissivities
-for first year ice and multi year ice derived by <span id="id3">[<a class="reference internal" href="references.html#id11" title="Nizy Mathew, Georg Heygster, and Christian Melsheimer. Surface emissivity of the arctic sea ice at amsr-e frequencies. IEEE Transactions on Geoscience and Remote Sensing, 47:4115-4124, 2009. doi:10.1109/TGRS.2009.2023667.">Mathew <em>et al.</em>, 2009</a>]</span>.  With
+for first year ice and multi year ice derived by <span id="id3">[<a class="reference internal" href="references.html#id11" title="Nizy Mathew, Georg Heygster, and Christian Melsheimer. Surface emissivity of the arctic sea ice at amsr-e frequencies. IEEE Transactions on Geoscience and Remote Sensing, 47:4115-4124, 2009. doi:10.1109/TGRS.2009.2023667.">Mathew <em>et al.</em>, 2009</a>]</span>.</p>
+<div class="math notranslate nohighlight" id="equation-eq-nizy">
+<span class="eqno">(5)<a class="headerlink" href="#equation-eq-nizy" title="Permalink to this equation">#</a></span>\[U_{T, t, p}=(a_{t}*T_{C}+b_{t}+273.15)*ε_{t, p}\]</div>
+<p>with <span class="math notranslate nohighlight">\(U_{t,h}\)</span> being the temperature corrected upwelling brightness temperature for the polarization <span class="math notranslate nohighlight">\(p\)</span>
+at the air temperature at the surface <span class="math notranslate nohighlight">\(T_{C}\)</span> (in °C), <span class="math notranslate nohighlight">\(a_{t}\)</span> and <span class="math notranslate nohighlight">\(b_{t}\)</span> are the frequency
+dependent coefficients from <span id="id4">[<a class="reference internal" href="references.html#id11" title="Nizy Mathew, Georg Heygster, and Christian Melsheimer. Surface emissivity of the arctic sea ice at amsr-e frequencies. IEEE Transactions on Geoscience and Remote Sensing, 47:4115-4124, 2009. doi:10.1109/TGRS.2009.2023667.">Mathew <em>et al.</em>, 2009</a>]</span> (see <a class="reference internal" href="annex.html#tab-emtemp"><span class="std std-numref">Table 7</span></a>), and
+<span class="math notranslate nohighlight">\(ε_{t,p}\)</span> is the frequency dependent emissivity for the polarization <span class="math notranslate nohighlight">\(p\)</span> from <a class="reference internal" href="annex.html#tab-c-ice"><span class="std std-numref">Table 5</span></a></p>
+<p>The ice thickness dependence at all frequencies is introduced via modification of the emission from the ice surface.
+The ice emissivity is modified by the ice thickness <span class="math notranslate nohighlight">\(\text{SIT}\)</span> according to</p>
+<div class="math notranslate nohighlight" id="equation-eq-ice-thickness">
+<span class="eqno">(6)<a class="headerlink" href="#equation-eq-ice-thickness" title="Permalink to this equation">#</a></span>\[T_{b,p} = a_{p}-(a_{p}-b_{p})*\exp\left(-\frac{\text{SIT}}{c_{p}}\right)\]</div>
+<p>with the index <span class="math notranslate nohighlight">\(p\)</span> indicate polarization (<span class="math notranslate nohighlight">\(h\)</span> or <span class="math notranslate nohighlight">\(v\)</span>) the coefficients <span class="math notranslate nohighlight">\(a_{p}\)</span>,
+<span class="math notranslate nohighlight">\(b_{p}\)</span>, and <span class="math notranslate nohighlight">\(c_{p}\)</span> from <span id="id5">[<a class="reference internal" href="references.html#id6" title="Raul Cristian Scarlat, Gunnar Spreen, Georg Heygster, Marcus Huntemann, Cătălin Paţilea, Leif Toudal Pedersen, and Roberto Saldo. Sea ice and atmospheric parameter retrieval from satellite microwave radiometers: synergy of AMSR2 and SMOS compared with the CIMR candidate mission. Journal of Geophysical Research: Oceans, 2020. doi:https://doi.org/10.1029/2019JC015749.">Scarlat <em>et al.</em>, 2020</a>]</span> (see <a class="reference internal" href="annex.html#tab-fy-thick"><span class="std std-numref">Table 6</span></a>). To
+combine ice temperatuer and ice thickness dependence, the ice emissivity is
+modified by the ice thickness  by substituting <span class="math notranslate nohighlight">\(a_{p}\)</span> with the ice temperature
+dependent <span class="math notranslate nohighlight">\(U_{T, t, p}\)</span> from <a class="reference internal" href="#equation-eq-nizy">(5)</a> for <span class="math notranslate nohighlight">\(t=\text{FYI}\)</span>. This was not performed in
+<span id="id6">[<a class="reference internal" href="references.html#id6" title="Raul Cristian Scarlat, Gunnar Spreen, Georg Heygster, Marcus Huntemann, Cătălin Paţilea, Leif Toudal Pedersen, and Roberto Saldo. Sea ice and atmospheric parameter retrieval from satellite microwave radiometers: synergy of AMSR2 and SMOS compared with the CIMR candidate mission. Journal of Geophysical Research: Oceans, 2020. doi:https://doi.org/10.1029/2019JC015749.">Scarlat <em>et al.</em>, 2020</a>]</span> but is essential for the minimization of the cost function
+to not introduce discontinuities in the forward model. The MYI emissivity is not
+affected by the ice thickness in this forward model, as it was not part of the
+thickness sensitivity study in <span id="id7">[<a class="reference internal" href="references.html#id6" title="Raul Cristian Scarlat, Gunnar Spreen, Georg Heygster, Marcus Huntemann, Cătălin Paţilea, Leif Toudal Pedersen, and Roberto Saldo. Sea ice and atmospheric parameter retrieval from satellite microwave radiometers: synergy of AMSR2 and SMOS compared with the CIMR candidate mission. Journal of Geophysical Research: Oceans, 2020. doi:https://doi.org/10.1029/2019JC015749.">Scarlat <em>et al.</em>, 2020</a>]</span>.</p>
+<p>To get back to emissivity in order to account for the atmospheric contribution
+to the brightness temperatures at surface level, the brightness temperature is just devided by the ice surface temperature</p>
+<div class="math notranslate nohighlight" id="equation-eq-ist">
+<span class="eqno">(7)<a class="headerlink" href="#equation-eq-ist" title="Permalink to this equation">#</a></span>\[ε_p = \frac{T_{b,p}}{\text{IST}}\]</div>
+<p>With
 <span class="math notranslate nohighlight">\(C_{\text{myi}}+C_{\text{fyi}}=\text{SIC}\)</span> and <span class="math notranslate nohighlight">\(\text{SIC}*C_\text{myi} =
 \text{MYIF}\)</span> being part of the state vector <a class="reference internal" href="#equation-eqxy">(2)</a>, the state defines
 the surface area fraction of all three considered surface types.</p>
 <p>The reflectivity of
 the surface, <span class="math notranslate nohighlight">\(R_{\text{surf}}\)</span>, is given by</p>
 <div class="math notranslate nohighlight" id="equation-eq-surfref">
-<span class="eqno">(5)<a class="headerlink" href="#equation-eq-surfref" title="Permalink to this equation">#</a></span>\[R_{\text{surf}} = 1 -
+<span class="eqno">(8)<a class="headerlink" href="#equation-eq-surfref" title="Permalink to this equation">#</a></span>\[R_{\text{surf}} = 1 -
 ε_{\text{ow}}*C_{\text{ow}} - ε_{\text{fyi}}*C_{\text{fyi}} -
 ε_{\text{myi}}*C_{\text{myi}}.\]</div>
+<p>The atmospheric contribution to the brightness temperature is calculated from
+the parametrization from <span id="id8">[<a class="reference internal" href="references.html#id10" title="Fj Wentz and T Meissner. Algorithm theoretical basis document (atbd): amsr ocean algorithm (version 2). 2000. URL: http://scholar.google.com/scholar?hl=en&amp;btnG=Search&amp;q=intitle:Algorithm+Theoretical+Basis+Document+(+ATBD+)+AMSR+Ocean+Algorithm#2.">Wentz and Meissner, 2000</a>]</span>. They fitted the donwelling and
+upwelling effective temperature using a least squares fit to the <a class="reference internal" href="acronyms.html#term-TWV"><span class="xref std std-term">TWV</span></a>.
+The fit is given by</p>
+<div class="math notranslate nohighlight" id="equation-eq-atm">
+<span class="eqno">(9)<a class="headerlink" href="#equation-eq-atm" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align}
+T_D=b_0+b_1V+b_2V^2+b_3V^3+b_4V^4+b_5\zeta(T_s-T_v)\\
+D_U=T_D+b_6+b7V\\
+\end{align}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(T_v = 273.16+0.8337 V - 3.029\cdot 10^{-5}V^{3.33}\)</span> for V&lt;48 and
+<span class="math notranslate nohighlight">\(T_v=301.16\)</span> for V&gt;48 and <span class="math notranslate nohighlight">\(\zeta(x)=1.05x*(1-x^2)/1200\)</span> for <span class="math notranslate nohighlight">\(|x|&lt;20\ \text{K}\)</span> and
+<span class="math notranslate nohighlight">\(\zeta(x)=\text{sign}(x)*14\ \text{K}\)</span> for <span class="math notranslate nohighlight">\(|x|&gt;20\ \text{K}\)</span>.</p>
+<p>The absorption by oxygen is given by</p>
+<div class="math notranslate nohighlight" id="equation-eq-abs-oxy">
+<span class="eqno">(10)<a class="headerlink" href="#equation-eq-abs-oxy" title="Permalink to this equation">#</a></span>\[A_o = a_{O1}+a_{O2}(T_{D}-270)\]</div>
+<p>The vapor absorption is given by</p>
+<div class="math notranslate nohighlight" id="equation-eq-abs-vap">
+<span class="eqno">(11)<a class="headerlink" href="#equation-eq-abs-vap" title="Permalink to this equation">#</a></span>\[A_V = a_{V1}V+a_{V2}V^2\]</div>
+<p>The liquid water absorption is given by</p>
+<div class="math notranslate nohighlight" id="equation-eq-abs-liq">
+<span class="eqno">(12)<a class="headerlink" href="#equation-eq-abs-liq" title="Permalink to this equation">#</a></span>\[A_L = a_{L1}(x-a_{L2}(T_L - 283))L\]</div>
+<p>with <span class="math notranslate nohighlight">\(L\)</span> being the liquid water path.</p>
+<p>The total atmospheric attenuation is given by a combination of the individual terms as from <a class="reference internal" href="#equation-eq-abs-oxy">(10)</a>, <a class="reference internal" href="#equation-eq-abs-vap">(11)</a>, and <a class="reference internal" href="#equation-eq-abs-liq">(12)</a>:</p>
+<div class="math notranslate nohighlight" id="equation-eq-abs-tot">
+<span class="eqno">(13)<a class="headerlink" href="#equation-eq-abs-tot" title="Permalink to this equation">#</a></span>\[\tau = \exp\left(-\frac{A_o+A_V+A_L}{\cos\theta}\right)\]</div>
+<p>with <span class="math notranslate nohighlight">\(\theta\)</span> being the incidence angle.</p>
 </div>
 <div class="section" id="l-band-forward-model">
 <h2>L-band forward model<a class="headerlink" href="#l-band-forward-model" title="Permalink to this headline">#</a></h2>
-<p>The addition for 1.4GHz was done by <span id="id4">[<a class="reference internal" href="references.html#id6" title="Raul Cristian Scarlat, Gunnar Spreen, Georg Heygster, Marcus Huntemann, Cătălin Paţilea, Leif Toudal Pedersen, and Roberto Saldo. Sea ice and atmospheric parameter retrieval from satellite microwave radiometers: synergy of AMSR2 and SMOS compared with the CIMR candidate mission. Journal of Geophysical Research: Oceans, 2020. doi:https://doi.org/10.1029/2019JC015749.">Scarlat <em>et al.</em>, 2020</a>]</span> and is based on <span id="id5">[<a class="reference internal" href="references.html#id9" title="Christopher S. Ruf. Vicarious calibration of an ocean salinity radiometer from low earth orbit. Journal of Atmospheric and Oceanic Technology, 20:1656-1670, 2003. doi:10.1175/1520-0426(2003)020&lt;1656:VCOAOS&gt;2.0.CO;2.">Ruf, 2003</a>]</span>.</p>
+<p>The addition for 1.4GHz was done by <span id="id9">[<a class="reference internal" href="references.html#id6" title="Raul Cristian Scarlat, Gunnar Spreen, Georg Heygster, Marcus Huntemann, Cătălin Paţilea, Leif Toudal Pedersen, and Roberto Saldo. Sea ice and atmospheric parameter retrieval from satellite microwave radiometers: synergy of AMSR2 and SMOS compared with the CIMR candidate mission. Journal of Geophysical Research: Oceans, 2020. doi:https://doi.org/10.1029/2019JC015749.">Scarlat <em>et al.</em>, 2020</a>]</span> and is based on <span id="id10">[<a class="reference internal" href="references.html#id9" title="Christopher S. Ruf. Vicarious calibration of an ocean salinity radiometer from low earth orbit. Journal of Atmospheric and Oceanic Technology, 20:1656-1670, 2003. doi:10.1175/1520-0426(2003)020&lt;1656:VCOAOS&gt;2.0.CO;2.">Ruf, 2003</a>]</span>.</p>
 </div>
 <div class="section" id="from-template">
 <h2>from template<a class="headerlink" href="#from-template" title="Permalink to this headline">#</a></h2>

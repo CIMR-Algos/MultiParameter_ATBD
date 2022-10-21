@@ -250,8 +250,8 @@ end
 
 @time dat,err,res=run_oem(outg,wsp,twv,clw,t2m,tsk,D,routine=:new)
 
-fig=plot_oem_res(res,D,false,true)
-
 plot_oem_out(dat,D)
 
 plot_oem_err(err,D)
+
+fig=plot_oem_res(res,D,false,true)

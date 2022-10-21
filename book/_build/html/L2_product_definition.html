@@ -49,6 +49,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -110,7 +112,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    ATBD Template
+                    ATBD Multi Parameter Retrieval
                 </a>
             </li>
         </ul>
@@ -118,11 +120,6 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="abstract.html">
    Abstract
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="applicable_ref_docs.html">
-   Applicable and Reference Documents
   </a>
  </li>
  <li class="toctree-l1">
@@ -172,7 +169,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="references.html">
-   References (example)
+   References
   </a>
  </li>
  <li class="toctree-l1">
@@ -329,7 +326,206 @@ title="Print to PDF"
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="level-2-product-definition">
 <h1>Level-2 product definition<a class="headerlink" href="#level-2-product-definition" title="Permalink to this headline">#</a></h1>
-<p>Definition</p>
+<p>The Level-2b product is the result of the processing from Level-1b brightness
+temperatures to Level-2r geophysical parameters. The product is provided in the resampled
+grid of the CIMR instrument at resolution of the C-band channel, which means it contains 547
+samples per scan for each horn. Multiplied by the number of scans for each orbit gives the
+number of retrieved parameter values per orbit for each geophysical parameter. The product is provided in netCDF format and contains the
+following variables following the <a class="reference external" href="http://cfconventions.org/">CF conventions</a>:</p>
+<table class="colwidths-auto table" id="product-variables">
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable name</p></th>
+<th class="head"><p>Unit</p></th>
+<th class="head"><p>dimensions</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">time</span></code></p></td>
+<td><p>days since 2000-01-01 00:00:00</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">time</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">wind_speed</span></code></p></td>
+<td><p>m s<span class="math notranslate nohighlight">\(^{-1}\)</span></p></td>
+<td><p>n_scans * n_samples_earth * n_horns</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">total_water_vapor</span></code></p></td>
+<td><p>kg m<span class="math notranslate nohighlight">\(^{-2}\)</span></p></td>
+<td><p>n_scans * n_samples_earth * n_horns</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cloud_liq_water</span></code></p></td>
+<td><p>kg m<span class="math notranslate nohighlight">\(^{-2}\)</span></p></td>
+<td><p>n_scans * n_samples_earth * n_horns</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">sea_surface_temperature</span></code></p></td>
+<td><p>K</p></td>
+<td><p>n_scans * n_samples_earth * n_horns</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ice_surface_temperature</span></code></p></td>
+<td><p>K</p></td>
+<td><p>n_scans * n_samples_earth * n_horns</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">sea_ice_fraction</span></code></p></td>
+<td><p>1</p></td>
+<td><p>n_scans * n_samples_earth * n_horns</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">multi_year_ice_fraction</span></code></p></td>
+<td><p>1</p></td>
+<td><p>n_scans * n_samples_earth * n_horns</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">sea_ice_thickness</span></code></p></td>
+<td><p>m</p></td>
+<td><p>n_scans * n_samples_earth * n_horns</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">wind_speed</span> <span class="pre">standard_error</span></code></p></td>
+<td><p>m s<span class="math notranslate nohighlight">\(^{-1}\)</span></p></td>
+<td><p>n_scans * n_samples_earth * n_horns</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">total_water_vapor</span> <span class="pre">standard_error</span></code></p></td>
+<td><p>kg m<span class="math notranslate nohighlight">\(^{-2}\)</span></p></td>
+<td><p>n_scans * n_samples_earth * n_horns</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cloud_liq_water</span> <span class="pre">standard_error</span></code></p></td>
+<td><p>kg m<span class="math notranslate nohighlight">\(^{-2}\)</span></p></td>
+<td><p>n_scans * n_samples_earth * n_horns</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">sea_surface_temperature</span> <span class="pre">standard_error</span></code></p></td>
+<td><p>K</p></td>
+<td><p>n_scans * n_samples_earth * n_horns</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ice_surface_temperature</span> <span class="pre">standard_error</span></code></p></td>
+<td><p>K</p></td>
+<td><p>n_scans * n_samples_earth * n_horns</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">sea_ice_fraction</span> <span class="pre">standard_error</span></code></p></td>
+<td><p>1</p></td>
+<td><p>n_scans * n_samples_earth * n_horns</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">multi_year_ice_fraction</span> <span class="pre">standard_error</span></code></p></td>
+<td><p>1</p></td>
+<td><p>n_scans * n_samples_earth * n_horns</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">sea_ice_thickness</span> <span class="pre">standard_error</span></code></p></td>
+<td><p>m</p></td>
+<td><p>n_scans * n_samples_earth * n_horns</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">quality_flag</span></code></p></td>
+<td><p>1</p></td>
+<td><p>n_scans * n_samples_earth * n_horns</p></td>
+</tr>
+</tbody>
+</table>
+<p>The dimension follow the definition of the original CIMR L1b product.</p>
+<p>The quality flag is a 64-bit mask with the following bits:</p>
+<table class="colwidths-auto table" id="product-flags">
+<thead>
+<tr class="row-odd"><th class="head"><p>Bit</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>state</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>valid solution</p></td>
+<td><p>set if valid</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>default solver convergence flag (&lt;50 iterations)</p></td>
+<td><p>set if true</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>fallback solver used</p></td>
+<td><p>set if true</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>fallback solver converged</p></td>
+<td><p>set if fallback solver converged</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>no convergence</p></td>
+<td><p>set if true (invalid solution)</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>anomaly detected</p></td>
+<td><p>set if true (invalid solution)</p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>invalid wind_speed</p></td>
+<td><p>set if true</p></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><p>invalid total_water_vapor</p></td>
+<td><p>set if true</p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>invalid cloud_liq_water</p></td>
+<td><p>set if true</p></td>
+</tr>
+<tr class="row-odd"><td><p>9</p></td>
+<td><p>invalid sea_surface_temperature</p></td>
+<td><p>set if true</p></td>
+</tr>
+<tr class="row-even"><td><p>10</p></td>
+<td><p>invalid ice_surface_temperature</p></td>
+<td><p>set if true</p></td>
+</tr>
+<tr class="row-odd"><td><p>11</p></td>
+<td><p>invalid sea_ice_fraction</p></td>
+<td><p>set if true</p></td>
+</tr>
+<tr class="row-even"><td><p>12</p></td>
+<td><p>invalid multi_year_ice_fraction</p></td>
+<td><p>set if true</p></td>
+</tr>
+<tr class="row-odd"><td><p>13</p></td>
+<td><p>invalid sea_ice_thickness</p></td>
+<td><p>set if true</p></td>
+</tr>
+<tr class="row-even"><td><p>14</p></td>
+<td><p>anomaly in residual</p></td>
+<td><p>set if true</p></td>
+</tr>
+<tr class="row-odd"><td><p>15-23</p></td>
+<td><p>Reserved</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>24</p></td>
+<td><p>anomaly in L-band</p></td>
+<td><p>set if true</p></td>
+</tr>
+<tr class="row-odd"><td><p>25</p></td>
+<td><p>anomaly in C-band</p></td>
+<td><p>set if true</p></td>
+</tr>
+<tr class="row-even"><td><p>26</p></td>
+<td><p>anomaly in X-band</p></td>
+<td><p>set if true</p></td>
+</tr>
+<tr class="row-odd"><td><p>27</p></td>
+<td><p>anomaly in Ku-band</p></td>
+<td><p>set if true</p></td>
+</tr>
+<tr class="row-even"><td><p>28</p></td>
+<td><p>anomaly in K-band</p></td>
+<td><p>set if true</p></td>
+</tr>
+<tr class="row-odd"><td><p>29-49</p></td>
+<td><p>Reserved</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>50</p></td>
+<td><p>Landmask</p></td>
+<td><p>set for land (fixed)</p></td>
+</tr>
+<tr class="row-odd"><td><p>51</p></td>
+<td><p>Ice shelf mask</p></td>
+<td><p>set for ice shelf</p></td>
+</tr>
+<tr class="row-even"><td><p>52-64</p></td>
+<td><p>Reserved</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
 </div>
 
     <script type="text/x-thebe-config">

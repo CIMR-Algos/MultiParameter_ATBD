@@ -110,7 +110,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    ATBD Template
+                    ATBD Multi Parameter Retrieval
                 </a>
             </li>
         </ul>
@@ -118,11 +118,6 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="abstract.html">
    Abstract
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="applicable_ref_docs.html">
-   Applicable and Reference Documents
   </a>
  </li>
  <li class="toctree-l1">
@@ -172,7 +167,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="references.html">
-   References (example)
+   References
   </a>
  </li>
  <li class="toctree-l1">
@@ -362,7 +357,8 @@ title="Print to PDF"
 for the 10 November 2021. For AMSR2 we exclude the 23 and 89 GHz channels from
 the calculation as it is not available on the <a class="reference internal" href="acronyms.html#term-CIMR"><span class="xref std std-term">CIMR</span></a> satellite.
 The retrieval is constrained using a priori information from <a class="reference internal" href="definitions.html#term-ERA5"><span class="xref std std-term">ERA5</span></a> in
-particular for the atmospheric parameters.</p>
+particular for the atmospheric parameters. <code class="xref std std-numref docutils literal notranslate"><span class="pre">fig:retrievalexample</span></code> shows the results of the retrieval with maps of all eight parameters. Some parameters like the <a class="reference internal" href="acronyms.html#term-SIC"><span class="xref std std-term">SIC</span></a> are strongly constrained from the input and thus look very consistent. The <a class="reference internal" href="acronyms.html#term-MYIF"><span class="xref std std-term">MYIF</span></a> shows artifacts along the ice edge, in particular in the Fram Strait but also in the Kara and Barents Seas. The <a class="reference internal" href="acronyms.html#term-SIC"><span class="xref std std-term">SIC</span></a> seems very low, but also it is only showing the ice thickness of the fraction of first year ice. Even though the higher multi year ice fraction parts have values of ice thickness, it is less reliable.
+The atmospheric parameters and the windspeed are fast changing parameters. Therefore, the daily averaged brightness temperature input may alter the results and let swath edges shine through the results.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="_images/OEM_SIT_10_0.svg" src="_images/OEM_SIT_10_0.svg" /></div>
