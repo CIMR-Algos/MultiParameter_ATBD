@@ -19,6 +19,73 @@ function lm_retrieval(Ta,Sₑ,Sₐ,xₐ,F;kwargs...)
     return lm_retrieval(Ta,Sₑ,Sₐ,xₐ,F,xₐ;kwargs...)
 end
 
+"""
+    dielectric_meissner_wentz(sst_in,s)
+
+    Dielectric constant of sea water (pure water) as a function of temperature and salinity
+"""
+function dielectric_meissner_wentz(sst_in,s,freq)
+
+    X_pure= SA[ 5.7230E+00, 2.2379E-02, -7.1237E-04, 5.0478E+00, -7.0315E-02, 6.0059E-04, 3.6143E+00, 2.8841E-02, 1.3652E-01,  1.4825E-03, 2.4166E-04 ]
+    X_sea = SA[-3.56417E-03,  4.74868E-06,  1.15574E-05,  2.39357E-03, -3.13530E-05, 2.52477E-07, -6.28908E-03,  1.76032E-04, -9.22144E-05, -1.99723E-02, 1.81176E-04, -2.04265E-03,  1.57883E-04 ]
+    # fit salinity dependence of the static dielectric constant
+    a0coef= SA[-0.33330E-02,  4.74868E-06,  0.0E+00] #wentz 2012 Table VI
+    #fit salinity  dependence of the first Debye relaxation frequency
+    b1coef=SA[0.23232E-02, -0.79208E-04, 0.36764E-05, -0.35594E-06, 0.89795E-08]#Wentz 2012 Table VII
+
+    sst = sst_in-273.15 #to have sst in degree celsius
+    if sst<-30.16
+        sst=-30.16  #protects against n1 and n2 going to zero for very cold water
+    end
+
+
+    f0 = 17.97510
+   
+   ###     pure water, Debye relaxation fits, fit parameter for Eq. 6 (MW 2004)
+    e0    = (3.70886e4 - 8.2168e1*sst)/(4.21854e2 + sst) # stogryn et al.
+    e1    = X_pure[1] + X_pure[2]*sst + X_pure[3]*sst^2
+    n1    = (45.00 + sst)/(X_pure[4] + X_pure[5]*sst + X_pure[6]*sst^2)
+    e2    = X_pure[7] + X_pure[8]*sst
+    n2    = (45.00 + sst)/(X_pure[9] + X_pure[10]*sst + X_pure[11]*sst^2)
+    
+    ###     saline water
+  #     conductivity [s/m] taken from stogryn et al.
+    sig35 = 2.903602 + 8.60700E-2*sst + 4.738817E-4*sst^2 - 2.9910E-6*sst^3 + 4.3047e-9*sst^4
+    r15   = s*(37.5109+5.45216*s+1.4409E-2*s^2)/(1004.75+182.283*s+s^2)
+    alpha0 = (6.9431+3.2841*s-9.9486E-2*s^2)/(84.850+69.024*s+s^2)
+    alpha1 = 49.843 - 0.2276*s + 0.198E-2*s^2
+    rtr15 = 1.0 + (sst-15.0)*alpha0/(alpha1+sst)
+    
+    sig = sig35*r15*rtr15
+    
+    #   permittivity
+    a0 = exp(a0coef[1]*s + a0coef[2]*s^2 + a0coef[3]*s*sst) # static dielectric constant, Eq 29 MW 2012
+    e0s = a0*e0
+    
+    if sst<30
+        b1 = 1.0 + s*(b1coef[1] + b1coef[2]*sst + b1coef[3]*sst^2 + b1coef[4]*sst^3 + b1coef[5]*sst^4)
+    else
+        b1 = 1.0 + s*(9.1873715E-04 + 1.5012396E-04*(sst-30))
+    end
+      
+    n1s = n1*b1
+    
+    a1  = exp(X_sea[7]*s + X_sea[8]*s^2 + X_sea[9]*s*sst)
+    e1s = e1*a1
+
+    b2 = 1.0 + s*(X_sea[10]+ 0.5*X_sea[11]*(sst + 30))
+    n2s = n2*b2
+    
+    a2 = 1.0  + s*(X_sea[12] + X_sea[13]*sst)
+    e2s = e2*a2
+    
+    permit = (e0s - e1s)/(1.0 - im*(freq/n1s)) + (e1s - e2s)/(1.0 - im*(freq/n2s)) + e2s + im*sig*f0/freq #new: equation 6 from MW 2004
+    permit = conj(permit) #to get the sign in the convention that the imaginary part is negative
+    return real(permit),imag(permit)
+end
+
+
+
 function lm_retrieval(Ta,Sₑ,Sₐ,xₐ,F,x₀; verbose=false,debug=false)
     #lm method after Rodgers 2000
     #target: find x so that F(x)=Ta, given
@@ -169,7 +236,7 @@ function calc_pa(T_a, Sg)
 
 
     sit = sit_guess(T_a[2])
-    p_a = [Sg[1:5]..., C_is1, F_MY1, sit]
+    p_a = [Sg[1:5]..., C_is1, F_MY1, sit,Sg[end]]
 
     return p_a
 end
@@ -232,7 +299,7 @@ function fw_fnct_amsre(x::AbstractArray{T}) where {T} ##to use ForwardDiff the f
     T_B = Array{T}(undef, 14)
 
     #T_B=Array{Float64,1}(undef,12)
-    varW, varV, varL, T_ow, T_is, C_is1, F_MY1, SI_T = x
+    varW, varV, varL, T_ow, T_is, C_is1, F_MY1, SI_T , s= x
 
     F_MY = F_MY1
     C_is = C_is1
@@ -283,34 +350,33 @@ function fw_fnct_amsre(x::AbstractArray{T}) where {T} ##to use ForwardDiff the f
 
 
 
-    eq_a_v = SA[250.170, 241.434, 247.310, 248.773, 250.338, 252.346]
-    eq_b_v = SA[121.778, 9846.905, 629.706, 17586.945, 12532.980, 190.665]
-    eq_c_v = SA[6.667, 0.123, 0.060, 0.106, 0.117, 1.823]
+    eq_a_v = SA[250.170, 250.1, 255.06, 255.34, 254.338, 253.481]
+    eq_b_v = SA[157.9397756705356, 163.4896743050617, 175.18191921420814, 185.91398347505353, 206.667948239106, 242.01900700540162]
+    eq_c_v = SA[8.956615582385908,
+    8.52431046569442,
+    7.734378368070544,
+    7.473947263410875,
+    7.6681838621416425,
+    2.8041750136460695]
 
-    eq_a_h = SA[220.703, 228.617, 238.249, 240.193, 242.620, 238.396]
-    eq_b_h = SA[-16.118, -0.404, 29.602, 62.125, 83.872, 15333.029]
-    eq_c_h = SA[7.183, 7.402, 7.215, 7.280, 6.707, 0.037]
+
+    eq_a_h = SA[220.703, 228.617, 238.249, 240.193, 242.620, 241.396]
+    eq_b_h = SA[74.22054192317813,  78.40477088765373,  90.60124656474672,  99.89685544430296, 128.36037504633393,175.158277073163]
+    eq_c_h = SA[11.894364589753874,
+    11.645437092902535,
+    10.165054195271782,
+    9.128550147675183,
+    8.98643673857489,
+    5.686319297256588]
 
     #some constants needed lin the loop
 
     T_owC = T_ow - 273.15                 # Surface temperature T_ow [deg Celcius]
-    epsilon_R = 4.44                    # Dielectric constant at inf. freq.
-    light_speed = 2.99792458E10               # Speed of light, [cm/s
-    s = 35                              # Salinity in parts per thousand; Typical values 30-33ppt
-    ny = 0.012                          # Spread factor
 
-    epsilon_S = (87.90 * exp(-0.004585 * T_owC)) * (exp(-3.45E-3 * s + 4.69E-6 * s^2 + 1.36E-5 * s * T_owC))                          #equation (36) og (43)
-    lambda_R = (3.30 * exp(-0.0346 * T_owC + 0.00017 * T_owC^2)) - (6.54E-3 * (1.0 - 3.06E-2 * T_owC + 2.0E-4 * T_owC^2) * s)   #equation (38) og (44)
 
-    C = 0.5536 * s                                  #equation (41)
-    delta_t = 25 - T_owC                            #equation (42)
-    qsi = 2.03E-2 + 1.27E-4 * delta_t + 2.46E-6 * delta_t^2 - C * (3.34E-5 - 4.60E-7 * delta_t + 4.60E-8 * delta_t^2) #equation (40)
-    sigma = 3.39E9 * C^0.892 * exp(-delta_t * qsi)      #equation (39)
 
     #a = real((1im)^(1-ny))
-    a = 0.018848439715408175
     #b = imag((1im)^(1-ny))
-    b = 0.999822352380809
 
 
     for i in eachindex(Freq) #loop over frequencies except L-band
@@ -396,13 +462,14 @@ function fw_fnct_amsre(x::AbstractArray{T}) where {T} ##to use ForwardDiff the f
         #################################
         #Dielectric Constant of Sea-water
 
-        lambd = (light_speed / (Freq[i] * 1.0E9))    # Wavelength, [cm]
+#        lambd = (light_speed / (Freq[i] * 1.0E9))    # Wavelength, [cm]
 
 
         #ϵ=ϵ1+iϵ2 , z2 = |(1 + (i(lambda_R / lambd))^(1-ny) |^2
-        z2 = (1 + a * (lambda_R / lambd)^(1 - ny))^2 + (b * (lambda_R / lambd)^(1 - ny))^2
-        ϵ1 = epsilon_R + ((epsilon_S - epsilon_R) * (1 + a * (lambda_R / lambd)^(1 - ny)) / z2)  # adopted from equation (35)              
-        ϵ2 = -((epsilon_S - epsilon_R) * b * (lambda_R / lambd)^(1 - ny)) / z2 - (2 * sigma * lambd) / light_speed
+#        z2 = (1 + a * (lambda_R / lambd)^(1 - ny))^2 + (b * (lambda_R / lambd)^(1 - ny))^2
+ #       @show ϵ1 = epsilon_R + ((epsilon_S - epsilon_R) * (1 + a * (lambda_R / lambd)^(1 - ny)) / z2)  # adopted from equation (35)              
+ #       @show ϵ2 = -((epsilon_S - epsilon_R) * b * (lambda_R / lambd)^(1 - ny)) / z2 - (2 * sigma * lambd) / light_speed
+        ϵ1,ϵ2 = dielectric_meissner_wentz(T_ow,s,Freq[i])
 
         #ctt2 = fresnel1 + i fresnel2 =  ctt2=sqrt(epsil - sin(theta_r)^2)
         fresnel1 = ((((((ϵ1 - sin(theta_r)^2)^2 + ϵ2^2))^0.5) + ϵ1 - sin(theta_r)^2) / 2)^0.5
@@ -466,6 +533,9 @@ function fw_fnct_amsre(x::AbstractArray{T}) where {T} ##to use ForwardDiff the f
         E_H = 1 - R_H       # surface emissivity for open water; Horizontal pol.; Equation (8); 
         E_V = 1 - R_V     # Surface emissivity for open water; Vertical pol; Equation (8); 
 
+        #TODO: reavaluate ice contribution after water, since lower tie point of thin ice should be open water tiepoint to avoid artifacts
+        
+
         #     #Emissivity for mixed surface
         #E_eff_H=C_ow*E_H + IC_FY*Emissivitet_FY_H[i] + IC_MY*Emissivitet_MY_H[i]
         #E_eff_V=C_ow*E_V + IC_FY*Emissivitet_FY_V[i] + IC_MY*Emissivitet_MY_V[i]
@@ -526,13 +596,14 @@ function fw_fnct_amsre(x::AbstractArray{T}) where {T} ##to use ForwardDiff the f
 
 
     #now deal with L-band
-    lambd_L = (light_speed / (1.413 * 1E9))
+    #lambd_L = (light_speed / (1.413 * 1E9))
 
     #ugly repetition since it is calculated in the loop for the other frequency,
     #this is worth putting in a function to avoid  doubling
-    z2 = (1 + a * (lambda_R / lambd_L)^(1 - ny))^2 + (b * (lambda_R / lambd_L)^(1 - ny))^2
-    ϵ1 = epsilon_R + ((epsilon_S - epsilon_R) * (1 + a * (lambda_R / lambd_L)^(1 - ny)) / z2)  # adopted from equation (35)              
-    ϵ2 = -((epsilon_S - epsilon_R) * b * (lambda_R / lambd_L)^(1 - ny)) / z2 - (2 * sigma * lambd_L) / light_speed
+ #   z2 = (1 + a * (lambda_R / lambd_L)^(1 - ny))^2 + (b * (lambda_R / lambd_L)^(1 - ny))^2
+    #ϵ1 = epsilon_R + ((epsilon_S - epsilon_R) * (1 + a * (lambda_R / lambd_L)^(1 - ny)) / z2)  # adopted from equation (35)              
+#    ϵ2 = -((epsilon_S - epsilon_R) * b * (lambda_R / lambd_L)^(1 - ny)) / z2 - (2 * sigma * lambd_L) / light_speed
+    ϵ1,ϵ2 = dielectric_meissner_wentz(T_ow,s,1.413)
 
     fresnel1 = ((((((ϵ1 - sin(theta_r)^2)^2 + ϵ2^2))^0.5) + ϵ1 - sin(theta_r)^2) / 2)^0.5
     fresnel2 = -((((((ϵ1 - sin(theta_r)^2)^2 + ϵ2^2))^0.5) - ϵ1 + sin(theta_r)^2) / 2)^0.5
@@ -558,8 +629,8 @@ function fw_fnct_amsre(x::AbstractArray{T}) where {T} ##to use ForwardDiff the f
 
     Ltau = exp(-1 * (0.009364 + 0.000024127 * Vcm) * (1 / cos(theta_r))) #!atmospheric opacity
 
-    LT_U = (1 - Ltau) * ((T_ow - 237.16) + 258.15)           #!upwelling component
-    LT_D = (1 - Ltau) * ((T_ow - 237.16) + 263.15)           #!downwelling component
+    LT_U = (1 - Ltau) * ((T_ow - 273.16) + 258.15)           #!upwelling component
+    LT_D = (1 - Ltau) * ((T_ow - 273.16) + 263.15)           #!downwelling component
 
     #! Lemi_v = W*0.0007 + 0.4933			   #!wind influenced ocean surface emissivity
     #! Lemi_h = W*(0.0007 + 0.000015*theta_d) + 0.2132 
@@ -582,7 +653,8 @@ function fw_fnct_amsre(x::AbstractArray{T}) where {T} ##to use ForwardDiff the f
 
 
     #T_sk from raul was replaced by T_is
-    T_sk = 273.15 - (273.15 - T_is) * 0.1
+    #account for penetration depth at L-band
+    T_sk = 273.15 - (273.15 - T_is) * 0.1 
 
     m_SIT = SI_T / 100 #! L-band dependency is for SIT in m
 
@@ -614,8 +686,8 @@ function fw_fnct_amsre(x::AbstractArray{T}) where {T} ##to use ForwardDiff the f
     LT_BV_m_surf = C_ow * LT_BV_OW + IC_FY * LT_BV_FYI + IC_MY * LT_BV_MYI
     LT_BH_m_surf = C_ow * LT_BH_OW + IC_FY * LT_BH_FYI + IC_MY * LT_BH_MYI
 
-    LTice_U = (1 - Ltau) * ((T_is - 237.16) + 258.15)           #!upwelling component over sea ice
-    LTice_D = (1 - Ltau) * ((T_is - 237.16) + 263.15)           #!downwelling component over sea ice
+    LTice_U = (1 - Ltau) * ((T_is - 273.16) + 258.15)           #!upwelling component over sea ice
+    LTice_D = (1 - Ltau) * ((T_is - 273.16) + 263.15)           #!downwelling component over sea ice
 
     LT_U_tot = C_is * LTice_U + (1.0 - C_is) * LT_U#!combined upwelling based on surf temp of composite surf		
     LT_D_tot = C_is * LTice_D + (1.0 - C_is) * LT_D#!combined downwelling based on surf temp of composite surf		
@@ -655,37 +727,38 @@ function fw_fnct_amsre(x::AbstractArray{T}) where {T} ##to use ForwardDiff the f
 end
 
 
-const result = ForwardDiff.DiffResults.JacobianResult(fw_fnct_amsre(zeros(8)), zeros(8))
+const result = ForwardDiff.DiffResults.JacobianResult(fw_fnct_amsre(zeros(9)), zeros(9))
 
 
-function inv_function_apri_ice_lm(T_A, ny, startguess, num_ite=50, d2max=7; debug=false, verbose=false)
+function inv_function_apri_ice_lm(T_A, S_e,S_p, ny, startguess, num_ite=50, d2max=7; debug=false, verbose=false)
 
     #num_ite = 50
     #d2max = 7
     num_TB = 14 # all frequencies, Lband to 89 GHz
-    num_params = 8 #retrieve 8 params (the default 7 + SIT)
+    num_params = 9 #retrieve 9 params (the default 7 + SIT + SSS)
 
 
     # parameter covariance matrix S_p #last one is new is variance of SIT
 
-    S_p = Diagonal([24.6048, #wsp
-        22.0962, #twv
-        #0.0204, #clw
-        0.1, #clw
-        10.8936, #sst
-        10.9468, #ist
-        0.1, #ic
-        0.1, #myif
-        200.0]) #sit [cm]
+    #S_p = Diagonal([24.6048, #wsp
+    #    22.0962, #twv
+    #    #0.0204, #clw
+    #    0.1, #clw
+    #    10.8936, #sst
+    #    10.9468, #ist
+    #    0.1, #ic
+    #    0.1, #myif
+    #    200.0]) #sit [cm]
 
 
-    vec_S_e = [5.0, 5.0,    #1.4v,h
-        2.356, 4.832,  #6.9v,h
-        1.609, 5.460,  #10.6v,h
-        0.977, 4.932,  #18.7v,h
-        200 + 1.042, 200 + 2.661,  #23.8v,h
-        2.540, 2.65, # 36.5v,h
-        204.903, 206.274] #89v,h
+    #vec_S_e = [5.0, 5.0,    #1.4v,h
+    #    2.356, 4.832,  #6.9v,h
+    #    1.609, 5.460,  #10.6v,h
+    #    0.977, 4.932,  #18.7v,h
+    #    200 + 1.042, 200 + 2.661,  #23.8v,h
+    #    2.540, 2.65, # 36.5v,h
+    #    204.903, 206.274] #89v,h
+    vec_S_e=diag(S_e)
 
     nrows = size(T_A, 1)
     ite_p = zeros(num_ite, num_params)
@@ -805,7 +878,7 @@ function inv_function_apri_ice_lm(T_A, ny, startguess, num_ite=50, d2max=7; debu
         sitguess = ssg(T_A[2]) #from 2 to 82 cm sit guess
 
         #  Reanalysis values without logarithms
-        p_a = [10.11 3.863 0.1633 274.5 273 C_is1 F_MY1 sitguess]
+        p_a = [10.11 3.863 0.1633 274.5 273 C_is1 F_MY1 sitguess 35]
 
         #     startguess = [9.4919515 3.8402195 0.0061435 271.43274 264.233308; 9.4919515 3.8402195 0.0061435 271.43274 264.233308]
         #     startguess = [startguess;startguess]
@@ -823,7 +896,6 @@ function inv_function_apri_ice_lm(T_A, ny, startguess, num_ite=50, d2max=7; debu
 
         #         del_p = [2.0 2.0 1.0 2.0 2.0 0.2 0.2]
         #                 #Wsp TWV CLW SST T2m SIC MYIF
-        @show p_a
         p = p_start
         p_new = p   #variable for preliminary update  
 

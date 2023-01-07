@@ -16,8 +16,11 @@ The output data consist of the parameters, namely {term}`WSP`, {term}`TWV`,
 gaussian in the retrieval and are provided along with the parameters. 
 
 ## Auxiliary data
-Auxillary data includes the {term}`TEC` for the transformation to account for the pol
-arization rotation as part of the atmospheric model. {term}`ECMWF` surface analysis data is used as background values for the retrieval. The variables used are {term}`WSP`, {term}`TWV`, {term}`CLW`, {term}`T2M`, {term}`TSK`. 
+Auxillary data includes the {term}`TEC` for the transformation to account for
+the polarization rotation as part of the atmospheric model. {term}`ECMWF`
+surface analysis data is used as background values for the retrieval. The
+variables used are {term}`WSP`, {term}`TWV`, {term}`CLW`, {term}`T2M`,
+{term}`TSK`. 
 
 
 ## Ancillary data

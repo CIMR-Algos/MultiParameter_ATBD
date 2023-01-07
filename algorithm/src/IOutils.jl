@@ -116,6 +116,37 @@ function get_amsr2_tbs(fn)
     Qh=read(dd,"Pixel Data Quality 89")[:]
     #println(size(read(dd,"Brightness Temperature (89.0GHz-A,V)")/100f0))
     #println(size(read(dd,"Brightness Temperature (6.9GHz,V)")/100f0))
+    slope = [1.008, #6V                       
+    1.000, #6H                        
+    1.005, #10V                       
+    0.993, #10H                       
+    1.031, #18V                     
+    1.001, #18H                        
+    0.999, #23V                        
+    1.002, #23H                       
+    0.997, #36V                               
+    0.996, #36H                            
+    0.989, #89V  
+    0.977 #89H 
+    ]
+
+intercept = [-2.360,  #6V      #from Janna             
+    -1.538,  #6H                          
+    -4.551,  #10V                       
+    -2.585,  #10H                       
+    -9.710,  #18V                         
+    -1.104,  #18H                        
+    -1.706,  #23V                       
+    -2.638,  #23H                       
+    -2.610,  #36V                       
+    -2.687,  #36H                       
+    0.677,  #89V   
+    3.184  #89H
+    ]
+    outvec=[V6,H6,V10,H10,V18,H18,V23,H23,V36,H36,V89,H89]
+    for i in 1:12
+        outvec[i]=outvec[i].*slope[i].+intercept[i]
+    end
 
     return lat,lon, [V6,H6,V10,H10,V18,H18,V23,H23,V36,H36,V89,H89]
 end

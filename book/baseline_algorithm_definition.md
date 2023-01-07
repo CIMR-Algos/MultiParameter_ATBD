@@ -203,7 +203,7 @@ D_U=T_D+b_6+b7V\\
 \end{align}
 ```
 where $T_v = 273.16+0.8337 V - 3.029\cdot 10^{-5}V^{3.33}$ for V<48 and
-$T_v=301.16$ for V>48 and $\zeta(x)=1.05x*(1-x^2)/1200$ for $|x|<20\ \text{K}$ and
+$T_v=301.16$ for V>48, $\zeta(x)=1.05x*(1-x^2)/1200$ for $|x|<20\ \text{K}$ and
 $\zeta(x)=\text{sign}(x)*14\ \text{K}$ for $|x|>20\ \text{K}$. 
 
 The absorption by oxygen is given by 
@@ -238,10 +238,42 @@ with $\theta$ being the incidence angle.
 ## L-band forward model
 The addition for 1.4GHz was done by {cite}`Scarlat2020` and is based on {cite}`Ruf2003`. 
 
+The atmospheric attennuation for L-band is
+```{math}
+:label: eq:tau_l
+\tau = \exp\left(-\frac{0.009364 + 0.0000024127V }{\cos(\theta)}\right),
+```
+with $V$ being the {term}`TWV` in mm and $\theta$ being the incidence angle.
+
+The up- and downwelling brightness temperature for L-band is given by
+```{math}
+:label: eq:tbud_l
+\begin{align}
+T_{b,\text{up}} = (1-\tau)(\text{ST}+258.15)\\
+T_{b,\text{down}} = (1-\tau)(\text{ST}+263.15)
+\end{align}
+``` 
+with ST being the surface temperature in K. Over open ocean, this is
+{term}`SST` and over ice it is {term}`IST`. The composite upwelling and
+downwelling brightness temperature is thenn
+calculated with the weight of the ice concentration.
 
 
+The effect of wind roughenning for L-band over open ocean is given by
+```{math}
+:label: eq:rough_L
+\begin{align}
+\epsilon_h = \epsilon_{h,0} + u(0.0007 + 0.000015\theta) \\
+\epsilon_v = \epsilon_{v,0} + 0.0007u, 
+\end{align}
+```
+with $u$ being the wind speed in m/s.
 
-
+The brightness temperature which would be observed by an instrument in orbit is then given by
+```{math}
+T_{b,p} = T_{b,\text{up}} + \left((T_{c} 𝜏 + T_{b,\text{down}})(1 − \epsilon_p) + T_{b,s}\right) \tau,
+```
+with $p$ being the polarization and $T_c$ being the cosmic background temperature which, for L-band, is given as 6&nbsp;K  by {cite}`Ruf2003`. $T_{b,s}$ is the surface emitted brightness temperature (from {eq}`eq:surface`).
 
 ## from template
 ### CIMR Level-1b re-sampling approach
