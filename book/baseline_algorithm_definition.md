@@ -98,7 +98,7 @@ T_{b,v,36.5}\\
 \text{SIC}\\
 \text{MYIF}\\
 \text{SIT}\\
-%\text{SSS}\\
+\text{SSS}\\
 \end{bmatrix}
 \end{align}
 ```
@@ -134,7 +134,7 @@ The forward model for Ocean and Atmosphere for frequencies 6.9, 10.7, 18.7, and 
 The surface contribution to the brightness temperature is given by
 ```{math}
 :label: eq:surface
-T_{b,s} = C_{\text{ow}}*ε_{\text{ow}}*T_{\text{ow}}+C_{\text{fyi}}*ε_{\text{fyi}}*T_{\text{fyi}}+C_{\text{myi}}*ε_{\text{myi}}*T_{\text{myi}},
+T_{b,s} = C_{\text{ow}}ε_{\text{ow}}T_{\text{ow}}+C_{\text{fyi}}ε_{\text{fyi}}T_{\text{fyi}}+C_{\text{myi}}ε_{\text{myi}}T_{\text{myi}},
 ```
 
 where $C_{\text{ow}}$, $C_{\text{fyi}}$, and $C_{\text{myi}}$ are the area
@@ -147,7 +147,7 @@ $C_{\text{fyi}}$, and $C_{\text{myi}}$ are adding up to one. With the fruequency
 for first year ice and multi year ice derived by {cite}`Mathew2009`. 
 ```{math}
 :label: eq:Nizy
-U_{T, t, p}=(a_{t}*T_{C}+b_{t}+273.15)*ε_{t, p}
+U_{T, t, p}=(a_{t}T_{C}+b_{t}+273.15)ε_{t, p}
 ```
 with $U_{t,h}$ being the temperature corrected upwelling brightness temperature for the polarization $p$
 at the air temperature at the surface $T_{C}$ (in °C), $a_{t}$ and $b_{t}$ are the frequency
@@ -158,7 +158,7 @@ The ice thickness dependence at all frequencies is introduced via modification o
 The ice emissivity is modified by the ice thickness $\text{SIT}$ according to
 ```{math}
 :label: eq:ice_thickness
-T_{b,p} = a_{p}-(a_{p}-b_{p})*\exp\left(-\frac{\text{SIT}}{c_{p}}\right)
+T_{b,p} = a_{p}-(a_{p}-b_{p})\exp\left(-\frac{\text{SIT}}{c_{p}}\right)
 ```
 with the index $p$ indicate polarization ($h$ or $v$) the coefficients $a_{p}$,
 $b_{p}$, and $c_{p}$ from {cite}`Scarlat2020` (see {numref}`tab:fy_thick`). To
@@ -187,8 +187,8 @@ the surface, $R_{\text{surf}}$, is given by
 ```{math}
 :label: eq:surfref
 R_{\text{surf}} = 1 -
-ε_{\text{ow}}*C_{\text{ow}} - ε_{\text{fyi}}*C_{\text{fyi}} -
-ε_{\text{myi}}*C_{\text{myi}}.
+ε_{\text{ow}}C_{\text{ow}} - ε_{\text{fyi}}C_{\text{fyi}} -
+ε_{\text{myi}}C_{\text{myi}}.
 ```
 
 The atmospheric contribution to the brightness temperature is calculated from
@@ -203,7 +203,7 @@ D_U=T_D+b_6+b7V\\
 \end{align}
 ```
 where $T_v = 273.16+0.8337 V - 3.029\cdot 10^{-5}V^{3.33}$ for V<48 and
-$T_v=301.16$ for V>48, $\zeta(x)=1.05x*(1-x^2)/1200$ for $|x|<20\ \text{K}$ and
+$T_v=301.16$ for V>48, $\zeta(x)=1.05x(1-x^2)/1200$ for $|x|<20\ \text{K}$ and
 $\zeta(x)=\text{sign}(x)*14\ \text{K}$ for $|x|>20\ \text{K}$. 
 
 The absorption by oxygen is given by 
@@ -233,6 +233,121 @@ The total atmospheric attenuation is given by a combination of the individual te
 \tau = \exp\left(-\frac{A_o+A_V+A_L}{\cos\theta}\right)
 ```
 with $\theta$ being the incidence angle.
+
+## Emission from water
+While for the sea ice an empirical model is used for the emissivity, for the
+emission from the ocean the model uses the Fresnell reflection coefficient as a
+bases, which relies on the dielectric constant of the sea water. The emission from calm sea water after {cite}`Wentz2012` is given by
+```{math}
+:label: eq:em_ocean
+\begin{align}
+E_{0p} &= 1-|r_p|^2\\ 
+r_v &= \frac{ε\cos(θ_i)-\sqrt{ε-\sin^2(θ_i)}}{ε\cos(θ_i)+\sqrt{ε-\sin^2(θ_i)}}\\
+r_h &= \frac{\cos(θ_i)-\sqrt{ε-\sin^2(θ_i)}}{\cos(θ_i)+\sqrt{ε-\sin^2(θ_i)}}
+\end{align}
+```
+
+with $ε$ being the dielectric constant of the sea water.
+To account for the roughness and other disturbances on the ocean surface, the power eflectivity at each polariztaion $R_{0p}=|r_p|^2$. The contribution of different ocean surface types are modeled by different parameters again following {cite}`Wentz2000`. The reflectivity is a composition of foam covered ocean and clear ocean. With a reduction of the ocean surface emission through the foam by a factor κ, the composite reflectivity is given by
+```{math} 
+R = (1-f_{\text{foam}})\cdot R_{\text{clear}}+f_{\text{foam}}\cdot κ\cdot R_{\text{clear}}
+``` 
+with $f_{\text{foam}}$ being the fraction of the ocean surface covered by foam and $R_{\text{clear}}$ being the reflectivity of the clear ocean. With a small loss from diffraction a term $β$ we can express the reflectivity as 
+```{math}
+R_{\text{clear}} = (1-\beta)R_{\text{geo}}
+```
+with $R_{\text{geo}}$ being the reflectivity from a standart geometric optics model{cite}`Wentz75`. The combination can then be combining the foam and the diffraction term into one quantity $F=f_{\text{foam}} + \beta -f_{foam}\cdot β - f_{foam} κβ$, which is a monotonic function of wind speed and is addressed by {cite}`Wentz2000` as *catch-all* term. They determined $F$ empirically from experiments with various radiometeres. A fit for F is given by 
+```{math}
+:label: eq:catchall
+\begin{aligned}
+F & = m_1W  &(W<W_1)\\
+F & = m_1W + \frac{(m_2-m_1)(W-W_1)^2}{2(W_2-W_1)}  &(W_1 \leq W \leq W_2)\\
+F & = m_2W - (m_2-m_1)(W_2+W_1)  &(W>W_2),
+\end{aligned}
+```
+a quadratic spline with knots at $W_1=3~\text{m/s}$ and $W_2=12~\text{m/s}$ for v- and $W_1=7~\text{m/s}$ and $W_2=12~\text{m/s}$ for h-polarization. The coefficients $m_1$ and $m_2$ are given in {numref}`tab:mc_m` in the appendix.
+
+
+
+
+
+### ocean surface roughness
+
+The ocean surface roughness is used as modeled by {cite}`Wentz2000` as
+```{math}
+R_{geo} = R_0 - (r_0 + r1(θ_i-53) + r_2(T_S-288) + r_3(θ_i-53)(T_S-288))W
+```
+Where $R_0$ is the specular reflection, θ$_i$ is the incidence angle, T$_S$ is
+the sea surface temperature, and W is the wind speed. The coefficients for each
+polarization and frequency are in the appendix in {numref}`tab:mc_geo`.
+
+
+
+### Dielectric constant of sea water
+The dielectric constant of sea water depends on salinity and temperature {cite}`Wentz2004` as 
+```{math}
+:label: eq:eps_seawater
+\begin{aligned}
+\varepsilon(T, S)=\frac{\varepsilon_{\mathrm{S}}(T, S)-\varepsilon_1(T, S)}{1+i \nu / \nu_1(T, S)} & +\frac{\varepsilon_1(T, S)-\varepsilon_{\infty}(T, S)}{1+i \nu / \nu_2(T, S)} \\
+& +\varepsilon_{\infty}(T, S)-i \frac{\sigma(T, S)}{\left(2 \pi \varepsilon_0\right) \nu}
+\end{aligned}
+```
+with ε$_1$ as the intermediate frequency dielectric constant, ε$_S$ as the static dielectric constant, ε$_\infty$ as the high frequency dielectric constant, $\nu_1$ and $\nu_2$ as first and second Debye relaxition frequencies, respectively and σ as the conductivity. Fits for S=0 are given by {cite}`Wentz2004` as
+
+```{math}
+:label: eq:eps_fresh
+\begin{aligned}
+\varepsilon_{\mathrm{S}}(T, S=0)&=\frac{3.70886 \cdot 10^4-8.2168 \cdot 10^1
+T}{4.21854 \cdot 10^2+T}\\
+ \varepsilon_1(T, S=0)&=a_0+a_1 T+a_2 T^2 \\
+ \nu_1(T, S=0)&=\frac{45+T}{a_3+a_4 T+a_5 T^2} \\
+ \varepsilon_{\infty}(T, S=0)&=a_6+a_7 T \\
+ \nu_2(T, S=0)&=\frac{45+T}{a_8+a_9 T+a_{10} T^2} \\
+\end{aligned}
+```
+where the salinity dependence is modeled {cite}`Wentz2004` as
+```{math}
+:label: eq:eps_sal
+\begin{aligned}
+\varepsilon_{\mathrm{S}}(T, S) & =\varepsilon_{\mathrm{S}}(T, S=0) \cdot \exp \left[b_0 S+b_1 S^2+b_2 T S\right] \\
+\nu_1(T, S) & =\nu_1(T, S=0) \cdot\left[1+S \cdot\left(b_3+b_4 T+b_5 T^2\right)\right] \\
+\varepsilon_1(T, S) & =\varepsilon_1(T, S=0) \cdot \exp \left[b_6 S+b_7 S^2+b_8 T S\right] \\
+\nu_2(T, S) & =\nu_2(T, S=0) \cdot\left[1+S \cdot\left(b_9+b_{10} T\right)\right] \\
+\varepsilon_{\infty}(T, S) & =\varepsilon_{\infty}(T, S=0) \cdot\left[1+S \cdot\left(b_{11}+b_{12} T\right)\right]
+\end{aligned}
+```
+
+However, Wentz et al. {cite}`Wentz2012` published an update to the salinity dependence of ε$_S$ and ν$_1$ as
+```{math}
+:label: eq:eps_water_sal_update
+\begin{aligned}
+ε_S(T_S,S) & = ε_S(T_S,S=0) \cdot \exp [b_0S +b_1S^2+b_2T_SS]\\
+\nu_1\left(T_S, S\right) & =\nu_1\left(T_S, S=0\right) \cdot  {\left[1+S \cdot\left(d_0+d_1 T_S+d_2 T_S^2+d_3 T_S^3+d_4 t_s^4\right)\right] }
+\end{aligned}
+```
+
+For conductivity we follow {cite}`Wentz2004` and {cite}`Wentz2012` who used the earlier work by {cite}`Stogryn1995` as
+```{math}
+:label: eq:sigma
+\sigma(T,S) = \sigma(T,S=35) \cdot R_{15}(S)\frac{R_T(S)}{R_{15}(S)},
+```
+
+with
+
+```{math}
+:label: eq:sigma_support
+\begin{aligned}
+ \sigma(T, S=35) & = 2.903602+8.607 \cdot 10^{-2} \cdot T+4.738817 \cdot 10^{-4} \cdot T^2\\
+& -2.991 \cdot 10^{-6} \cdot T^3+4.3047 \cdot 10^{-9} \cdot T^4 \\
+ R_{15}(S) & = S \cdot \frac{37.5109+5.45216 \cdot S+1.4409 \cdot 10^{-2} \cdot S^2}{1004.75+182.283 \cdot S+S^2} \\
+ \frac{R_T(S)}{R_{15}(S)} & =1+\frac{\alpha_0(T-15)}{\alpha_1+T} \\
+ \alpha_0 & = \frac{6.9431+3.2841 \cdot S-9.9486 \cdot 10^{-2} \cdot S^2}{84.850+69.024 \cdot S+S^2} \\
+ \alpha_1 & = 49.843-0.2276 \cdot S+0.198 \cdot 10^{-2} \cdot S^2
+\end{aligned}
+```
+
+
+
 
 
 ## L-band forward model
