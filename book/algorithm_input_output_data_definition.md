@@ -4,10 +4,6 @@
 
 The input data for the multi-parameter retrieval includes all channels at horizontal and vertical polarization and their uncertainties coming from the L1b processor. In addition, time and location is required for calculation of field of resampled TBs. The uncertainties are assumed gaussian in the retrieval. 
 
-
-
-
-
 ## Output data
 
 The output data consist of the parameters, namely {term}`WSP`, {term}`TWV`,
@@ -24,5 +20,4 @@ variables used are {term}`WSP`, {term}`TWV`, {term}`CLW`, {term}`T2M`,
 
 
 ## Ancillary data
-
-
+No ancillary data is used in the retrieval.

@@ -1,7 +1,7 @@
 # Level-2 product definition
 
 The Level-2b product is the result of the processing from Level-1b brightness
-temperatures to Level-2r geophysical parameters. The product is provided in the resampled
+temperatures to Level-2R gridded geophysical parameters. The product is provided in the resampled
 grid of the CIMR instrument at resolution of the C-band channel, which means it contains 547
 samples per scan for each horn. Multiplied by the number of scans for each orbit gives the
 number of retrieved parameter values per orbit for each geophysical parameter. The product is provided in netCDF format and contains the
@@ -28,8 +28,8 @@ following variables following the [CF conventions](http://cfconventions.org/):
 | `multi_year_ice_fraction standard_error` | 1 | n_scans * n_samples_earth * n_horns|
 | `sea_ice_thickness standard_error` | m | n_scans * n_samples_earth * n_horns|
 | `quality_flag` | 1 | n_scans * n_samples_earth * n_horns| 
-%| `sea_surface_salinity` | g kg$^{-1}$ | n_scans * n_samples_earth |
-%| `sea_surface_salinity standard_error` | g kg$^{-1}$ | n_scans * n_samples_earth |
+| `sea_surface_salinity` | g kg$^{-1}$ | n_scans * n_samples_earth * n_horns|
+| `sea_surface_salinity standard_error` | g kg$^{-1}$ | n_scans * n_samples_earth * n_horns|
 
 
 The dimension follow the definition of the original CIMR L1b product.
