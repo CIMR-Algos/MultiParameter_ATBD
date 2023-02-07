@@ -60,16 +60,16 @@ function run_oem(outg,wsp,twv,clw,t2m,tsk,D;
                 2.356, 4.832,  #6.9v,h
                 1.609, 5.460,  #10.6v,h
                 0.977, 4.932,  #18.7v,h
-                1.042, 2.661,  #23.8v,h
-                #200+1.042,200+ 2.661,  #23.8v,h
+                #1.042, 2.661,  #23.8v,h
+                200+1.042,200+ 2.661,  #23.8v,h
                 2.540, 2.65, # 36.5v,h
-                #200+4.903, 200+6.274].^2) #89v,h
-                4.903, 6.274].^2) #89v,h
+                200+4.903, 200+6.274].^2) #89v,h
+                #4.903, 6.274].^2) #89v,h
 
     S_p = Diagonal([5.6048, #wsp
-                    3.0962, #twv
+                    5.0962, #twv
                     #0.0204, #clw
-                    0.1, #clw
+                    0.2, #clw
                     5.8936, #sst
                     5.9468, #ist
                     0.3, #ic #good guess when initial value from TBs
@@ -94,11 +94,11 @@ function run_oem(outg,wsp,twv,clw,t2m,tsk,D;
             a,c,b= inv_function_apri_ice_lm(TBs',S_e,S_p,1,Sg')
         else
              a,c,b=lm_retrieval(TBs,S_e,S_p,Sg,fw_fnct_amsre)
-             c=clamp.(diag(c),(0,),(1000,)) .|> sqrt
+             c=diag(c)#clamp.(diag(c),(0,),(1000,))
         end
         for i=1:9
             dat[i][ii]=a[i]
-            err[i][ii]=c[i]
+            err[i][ii]=sqrt(c[i])
         end
         for i=1:14
             res[i][ii]=b[i]
