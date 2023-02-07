@@ -71,40 +71,47 @@ graph TD
 ```
 
 
-## Algorithm Assumptions and Simplifications
-Compared to individual state-of-the-art algorithms for the retrieval of
-individual quantities, the Multi-Parameter-Retrieval uses a simplified
-approach. Particular trade-offs include:
+## Algorithm Assumptions and Simplifications Compared to individual
+state-of-the-art algorithms for the retrieval of individual quantities, the
+Multi-Parameter-Retrieval uses a simplified approach. Particular trade-offs
+include:
 * Some Ocean parameters contain many empirical values, developed and validated
   for different instruments which might have to be adjusted to math CIMR
-  instrument characteristics.
+	  instrument characteristics.
 * The sea ice thickness is retrieved as a combination of first year ice
   emissivity and the ocean emissivity. As this, it is prone to noise in the
-  ocean emission, which can lead to erroneous occurrence of sea ice of low thickness, as
-  the first year ice emissivity is identical to the ocean emissivity at 0cm
-  thickness.
+  ocean emission, which can lead to erroneous occurrence of sea ice of low
+  thickness, as the first year ice emissivity is identical to the ocean
+  emissivity at 0cm thickness.
 * The empirical parametrization of sea ice thickness stem from uncertain
   atmospheric conditions, so that the ice thickness dependence of higher
   frequency channels might be confounded with the dependence on the atmospheric
   conditions.
-* The sensitivity of the CIMR channels to CLW, in particular over sea ice is low,
-  so that the uncertainty of CLW is high. In addition,
-  the effect of decreased CLW over first year ice is similar to the effect of
-  an increased MYI fraction, so that these two signals cannot be adequately
-  separated in the current retrieval.
+* The sensitivity of the CIMR channels to CLW, in particular over sea ice is
+  low, so that the uncertainty of CLW is high. In addition, the effect of
+  decreased CLW over first year ice is similar to the effect of an increased
+  MYI fraction, so that these two signals cannot be adequately separated in the
+  current retrieval.
 * In the present version of the algorithm, the forward model is assumed
-  near-linear in its characteristic and the retrieval is unconstrained.
-  This might lead to a bias in the retrieval of the parameters when other
-  parameters might converge to nonphysical values. In test cases, this happened
-  mostly with
+  near-linear in its characteristic and the retrieval is unconstrained. This
+  might lead to a bias in the retrieval of the parameters when other parameters
+  might converge to nonphysical values. In test cases, this happened mostly
+  with
 	- IST > 273.15 K
 	- SST < 273.15 K
 	- TWV < 0 Kg/m$^2$
 * There are more modern approaches for the forward model of the ocean emission,
   in particular at L-band. This will influence the retrieval of the ocean
-  parameters, in particular SSS and SST. The current algorithm is the
-  approach of {cite}`Ruf2003` and {cite}`Scarlat2020`, but a switch to
-  {cite}`Meissner2018` 
+  parameters, in particular {term}`SSS` and {term}`SST`. The current algorithm is the approach
+  of {cite}`Ruf2003` and {cite}`Scarlat2020`, but a switch to another
+  parametrization like {cite}`Meissner2018` can be considered. However, the SSS is
+  the parameter with the weakest signal in the forward model, so that other
+  parametrization have to be improved, to justify this effort.
+* The Forward model is restricted to winter conditions over sea ice. The summer
+  conditions are highly variable across frequencies and cannot be adequately
+  described by the current forward model. In particular the definition of first
+  year ice and multiyear ice is ambiguous in melting conditions. In addition,
+  the {term}`SIT` parametrization is only valid for winter conditions. 
 
 
 
@@ -206,6 +213,9 @@ with $U_{t,h}$ being the temperature corrected upwelling brightness temperature 
 at the air temperature at the surface $T_{C}$ (in °C), $a_{t}$ and $b_{t}$ are the frequency
 dependent coefficients from {cite}`Mathew2009` (see {numref}`tab:emtemp`), and
 $ε_{t,p}$ is the frequency dependent emissivity for the polarization $p$ and ice type $t$ from {numref}`tab:c_ice`.
+{cite}`Mathew2009` did not provide parametrization for L-band, but to match a
+temperature depence of emitted radiation at L-band we derive the effective
+temperature as with {eq}`eq:Nizy` using $a_t=0.1$ and $b_t=0$ for both, first year and multi year ice.
 
 ### Sea ice thickness
 The ice thickness dependence at all frequencies is introduced via modification of the emission from the ice surface for the first year ice fraction.
@@ -347,7 +357,7 @@ to the brightness temperatures at surface level, the brightness temperature is j
 ```
 
 
-With $C_{\text{myi}}+C_{\text{fyi}}=\text{SIC}$ and $\text{SIC}*C_\text{myi} =
+With $C_{\text{myi}}+C_{\text{fyi}}=\text{SIC}$ and $\text{SIC}\cdot C_\text{myi} =
 \text{MYIF}$ being part of the state vector {eq}`eqxy`, the state defines
 the surface area fraction of all three considered surface types.
 
@@ -373,7 +383,7 @@ T_U=T_D+b_6+b7V\\
 ```
 where $T_v = 273.16+0.8337 V - 3.029\cdot 10^{-5}V^{3.33}$ for V<48 and
 $T_v=301.16$ for V>48, $\zeta(x)=1.05x(1-x^2)/1200$ for $|x|<20\ \text{K}$ and
-$\zeta(x)=\text{sign}(x)*14\ \text{K}$ for $|x|>20\ \text{K}$. 
+$\zeta(x)=\text{sign}(x)\cdot 14\ \text{K}$ for $|x|>20\ \text{K}$. 
 
 The absorption by oxygen is given by 
 ```{math}
@@ -428,8 +438,8 @@ The up- and downwelling brightness temperature for L-band is given by
 ```{math}
 :label: eq:tbud_l
 \begin{align}
-T_{b,u} = (1-\tau)(\text{ST}+258.15)\\
-T_{b,d} = (1-\tau)(\text{ST}+263.15)
+T_{b,u} &= (1-\tau)(\text{ST}+258.15)\\
+T_{b,d} &= (1-\tau)(\text{ST}+263.15)
 \end{align}
 ``` 
 with ST being the surface temperature in K. Over open ocean, this is
@@ -441,8 +451,8 @@ The effect of wind roughenning for L-band over open ocean is given by
 ```{math}
 :label: eq:rough_L
 \begin{align}
-\epsilon_h = E_{0,h} + u(0.0007 + 0.000015\theta) \\
-\epsilon_v = E_{0,v} + 0.0007u, 
+\epsilon_h &= E_{0,h} + u(0.0007 + 0.000015\theta) \\
+\epsilon_v &= E_{0,v} + 0.0007u, 
 \end{align}
 ```
 with $u$ being the wind speed in m/s, $\theta$ the incidence angle in degrees, and $E_{0,h}$ and $E_{0,v}$ being the emissivity of the surface in the horizontal and vertical polarization from {eq}`eq:em_ocean`.
@@ -462,6 +472,8 @@ uncertainties are required. Technically, missing values are allowed for
 both, in case of malfunctioning channels, but the retrieval retrieval
 uncertainties will be larger. In addition, for a better contrain of the
 solution space, {term}`ECMWF` analysis data are highly recommended as additional input (see {ref}`sec:auxiliary_data` below). 
+$\mathbf{y}$ and $\mathbf{S}_e$ from {eq}`eq:chi2` are set with the brightness temperatures and their uncertainties from the L1B data product.
+
 
 ## Output data
 
@@ -477,7 +489,10 @@ on, but there are flags reserved for this purpose.
 ### Auxiliary data
 {term}`ECMWF` surface analysis data is used as background values for the retrieval. The
 variables used are {term}`WSP`, {term}`TWV`, {term}`CLW`, {term}`T2M`,
-{term}`TSK`. 
+{term}`TSK`. They are used to fill the $\mathbf{S}_a$ matrix and the
+$\mathbf{x}_a$ in {eq}`eq:chi2`. For near real time retrieval, the
+$\mathbf{S}_a$ and $\mathbf{x}_a$ can used with monthly or seasonal values, as
+the retrieval is not sensitive to the exact values of the background variables.
 
 ### Ancillary data
 Ancillary data is not planned to be used in this retrieval at this stage.

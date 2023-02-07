@@ -11,12 +11,23 @@ export lm_retrieval
 using LinearAlgebra
 using ForwardDiff
 using StaticArrays
-using Optim
+#using Optim
 
 
+function fresnel(eps1, θ)
+    #calculates the reflection coefficient of a medium with dielectric constant eps1 to air (eps2=1) under incidence angle θ (in deg)
 
-function lm_retrieval(Ta,Sₑ,Sₐ,xₐ,F;kwargs...)
-    return lm_retrieval(Ta,Sₑ,Sₐ,xₐ,F,xₐ;kwargs...)
+
+    ct = cosd(θ)
+    ctt = sqrt(eps1 - sind(θ)^2)
+    ρᵥ = (eps1 * ct - ctt) / (eps1 * ct + ctt)
+    ρₕ = (ct - ctt) / (ct + ctt)
+    return (abs2(ρₕ),abs2(ρᵥ))
+end
+
+
+function lm_retrieval(Ta, Sₑ, Sₐ, xₐ, F; kwargs...)
+    return lm_retrieval(Ta, Sₑ, Sₐ, xₐ, F, xₐ; kwargs...)
 end
 
 """
@@ -287,7 +298,7 @@ function fw_fnct_amsre(x::AbstractArray{T}) where {T} ##to use ForwardDiff the f
     theta_r = 55.0 * pi / 180.0
     T_C = 2.7
 
-    # coefficients from Nizy's regressions for emission layer temperature calculation (for months DJFM)
+    # coefficients from Mathews et al 2008, regressions for emission layer temperature calculation (for months DJFM)
 
     a_fyi = SA[0.23 0.26 0.29 0.29 0.30 0.37]
     b_fyi = SA[-5.5 -5.2 -5.0 -4.9 -4.9 -4.2]
@@ -458,46 +469,21 @@ function fw_fnct_amsre(x::AbstractArray{T}) where {T} ##to use ForwardDiff the f
         T_BU = T_U * (1 - tau)   #The upwelling effective air temperature; equation (24a)
         T_BD = T_D * (1 - tau)   #The downwelling effective air temperature; equation (24b)
 
-
         #################################
         #Dielectric Constant of Sea-water
 
-#        lambd = (light_speed / (Freq[i] * 1.0E9))    # Wavelength, [cm]
+        #lambd = (light_speed / (Freq[i] * 1.0E9))    # Wavelength, [cm]
 
-
-        #ϵ=ϵ1+iϵ2 , z2 = |(1 + (i(lambda_R / lambd))^(1-ny) |^2
-#        z2 = (1 + a * (lambda_R / lambd)^(1 - ny))^2 + (b * (lambda_R / lambd)^(1 - ny))^2
- #       @show ϵ1 = epsilon_R + ((epsilon_S - epsilon_R) * (1 + a * (lambda_R / lambd)^(1 - ny)) / z2)  # adopted from equation (35)              
- #       @show ϵ2 = -((epsilon_S - epsilon_R) * b * (lambda_R / lambd)^(1 - ny)) / z2 - (2 * sigma * lambd) / light_speed
-        ϵ1,ϵ2 = dielectric_meissner_wentz(T_ow,s,Freq[i])
-
-        #ctt2 = fresnel1 + i fresnel2 =  ctt2=sqrt(epsil - sin(theta_r)^2)
-        fresnel1 = ((((((ϵ1 - sin(theta_r)^2)^2 + ϵ2^2))^0.5) + ϵ1 - sin(theta_r)^2) / 2)^0.5
-        fresnel2 = -((((((ϵ1 - sin(theta_r)^2)^2 + ϵ2^2))^0.5) - ϵ1 + sin(theta_r)^2) / 2)^0.5
-        #for readability define χ2=|ϵ1cos(θ)+fresnel1 + i (ϵ2cos(θ)+fresnel2)|^2
-        χ2 = (ϵ1 * cos(theta_r) + fresnel1)^2 + (ϵ2 * cos(theta_r) + fresnel2)^2
-        #rho_V = (rho_V1+irho_V2)  # what follows adapted from equation (45a); vertical pol.
-        rho_V1 = ((ϵ1^2 + ϵ2^2) * cos(theta_r)^2 - (fresnel1^2 + fresnel2^2)) / χ2
-        rho_V2 = (-(ϵ1 * cos(theta_r) - fresnel1) * (ϵ2 * cos(theta_r) + fresnel2) + (ϵ2 * cos(theta_r) - fresnel2) * (ϵ1 * cos(theta_r) + fresnel1)) / χ2
-        R_0V = rho_V1^2 + rho_V2^2 + (4.887E-8 - 6.108E-8 * (T_owC)^3)  #equation (46)+correction vertical pol.
-
-        #for readability define ξ2=|cos(θ)+fresnel1 + i +fresnel2)|^2
-        ξ2 = (cos(theta_r) + fresnel1)^2 + fresnel2^2
-        #rho_H = rho_H1 + i rhoH_2, adapted from equation (45b); horizontal pol.
-        rho_H1 = (cos(theta_r)^2 - (fresnel1^2 + fresnel2^2)) / ξ2
-        rho_H2 = -2 * fresnel2 * cos(theta_r) / ξ2
-        R_0H = rho_H1^2 + rho_H2^2
-
-
+        ϵ1, ϵ2 = dielectric_meissner_wentz(T_ow, s, Freq[i])
+        R_0H,R_0V=fresnel(Complex(ϵ1,ϵ2), theta_d)
+        R_0V += (4.887E-8 - 6.108E-8 * (T_owC)^3)
 
 
         ###############################^
         # The wind-roughened Sea Surface
 
-        R_geoH = R_0H - (Mc_geo[i, 2] + Mc_geo[i, 4] * (theta_d - 53) + Mc_geo[i, 6] *
-                                                                        (T_ow - 288) + Mc_geo[i, 8] * (theta_d - 53) * (T_ow - 288)) * W #equation(57); horizontal pol.
-        R_geoV = R_0V - (Mc_geo[i, 1] + Mc_geo[i, 3] * (theta_d - 53) + Mc_geo[i, 5] *
-                                                                        (T_ow - 288) + Mc_geo[i, 7] * (theta_d - 53) * (T_ow - 288)) * W #equation(57); vertical pol.
+        R_geoH = R_0H - (Mc_geo[i, 2] + Mc_geo[i, 4] * (theta_d - 53) + Mc_geo[i, 6] * (T_ow - 288) + Mc_geo[i, 8] * (theta_d - 53) * (T_ow - 288)) * W #equation(57); horizontal pol.
+        R_geoV = R_0V - (Mc_geo[i, 1] + Mc_geo[i, 3] * (theta_d - 53) + Mc_geo[i, 5] * (T_ow - 288) + Mc_geo[i, 7] * (theta_d - 53) * (T_ow - 288)) * W #equation(57); vertical pol.
 
         #	@show size(R_geoV)
 
@@ -534,7 +520,7 @@ function fw_fnct_amsre(x::AbstractArray{T}) where {T} ##to use ForwardDiff the f
         E_V = 1 - R_V     # Surface emissivity for open water; Vertical pol; Equation (8); 
 
         #TODO: reavaluate ice contribution after water, since lower tie point of thin ice should be open water tiepoint to avoid artifacts
-        
+
 
         #     #Emissivity for mixed surface
         #E_eff_H=C_ow*E_H + IC_FY*Emissivitet_FY_H[i] + IC_MY*Emissivitet_MY_H[i]
@@ -597,97 +583,73 @@ function fw_fnct_amsre(x::AbstractArray{T}) where {T} ##to use ForwardDiff the f
 
     #now deal with L-band
     #lambd_L = (light_speed / (1.413 * 1E9))
+    Ltheta=53.0
 
     #ugly repetition since it is calculated in the loop for the other frequency,
     #this is worth putting in a function to avoid  doubling
- #   z2 = (1 + a * (lambda_R / lambd_L)^(1 - ny))^2 + (b * (lambda_R / lambd_L)^(1 - ny))^2
-    #ϵ1 = epsilon_R + ((epsilon_S - epsilon_R) * (1 + a * (lambda_R / lambd_L)^(1 - ny)) / z2)  # adopted from equation (35)              
-#    ϵ2 = -((epsilon_S - epsilon_R) * b * (lambda_R / lambd_L)^(1 - ny)) / z2 - (2 * sigma * lambd_L) / light_speed
-    ϵ1,ϵ2 = dielectric_meissner_wentz(T_ow,s,1.413)
+    #ocean properties first 
 
-    fresnel1 = ((((((ϵ1 - sin(theta_r)^2)^2 + ϵ2^2))^0.5) + ϵ1 - sin(theta_r)^2) / 2)^0.5
-    fresnel2 = -((((((ϵ1 - sin(theta_r)^2)^2 + ϵ2^2))^0.5) - ϵ1 + sin(theta_r)^2) / 2)^0.5
+    ϵ1, ϵ2 = dielectric_meissner_wentz(T_ow, s, 1.413)
+    R_0H_L, R_0V_L = fresnel(Complex(ϵ1,ϵ2) , Ltheta)
+    #equation (46)+correction vertical pol. has to be figured out if applicable at L-band
+    R_0V_L += (4.887E-8 - 6.108E-8 * (T_owC)^3)
 
-
-    χ2 = (ϵ1 * cos(theta_r) + fresnel1)^2 + (ϵ2 * cos(theta_r) + fresnel2)^2
-    #rho_V = (rho_V1+irho_V2)  # what follows adapted from equation (45a); vertical pol.
-    rho_V1 = ((ϵ1^2 + ϵ2^2) * cos(theta_r)^2 - (fresnel1^2 + fresnel2^2)) / χ2
-    rho_V2 = (-(ϵ1 * cos(theta_r) - fresnel1) * (ϵ2 * cos(theta_r) + fresnel2) + (ϵ2 * cos(theta_r) - fresnel2) * (ϵ1 * cos(theta_r) + fresnel1)) / χ2
-    R_0V_L = rho_V1^2 + rho_V2^2 + (4.887E-8 - 6.108E-8 * (T_owC)^3)  #equation (46)+correction vertical pol.
-
-    #for readability define ξ2=|cos(θ)+fresnel1 + i +fresnel2)|^2
-    ξ2 = (cos(theta_r) + fresnel1)^2 + fresnel2^2
-    #rho_H = rho_H1 + i rhoH_2, adapted from equation (45b); horizontal pol.
-    rho_H1 = (cos(theta_r)^2 - (fresnel1^2 + fresnel2^2)) / ξ2
-    rho_H2 = -2 * fresnel2 * cos(theta_r) / ξ2
-    R_0H_L = rho_H1^2 + rho_H2^2
 
     E_H_L = 1 - R_0H_L#! surface emissivity for open water; L band horizontal pol.; Equation (8); 
     E_V_L = 1 - R_0V_L#! surface emissivity for open water; L band vertical pol.; Equation (8);
 
+
     Vcm = V * 0.1 #! Transfrom from mm (V) to cm for use in L band tau
-
-    Ltau = exp(-1 * (0.009364 + 0.000024127 * Vcm) * (1 / cos(theta_r))) #!atmospheric opacity
-
-    LT_U = (1 - Ltau) * ((T_ow - 273.16) + 258.15)           #!upwelling component
-    LT_D = (1 - Ltau) * ((T_ow - 273.16) + 263.15)           #!downwelling component
-
-    #! Lemi_v = W*0.0007 + 0.4933			   #!wind influenced ocean surface emissivity
-    #! Lemi_h = W*(0.0007 + 0.000015*theta_d) + 0.2132 
-
+    
+    #now E_H_L and E_V_L are the emissivity for open water
+    #correcting now for ocean roughening
     Lemi_v = W * 0.0007 + E_V_L   #!wind influenced ocean surface emissivity
-    Lemi_h = W * (0.0007 + 0.000015 * theta_d) + E_H_L
+    Lemi_h = W * (0.0007 + 0.000015 * Ltheta) + E_H_L
 
-
-    #! #### attenuated - vers w/o m_surf component
-    #! LT_BV_OW =  ((6*Ltau + LT_D )*(1-Lemi_v) + Lemi_v*T_ow)*Ltau !ocean emitted + ocean reflected component v-pol (attenuated)
-    #! LT_BH_OW =  ((6*Ltau + LT_D )*(1-Lemi_h) + Lemi_h*T_ow)*Ltau !ocean emitted + ocean reflected component h-pol
-    #! #### attenuated
-
-
-    #! #### NOT attenuated #### - vers w. m_surf component
-    LT_BV_OW = (6 * Ltau + LT_D) * (1 - Lemi_v) + Lemi_v * T_ow #!ocean emitted + ocean reflected component v-pol (NOT attenuated)
-    LT_BH_OW = (6 * Ltau + LT_D) * (1 - Lemi_h) + Lemi_h * T_ow #!ocean emitted + ocean reflected component h-pol
-    #! #### NOT attenuated ####
-
-
-
-    #T_sk from raul was replaced by T_is
-    #account for penetration depth at L-band
-    T_sk = 273.15 - (273.15 - T_is) * 0.1 
-
-    m_SIT = SI_T / 100 #! L-band dependency is for SIT in m
-
-    L_UL_FYI_H = 0.86 * T_sk
+    LT_BV_OW = Lemi_v * T_ow #!ocean emitted 
+    LT_BH_OW = Lemi_h * T_ow #!ocean emitted 
+    
+    # now deal with ice
+    #temperature calculations like Mathews et al. 2008, with a=0.1 and b=0.0 
+    a=0.1
+    T_sk = 273.15 - (273.15 - T_is) * a
+            
+    L_UL_FYI_H = 0.86 * T_sk #original
     L_UL_FYI_V = 0.92 * T_sk
 
-    LT_BH_FYI = L_UL_FYI_H + (72.1293 - L_UL_FYI_H) * exp(-1 * m_SIT / 0.182969)
-    LT_BV_FYI = L_UL_FYI_V + (147.361 - L_UL_FYI_V) * exp(-1 * m_SIT / 0.102263)
+    #LT_BH_FYI = L_UL_FYI_H + (72.1293 - L_UL_FYI_H) * exp(-1 * m_SIT / 0.182969)
+    #LT_BV_FYI = L_UL_FYI_V + (147.361 - L_UL_FYI_V) * exp(-1 * m_SIT / 0.102263)
+    #adapted from SIT ATBD for CIMR
+    LT_BH_FYI = L_UL_FYI_H + (75.524 - L_UL_FYI_H) * exp(-1 * SI_T / 21.021)
+    LT_BV_FYI = L_UL_FYI_V + (145.170 - L_UL_FYI_V) * exp(-1 * SI_T / 12.509)
 
-    #    if (m_SIT<0.51) #then #!if a priori SIT is low enough over FYI use the TB dependence on SIT
-    #        LT_BH_FYI = 212.329+(72.1293-212.329)*exp(-1*m_SIT/0.182969)
-    #        LT_BV_FYI = 246.478+(147.361-246.478)*exp(-1*m_SIT/0.102263)
-    #    else #!for lower SIC values just ignore SIT dependence  ???
-    #        LT_BV_FYI = 0.8845*T_sk				#!v pol surface component over FYI
-    #        LT_BH_FYI = 0.8404*T_sk				#!h pol surface component over FYI
-    #    end
-    #LT_BV_MYI = 0.7782*T_sk								#!v pol surface component over MYI
-    #LT_BH_MYI = 0.7373*T_sk								#!h pol surface component over MYI
-    #replaced with higher, more relaistic values original are in the two lines above
+    #replaced with higher, more relaistic values
+    #(original values are in Scarlat 2020)
     LT_BV_MYI = 0.94 * T_sk#!v pol surface component over MYI
     LT_BH_MYI = 0.85 * T_sk#!h pol surface component over MYI
 
-    #LE_ice_V=(IC_FY*0.8845+IC_MY*0.7782)/(IC_FY+IC_MY)	#! effective emissivity of a mixed SI types scene, v pol
-    #LE_ice_H=(IC_FY*0.8404+IC_MY*0.7373)/(IC_FY+IC_MY)	#! effective emissivity of a mixed SI types scene, h pol
-    #same as above, replaced emissivities with physically consistent ones
+    #effective mixed emissivities for ice surface
     LE_ice_V = (IC_FY * LT_BV_FYI / T_sk + IC_MY * LT_BV_MYI / T_sk) / (IC_FY + IC_MY)#! effective emissivity of a mixed SI types scene, v pol
     LE_ice_H = (IC_FY * LT_BH_FYI / T_sk + IC_MY * LT_BH_MYI / T_sk) / (IC_FY + IC_MY)#! effective emissivity of a mixed SI types scene, h pol
+
+
+    Vcm = V * 0.1 #! Transfrom from mm (V) to cm for use in L band tau
+
+    Ltau = exp(-1 * (0.009364 + 0.000024127 * Vcm) * (1 / cosd(Ltheta))) #!atmospheric attenuation factor
+
+    T_U=(T_ow-273.16)+258.15
+    T_D=(T_ow-273.16)+263.15    
+
+    LT_U = (1 - Ltau) * T_U
+    LT_D = (1 - Ltau) * T_D         #!downwelling component
 
     LT_BV_m_surf = C_ow * LT_BV_OW + IC_FY * LT_BV_FYI + IC_MY * LT_BV_MYI
     LT_BH_m_surf = C_ow * LT_BH_OW + IC_FY * LT_BH_FYI + IC_MY * LT_BH_MYI
 
-    LTice_U = (1 - Ltau) * ((T_is - 273.16) + 258.15)           #!upwelling component over sea ice
-    LTice_D = (1 - Ltau) * ((T_is - 273.16) + 263.15)           #!downwelling component over sea ice
+    Tice_U = ((T_is - 273.16) + 258.15)           #!upwelling component over sea ice
+    Tice_D = ((T_is - 273.16) + 263.15)           #!downwelling component over sea ice
+    LTice_U = (1-Ltau) * Tice_U
+    LTice_D = (1-Ltau) * Tice_D
 
     LT_U_tot = C_is * LTice_U + (1.0 - C_is) * LT_U#!combined upwelling based on surf temp of composite surf		
     LT_D_tot = C_is * LTice_D + (1.0 - C_is) * LT_D#!combined downwelling based on surf temp of composite surf		
@@ -702,25 +664,31 @@ function fw_fnct_amsre(x::AbstractArray{T}) where {T} ##to use ForwardDiff the f
 
     #! T_BV_overflade=C_ow*T_BV_ow+IC_FY*T_BV_FY+IC_MY*T_BV_MY
 
+
+    #! some clarifications:
+    # 'LE_ice_p' with p∈[H,V] is the emissivity of the ice surface
+    # 'LT_Bp_m_surf' with p∈[H,V] is the surface brightness temperature of the mixed surface
+    # 
+
+    L_TC = 6
+    #L_TC = 2.7
+
     #! T_BV1=tau*T_BV_overflade+T_BU;			#! surface component + atmo_up at TOA
     LT_BV1 = Ltau * LT_BV_m_surf + LT_U_tot
-    #! T_BV2=C_is*tau*(T_BD+tau*T_C)*(1-E_ice_V);	#! reflected component over sea ice at TOA
-    LT_BV2 = C_is * Ltau * (LT_D_tot + Ltau * 6) * (1 - LE_ice_V)
-    #! T_BV3=(1-C_is)*T_BOmegaV*tau;				#! ocean scattered component
+    LT_BV2 =  Ltau * (LTice_D + Ltau * L_TC) * (1 - LE_ice_V) * C_is #ice component
+    LT_BV3= Ltau*(LT_D+Ltau*L_TC)*(1-Lemi_v)*C_ow;	#! ocean component
 
 
     LT_BH1 = Ltau * LT_BH_m_surf + LT_U_tot
-    LT_BH2 = C_is * Ltau * (LT_D_tot + Ltau * 6) * (1 - LE_ice_H)
+    LT_BH2 =  Ltau * (LTice_D + Ltau * L_TC) * (1 - LE_ice_H) * C_is
+    LT_BH3 = Ltau * (LT_D + Ltau * L_TC) * (1-Lemi_h) * C_ow;
 
     #! no ocean scattered component for L-band
-    LT_BV = LT_BV1 + LT_BV2
-    LT_BH = LT_BH1 + LT_BH2
+    LT_BV = LT_BV1 + LT_BV2 + LT_BV3
+    LT_BH = LT_BH1 + LT_BH2 + LT_BH3
 
     T_B[1] = LT_BV
     T_B[2] = LT_BH
-
-
-    #idx=BitVector((1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0)) shadowing 23 and 89 GHz
 
     return T_B
 
@@ -730,7 +698,7 @@ end
 const result = ForwardDiff.DiffResults.JacobianResult(fw_fnct_amsre(zeros(9)), zeros(9))
 
 
-function inv_function_apri_ice_lm(T_A, S_e,S_p, ny, startguess, num_ite=50, d2max=7; debug=false, verbose=false)
+function inv_function_apri_ice_lm(T_A, S_e, S_p, ny, startguess, num_ite=50, d2max=7; debug=false, verbose=false)
 
     #num_ite = 50
     #d2max = 7
@@ -758,14 +726,14 @@ function inv_function_apri_ice_lm(T_A, S_e,S_p, ny, startguess, num_ite=50, d2ma
     #    200 + 1.042, 200 + 2.661,  #23.8v,h
     #    2.540, 2.65, # 36.5v,h
     #    204.903, 206.274] #89v,h
-    vec_S_e=diag(S_e)
+    vec_S_e = diag(S_e)
 
     nrows = size(T_A, 1)
     ite_p = zeros(num_ite, num_params)
     ite_tb = zeros(num_ite, num_TB)
     all_p_est = zeros(num_ite, num_params)
     ite_Sinv = zeros(num_params, num_params, num_ite)
-    S = zeros(8, 8, num_ite)
+    S = zeros(num_params,num_params, num_ite)
     ite_d2 = zeros(num_ite)
     ite_test = zeros(num_ite)
     ite_Jcost = zeros(num_ite)
@@ -1115,8 +1083,9 @@ function inv_function_apri_ice_lm(T_A, S_e,S_p, ny, startguess, num_ite=50, d2ma
         S[:, :, 1] = inv(ite_Sinv[:, :, j])
 
         #         S[findall(S[:,:,1])]
-        fil_Std[nn, :] = [sqrt(S[1, 1, 1]^2), sqrt(S[2, 2, 1]^2), sqrt(S[3, 3, 1]^2),
-            sqrt(S[4, 4, 1]^2), sqrt(S[5, 5, 1]^2), sqrt(S[6, 6, 1]^2), sqrt(S[7, 7, 1]^2), sqrt(S[8, 8, 1]^2)]
+        fil_Std[nn, :] = diag(S[:,:,1])
+        #[sqrt(S[1, 1, 1]^2), sqrt(S[2, 2, 1]^2), sqrt(S[3, 3, 1]^2),
+        #    sqrt(S[4, 4, 1]^2), sqrt(S[5, 5, 1]^2), sqrt(S[6, 6, 1]^2), sqrt(S[7, 7, 1]^2), sqrt(S[8, 8, 1]^2)]
 
         itnum[nn] = ite # store the number of iterations until convergence or end of loop
 
@@ -1142,8 +1111,8 @@ function inv_function_apri_ice_lm(T_A, S_e,S_p, ny, startguess, num_ite=50, d2ma
 end
 
 
-#Ta = [250.0 230.0 257.2630945 227.8131505 253.7117585 221.6809665 248.0340695 215.0599045 240.3961845 209.4975105 219.3703045 196.2937105 200.2781115 185.0142165]
-#Sg = [9.9445485 3.7479865 0.0072275 256.7429205 256.7429205 0.8295755 0.9480125 0.4]
+Ta = [250.0 230.0 257.2630945 227.8131505 253.7117585 221.6809665 248.0340695 215.0599045 240.3961845 209.4975105 219.3703045 196.2937105 200.2781115 185.0142165]
+Sg = [9.9445485 3.7479865 0.0072275 256.7429205 256.7429205 0.8295755 0.9480125 0.4 35]
 
 #inv_function_apri_ice_lm(Ta, 1, Sg)
 
