@@ -4,8 +4,9 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>First assessment of the algorithm &#8212; ATBD Multi Parameter Retrieval</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>First assessment of the algorithm &#8212; CIMR L2 Multi Parameter Retrieval ATBD v1</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -98,7 +99,7 @@ const thebe_selector_output = ".output, .cell_output"
       <img src="_static/logo.jpg" class="logo" alt="logo">
       
       
-      <h1 class="site-logo" id="site-title">ATBD Multi Parameter Retrieval</h1>
+      <h1 class="site-logo" id="site-title">CIMR L2 Multi Parameter Retrieval ATBD v1</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -234,7 +235,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/CIMR-Algos/ATBD-Template/master?urlpath=tree/docs/OEM_SIT.ipynb"
+        <a href="https://mybinder.org/v2/gh/CIMR-Algos/MultiParameter_ATBD/main?urlpath=tree/book/OEM_SIT.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -268,7 +269,7 @@ title="Fullscreen mode"
   </span>
 
 </button>
-<a href="https://github.com/CIMR-Algos/ATBD-Template"
+<a href="https://github.com/CIMR-Algos/MultiParameter_ATBD"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="bottom"
@@ -351,27 +352,29 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="first-assessment-of-the-algorithm">
+  <section class="tex2jax_ignore mathjax_ignore" id="first-assessment-of-the-algorithm">
 <h1>First assessment of the algorithm<a class="headerlink" href="#first-assessment-of-the-algorithm" title="Permalink to this headline">#</a></h1>
 <p>We apply the algorithm to the daily averaged <a class="reference internal" href="acronyms.html#term-SMOS"><span class="xref std std-term">SMOS</span></a> and <a class="reference internal" href="acronyms.html#term-AMSR2"><span class="xref std std-term">AMSR2</span></a> data
 for the 10 November 2021. For AMSR2 we exclude the 23 and 89 GHz channels from
 the calculation as it is not available on the <a class="reference internal" href="acronyms.html#term-CIMR"><span class="xref std std-term">CIMR</span></a> satellite.
 The retrieval is constrained using a priori information from <a class="reference internal" href="definitions.html#term-ERA5"><span class="xref std std-term">ERA5</span></a> in
-particular for the atmospheric parameters. <code class="xref std std-numref docutils literal notranslate"><span class="pre">fig:retrievalexample</span></code> shows the results of the retrieval with maps of all eight parameters. Some parameters like the <a class="reference internal" href="acronyms.html#term-SIC"><span class="xref std std-term">SIC</span></a> are strongly constrained from the input and thus look very consistent. The <a class="reference internal" href="acronyms.html#term-MYIF"><span class="xref std std-term">MYIF</span></a> shows artifacts along the ice edge, in particular in the Fram Strait but also in the Kara and Barents Seas. The <a class="reference internal" href="acronyms.html#term-SIC"><span class="xref std std-term">SIC</span></a> seems very low, but also it is only showing the ice thickness of the fraction of first year ice. Even though the higher multi year ice fraction parts have values of ice thickness, it is less reliable.
+particular for the atmospheric parameters. The Figure below shows the results of the retrieval with maps of all eight parameters. Some parameters like the <a class="reference internal" href="acronyms.html#term-SIC"><span class="xref std std-term">SIC</span></a> are strongly constrained from the input and thus look very consistent. The <a class="reference internal" href="acronyms.html#term-MYIF"><span class="xref std std-term">MYIF</span></a> shows artifacts along the ice edge, in particular in the Fram Strait but also in the Kara and Barents Seas. The <a class="reference internal" href="acronyms.html#term-SIC"><span class="xref std std-term">SIC</span></a> seems very low, but also it is only showing the ice thickness of the fraction of first year ice. Even though the higher multi year ice fraction parts have values of ice thickness, it is less reliable.
 The atmospheric parameters and the windspeed are fast changing parameters. Therefore, the daily averaged brightness temperature input may alter the results and let swath edges shine through the results.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="_images/OEM_SIT_10_0.svg" src="_images/OEM_SIT_10_0.svg" /></div>
 </div>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<img alt="_images/OEM_SIT_11_0.svg" src="_images/OEM_SIT_11_0.svg" /></div>
-</div>
+<p>Looking at the uncertainties of the retrieved quantities it seems that the retrieval improved the knowledge in many cases. The apri ori uncertainty is always corresponding the highest values in the plot. For example, the a priori uncertainty of wind speed was set to 10~m/s. Since Windspeed cannot be retrieved over 100% Sea ice, the entire ice area has a wind speed uncertainty of 10~m/s. Over ocean hower this value goes down to values of nearly 2~m/s unceartainty. This means our knowledge about the wind speed in these areas increased drastically by this measurement. Our knowledge about the SSS barely increased with the measurement, which could indicate an inconsistency in the forward model.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="_images/OEM_SIT_12_0.svg" src="_images/OEM_SIT_12_0.svg" /></div>
 </div>
+<p>Another output of the retrieval are the brightness temperatures of the best estimate of the parameters. With this information, the result vector of brightness temperatures can be compared to the input vector, i.e., the observed brightness temperatures from the instrument. With a good working forward model, it is expected that the differences of the brightness temperatures in each channel are small. In the Figure below, at vertical polariztaion (upper row) the forward model solution looks very similar to the measurement from the instrument, except for L-band. At horizontal polarization (lower row), strong discrepencies, especially over Sea ice can be seen. Comparing the pattern to the geophysical quantities from the first Figure, it is evident that the first year ice areas cause a major problem in the forward model. The retrieved state is not very consistent for this date.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="_images/OEM_SIT_14_0.svg" src="_images/OEM_SIT_14_0.svg" /></div>
 </div>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -421,9 +424,8 @@ The atmospheric parameters and the windspeed are fast changing parameters. There
     <div class="footer-content row">
         <footer class="col footer"><p>
   
-    By CIMR Devalgo<br/>
+    By Marcus Huntemann, Janna Rückert and Gunnar Spreen, University of Bremen<br/>
   
-      &copy; Copyright 2022.<br/>
 </p>
         </footer>
     </div>

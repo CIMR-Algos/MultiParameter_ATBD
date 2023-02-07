@@ -67,5 +67,3 @@ Skin Temperature
     The Skin Temperature is the temperature of the ground surface to air interface. It is usually expressed in Kelvin and one of the surface parameres from the {term}`ECMWF` models.
 
 ```
-
-```

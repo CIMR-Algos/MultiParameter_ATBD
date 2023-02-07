@@ -1,0 +1,60 @@
+Traceback (most recent call last):
+  File "/home/huntemann/.pyenv/versions/atbd-template/lib/python3.11/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+    executenb(
+  File "/home/huntemann/.pyenv/versions/atbd-template/lib/python3.11/site-packages/nbclient/client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/huntemann/.pyenv/versions/atbd-template/lib/python3.11/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/huntemann/.pyenv/versions/atbd-template/lib/python3.11/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/huntemann/.pyenv/versions/3.11.1/lib/python3.11/asyncio/base_events.py", line 653, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/home/huntemann/.pyenv/versions/3.11.1/lib/python3.11/contextlib.py", line 222, in __aexit__
+    await self.gen.athrow(typ, value, traceback)
+  File "/home/huntemann/.pyenv/versions/atbd-template/lib/python3.11/site-packages/nbclient/client.py", line 608, in async_setup_kernel
+    yield
+  File "/home/huntemann/.pyenv/versions/atbd-template/lib/python3.11/site-packages/nbclient/client.py", line 663, in async_execute
+    await self.async_execute_cell(
+  File "/home/huntemann/.pyenv/versions/atbd-template/lib/python3.11/site-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/huntemann/.pyenv/versions/atbd-template/lib/python3.11/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+fig=plt.figure()
+cs=[1,2,5,6,11,12]
+for c in 1:6
+plt.plot([getindex(fw_fnct_amsre([i,0.2,0.1,278,270,0.001,1.0,80]),cs[c]) for i=0:1:30],label=ch[cs[c]],color="C$((c-1)÷2)")
+end
+plt.legend()
+#plt.ylim(200,300)
+plt.ylabel("TB [K]")
+plt.xlabel("wind speed [m/s]")
+fig
+------------------
+
+BoundsError: attempt to access 8-element Vector{Float64} at index [9]
+
+Stacktrace:
+ [1] getindex
+   @ ./array.jl:924 [inlined]
+ [2] indexed_iterate
+   @ ./tuple.jl:89 [inlined]
+ [3] fw_fnct_amsre(x::Vector{Float64}, onlytau::Bool)
+   @ Main.OEM ~/MultiParameter_ATBD/algorithm/src/OEM_with_SIT.jl:302
+ [4] fw_fnct_amsre
+   @ ~/MultiParameter_ATBD/algorithm/src/OEM_with_SIT.jl:246 [inlined]
+ [5] (::var"#60#61"{Int64})(i::Int64)
+   @ Main ./none:0
+ [6] iterate
+   @ ./generator.jl:47 [inlined]
+ [7] collect(itr::Base.Generator{StepRange{Int64, Int64}, var"#60#61"{Int64}})
+   @ Base ./array.jl:787
+ [8] top-level scope
+   @ In[14]:4
+LoadError: BoundsError: attempt to access 8-element Vector{Float64} at index [9]
+

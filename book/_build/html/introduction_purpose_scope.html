@@ -4,8 +4,9 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Introduction, purpose and scope &#8212; ATBD Multi Parameter Retrieval</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Introduction, purpose and scope &#8212; CIMR L2 Multi Parameter Retrieval ATBD v1</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -98,7 +99,7 @@ const thebe_selector_output = ".output, .cell_output"
       <img src="_static/logo.jpg" class="logo" alt="logo">
       
       
-      <h1 class="site-logo" id="site-title">ATBD Multi Parameter Retrieval</h1>
+      <h1 class="site-logo" id="site-title">CIMR L2 Multi Parameter Retrieval ATBD v1</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -239,7 +240,7 @@ title="Fullscreen mode"
   </span>
 
 </button>
-<a href="https://github.com/CIMR-Algos/ATBD-Template"
+<a href="https://github.com/CIMR-Algos/MultiParameter_ATBD"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="bottom"
@@ -322,7 +323,7 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="introduction-purpose-and-scope">
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-purpose-and-scope">
 <h1>Introduction, purpose and scope<a class="headerlink" href="#introduction-purpose-and-scope" title="Permalink to this headline">#</a></h1>
 <p>This is the <a class="reference internal" href="acronyms.html#term-ATBD"><span class="xref std std-term">ATBD</span></a> of the multi parameter retrieval. The method is based
 on the works of <span id="id1">[<a class="reference internal" href="references.html#id8" title="Leif Toudal Pedersen. Retrieval of sea ice concentration by means of microwave radiometry. 1991.">Pedersen, 1991</a>, <a class="reference internal" href="references.html#id5" title="Raul Cristian Scarlat, Georg Heygster, and Leif Toudal Pedersen. Experiences with an optimal estimation algorithm for surface and atmospheric parameter retrieval from passive microwave data in the arctic. IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing, 10(9):3934–3947, 2017. doi:10.1109/JSTARS.2017.2739858.">Scarlat <em>et al.</em>, 2017</a>, <a class="reference internal" href="references.html#id7" title="Raul Cristian Scarlat. Improving an optimal estimation algorithm for surface and atmospheric parameter retrieval using passive microwave data in the arctic. 2018. URL: https://media.suub.uni-bremen.de/handle/elib/1496.">Scarlat, 2018</a>, <a class="reference internal" href="references.html#id6" title="Raul Cristian Scarlat, Gunnar Spreen, Georg Heygster, Marcus Huntemann, Cătălin Paţilea, Leif Toudal Pedersen, and Roberto Saldo. Sea ice and atmospheric parameter retrieval from satellite microwave radiometers: synergy of AMSR2 and SMOS compared with the CIMR candidate mission. Journal of Geophysical Research: Oceans, 2020. doi:https://doi.org/10.1029/2019JC015749.">Scarlat <em>et al.</em>, 2020</a>]</span> and
@@ -336,9 +337,21 @@ parameters.</p>
 <p>This document is describing the algorithm and processing steps of the L2R multi
 parameter retrieval product. The document is intended for the <a class="reference internal" href="acronyms.html#term-CIMR"><span class="xref std std-term">CIMR</span></a> users and
 interested parties. It is not intended to replace a product user guide. The
-algorithm is implemented in the multi parameter retrieval software package which
+algorithm is implemented in the <em>draft</em> multi parameter retrieval algorithm which
 is distributed in the “algorithm” directory of this repository.</p>
-</div>
+<p>To this date, there are no instruments in operation which are measure all
+frequencies at the same time as the <a class="reference internal" href="acronyms.html#term-CIMR"><span class="xref std std-term">CIMR</span></a>. Therefore, at the development
+of the algorithm, data from <a class="reference internal" href="acronyms.html#term-AMSR2"><span class="xref std std-term">AMSR2</span></a> and <a class="reference internal" href="acronyms.html#term-SMOS"><span class="xref std std-term">SMOS</span></a> were used as input.
+This has a direct impact on the retrieval performance as the collocation of the
+measurements is not fixed. For surface parameters, this might be less of an
+issue as the surface is not varying in so short time scales. For atmospheric
+parameters, however this is a major issue. While the retrieval relies on the
+idea of a fixed state observation, the current data for the development of the
+algorithm is coming from a potential divergent state. This is when
+<a class="reference internal" href="acronyms.html#term-AMSR2"><span class="xref std std-term">AMSR2</span></a> and <a class="reference internal" href="acronyms.html#term-SMOS"><span class="xref std std-term">SMOS</span></a> have different overflight times. This may lead
+to inconsistent results with higher residuals and may even prevent convergence
+of the retrieval. At the moment daily means are used as input, which is only reliable for a stable atmospheric and surface state.</p>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -388,9 +401,8 @@ is distributed in the “algorithm” directory of this repository.</p>
     <div class="footer-content row">
         <footer class="col footer"><p>
   
-    By CIMR Devalgo<br/>
+    By Marcus Huntemann, Janna Rückert and Gunnar Spreen, University of Bremen<br/>
   
-      &copy; Copyright 2022.<br/>
 </p>
         </footer>
     </div>

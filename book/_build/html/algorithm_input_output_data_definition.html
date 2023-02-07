@@ -4,8 +4,9 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Algorithm Input and Output Data Definition (IODD) &#8212; ATBD Multi Parameter Retrieval</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Algorithm Input and Output Data Definition (IODD) &#8212; CIMR L2 Multi Parameter Retrieval ATBD v1</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -98,7 +99,7 @@ const thebe_selector_output = ".output, .cell_output"
       <img src="_static/logo.jpg" class="logo" alt="logo">
       
       
-      <h1 class="site-logo" id="site-title">ATBD Multi Parameter Retrieval</h1>
+      <h1 class="site-logo" id="site-title">CIMR L2 Multi Parameter Retrieval ATBD v1</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -239,7 +240,7 @@ title="Fullscreen mode"
   </span>
 
 </button>
-<a href="https://github.com/CIMR-Algos/ATBD-Template"
+<a href="https://github.com/CIMR-Algos/MultiParameter_ATBD"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="bottom"
@@ -403,28 +404,32 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="algorithm-input-and-output-data-definition-iodd">
+  <section class="tex2jax_ignore mathjax_ignore" id="algorithm-input-and-output-data-definition-iodd">
 <h1>Algorithm Input and Output Data Definition (IODD)<a class="headerlink" href="#algorithm-input-and-output-data-definition-iodd" title="Permalink to this headline">#</a></h1>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="input-data">
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="input-data">
 <h1>Input data<a class="headerlink" href="#input-data" title="Permalink to this headline">#</a></h1>
 <p>The input data for the multi-parameter retrieval includes all channels at horizontal and vertical polarization and their uncertainties coming from the L1b processor. In addition, time and location is required for calculation of field of resampled TBs. The uncertainties are assumed gaussian in the retrieval.</p>
-<div class="section" id="output-data">
+<section id="output-data">
 <h2>Output data<a class="headerlink" href="#output-data" title="Permalink to this headline">#</a></h2>
 <p>The output data consist of the parameters, namely <a class="reference internal" href="acronyms.html#term-WSP"><span class="xref std std-term">WSP</span></a>, <a class="reference internal" href="acronyms.html#term-TWV"><span class="xref std std-term">TWV</span></a>,
 <a class="reference internal" href="acronyms.html#term-CLW"><span class="xref std std-term">CLW</span></a>, <a class="reference internal" href="acronyms.html#term-SST"><span class="xref std std-term">SST</span></a>, <a class="reference internal" href="acronyms.html#term-IST"><span class="xref std std-term">IST</span></a>, <a class="reference internal" href="acronyms.html#term-SIC"><span class="xref std std-term">SIC</span></a>, <a class="reference internal" href="acronyms.html#term-MYIF"><span class="xref std std-term">MYIF</span></a> and
 <a class="reference internal" href="acronyms.html#term-SIT"><span class="xref std std-term">SIT</span></a>. Time and location for the resampling. The uncertainties are assumed
 gaussian in the retrieval and are provided along with the parameters.</p>
-</div>
-<div class="section" id="auxiliary-data">
+</section>
+<section id="auxiliary-data">
 <h2>Auxiliary data<a class="headerlink" href="#auxiliary-data" title="Permalink to this headline">#</a></h2>
-<p>Auxillary data includes the <a class="reference internal" href="acronyms.html#term-TEC"><span class="xref std std-term">TEC</span></a> for the transformation to account for the pol
-arization rotation as part of the atmospheric model. <a class="reference internal" href="acronyms.html#term-ECMWF"><span class="xref std std-term">ECMWF</span></a> surface analysis data is used as background values for the retrieval. The variables used are <a class="reference internal" href="acronyms.html#term-WSP"><span class="xref std std-term">WSP</span></a>, <a class="reference internal" href="acronyms.html#term-TWV"><span class="xref std std-term">TWV</span></a>, <a class="reference internal" href="acronyms.html#term-CLW"><span class="xref std std-term">CLW</span></a>, <a class="reference internal" href="acronyms.html#term-T2M"><span class="xref std std-term">T2M</span></a>, <a class="reference internal" href="acronyms.html#term-TSK"><span class="xref std std-term">TSK</span></a>.</p>
-</div>
-<div class="section" id="ancillary-data">
+<p>Auxillary data includes the <a class="reference internal" href="acronyms.html#term-TEC"><span class="xref std std-term">TEC</span></a> for the transformation to account for
+the polarization rotation as part of the atmospheric model. <a class="reference internal" href="acronyms.html#term-ECMWF"><span class="xref std std-term">ECMWF</span></a>
+surface analysis data is used as background values for the retrieval. The
+variables used are <a class="reference internal" href="acronyms.html#term-WSP"><span class="xref std std-term">WSP</span></a>, <a class="reference internal" href="acronyms.html#term-TWV"><span class="xref std std-term">TWV</span></a>, <a class="reference internal" href="acronyms.html#term-CLW"><span class="xref std std-term">CLW</span></a>, <a class="reference internal" href="acronyms.html#term-T2M"><span class="xref std std-term">T2M</span></a>,
+<a class="reference internal" href="acronyms.html#term-TSK"><span class="xref std std-term">TSK</span></a>.</p>
+</section>
+<section id="ancillary-data">
 <h2>Ancillary data<a class="headerlink" href="#ancillary-data" title="Permalink to this headline">#</a></h2>
-</div>
-</div>
+<p>No ancillary data is used in the retrieval.</p>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -474,9 +479,8 @@ arization rotation as part of the atmospheric model. <a class="reference interna
     <div class="footer-content row">
         <footer class="col footer"><p>
   
-    By CIMR Devalgo<br/>
+    By Marcus Huntemann, Janna Rückert and Gunnar Spreen, University of Bremen<br/>
   
-      &copy; Copyright 2022.<br/>
 </p>
         </footer>
     </div>

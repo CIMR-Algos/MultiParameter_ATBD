@@ -1,0 +1,966 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>&lt;no title&gt; &#8212; CIMR L2 Multi Parameter Retrieval ATBD v1</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">CIMR L2 Multi Parameter Retrieval ATBD v1</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    ATBD Multi Parameter Retrieval
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="abstract.html">
+   Abstract
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="acronyms.html">
+   Acronyms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="definitions.html">
+   Definitions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="introduction_purpose_scope.html">
+   Introduction, purpose and scope
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="background_justification_algorithm.html">
+   Background and justification of selected algorithm
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="L2_product_definition.html">
+   Level-2 product definition
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="baseline_algorithm_definition.html">
+   Baseline Algorithm Definition
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="algorithm_input_output_data_definition.html">
+   Algorithm Input and Output Data Definition (IODD)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="algorithm_performance_assessment.html">
+   Algorithm Performance Assessment (Version 2 ATBD)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="OEM_SIT.html">
+   OEM SIT
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="references.html">
+   References
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="annex.html">
+   Annex
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/CIMR-Algos/MultiParameter_ATBD/main?urlpath=tree/book/thin_fit.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/CIMR-Algos/MultiParameter_ATBD"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/thin_fit.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1><no title></h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">Pkg</span>
+<span class="n">Pkg</span><span class="o">.</span><span class="n">activate</span><span class="p">(</span><span class="s">&quot;../mpr_atbd_env_jl&quot;</span><span class="p">)</span>
+<span class="k">using</span><span class="w"> </span><span class="n">CSV</span>
+<span class="k">using</span><span class="w"> </span><span class="n">DataFrames</span>
+<span class="k">using</span><span class="w"> </span><span class="n">ZipFile</span>
+<span class="k">using</span><span class="w"> </span><span class="n">Dates</span>
+<span class="k">using</span><span class="w"> </span><span class="n">LsqFit</span>
+<span class="k">using</span><span class="w"> </span><span class="n">ForwardDiff</span>
+<span class="k">using</span><span class="w"> </span><span class="n">StaticArrays</span>
+<span class="k">using</span><span class="w"> </span><span class="n">YAML</span>
+<span class="c">#using PythonCall</span>
+<span class="k">using</span><span class="w"> </span><span class="n">PythonPlot</span>
+<span class="c">#mpl=pyimport(&quot;matplotlib&quot;)</span>
+<span class="c">#mpl.use(&quot;svg&quot;)</span>
+<span class="c">#plt=pyimport(&quot;matplotlib.pyplot&quot;)</span>
+<span class="n">plt</span><span class="o">=</span><span class="n">PythonPlot</span><span class="o">.</span><span class="n">pyplot</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold -Color-Bold-Green">  Activating</span> project at `~/MultiParameter_ATBD/mpr_atbd_env_jl`
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">Python module: </span>&lt;module &#39;matplotlib.pyplot&#39; from &#39;/home/huntemann/MultiParameter_ATBD/mpr_atbd_env_jl/.CondaPkg/env/lib/python3.11/site-packages/matplotlib/pyplot.py&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">I</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="o">=</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">=</span><span class="n">p</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">-</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">-</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">*</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="o">/</span><span class="n">p</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">Q</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="o">=</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">=</span><span class="n">p</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">-</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">-</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">*</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="n">p</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span><span class="o">^</span><span class="n">p</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
+
+
+<span class="c">#reading fit parameters from file</span>
+
+<span class="n">fI</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">=</span><span class="n">I</span><span class="p">(</span><span class="n">pI</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">fQ</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">=</span><span class="n">Q</span><span class="p">(</span><span class="n">pQ</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">params</span><span class="o">=</span><span class="n">YAML</span><span class="o">.</span><span class="n">load_file</span><span class="p">(</span><span class="s">&quot;../../SeaIceThickness_ATBD/book/fit_params.yml&quot;</span><span class="p">)</span>
+<span class="k">const</span><span class="w"> </span><span class="n">tbh_params</span><span class="p">,</span><span class="n">tbv_params</span><span class="p">,</span><span class="n">pI</span><span class="p">,</span><span class="n">pQ</span><span class="o">=</span><span class="n">getindex</span><span class="o">.</span><span class="p">(</span><span class="kt">Ref</span><span class="p">(</span><span class="n">params</span><span class="p">),[</span><span class="s">&quot;ph&quot;</span><span class="p">,</span><span class="s">&quot;pv&quot;</span><span class="p">,</span><span class="s">&quot;pI&quot;</span><span class="p">,</span><span class="s">&quot;pQ&quot;</span><span class="p">])</span>
+
+
+<span class="n">ff</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="o">=</span><span class="k">return</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">=</span><span class="n">p</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">-</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">-</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">*</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="o">/</span><span class="n">p</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">sit_h</span><span class="o">=</span><span class="n">ff</span><span class="p">(</span><span class="n">tbh_params</span><span class="p">)</span>
+<span class="n">sit_v</span><span class="o">=</span><span class="n">ff</span><span class="p">(</span><span class="n">tbv_params</span><span class="p">)</span>
+
+<span class="n">Fw_TB</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">p</span><span class="p">)</span><span class="o">=</span><span class="n">SA</span><span class="p">[</span><span class="n">ff</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">])(</span><span class="n">x</span><span class="p">),</span><span class="w"> </span><span class="n">ff</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">2</span><span class="p">])(</span><span class="n">x</span><span class="p">)]</span>
+<span class="n">Fw_IQ</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">=</span><span class="p">[</span><span class="n">fI</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span><span class="w"> </span><span class="n">fQ</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])]</span>
+
+<span class="n">Fw_TB</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">=</span><span class="n">Fw_TB</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],(</span><span class="n">tbh_params</span><span class="p">,</span><span class="n">tbv_params</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: redefinition of constant tbh_params. This may fail, cause incorrect answers, or produce other errors.
+WARNING: redefinition of constant tbv_params. This may fail, cause incorrect answers, or produce other errors.
+WARNING: redefinition of constant pI. This may fail, cause incorrect answers, or produce other errors.
+WARNING: redefinition of constant pQ. This may fail, cause incorrect answers, or produce other errors.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fw_TB (generic function with 2 methods)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">function</span><span class="w"> </span><span class="n">lm_retrieval</span><span class="p">(</span><span class="n">Ta</span><span class="p">,</span><span class="n">Sₑ</span><span class="p">,</span><span class="n">Sₐ</span><span class="p">,</span><span class="n">xₐ</span><span class="p">,</span><span class="n">F</span><span class="p">)</span>
+<span class="w">    </span><span class="c">#Levenberg Marquardt method after Rodgers (2000)</span>
+<span class="w">    </span><span class="c">#target: find x so that F(x)=Ta, given</span>
+<span class="w">    </span><span class="c">#Ta: measurement vector</span>
+<span class="w">    </span><span class="c">#Sₑ: error covariance of measurement</span>
+<span class="w">    </span><span class="c">#Sₐ: error covariance of physical state </span>
+<span class="w">    </span><span class="c">#xₐ: expected physical state (also used as start, i.e. first guess)</span>
+<span class="w">    </span><span class="c">#F: the forward model translating measument space into state space</span>
+<span class="w">    </span><span class="n">Sₐ⁻¹</span><span class="o">=</span><span class="n">inv</span><span class="p">(</span><span class="n">Sₐ</span><span class="p">)</span>
+<span class="w">    </span><span class="n">Sₑ⁻¹</span><span class="o">=</span><span class="n">inv</span><span class="p">(</span><span class="n">Sₑ</span><span class="p">)</span>
+<span class="w">    </span><span class="c">#function to minimize with changing input x</span>
+<span class="w">    </span><span class="n">J</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">Sₑ⁻¹</span><span class="p">,</span><span class="n">Sₐ⁻¹</span><span class="p">,</span><span class="n">xₐ</span><span class="p">,</span><span class="n">F</span><span class="p">)</span><span class="o">=</span><span class="p">(</span><span class="n">y</span><span class="o">.-</span><span class="n">F</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="o">&#39;*</span><span class="p">(</span><span class="n">Sₑ⁻¹</span><span class="o">*</span><span class="p">(</span><span class="n">y</span><span class="o">.-</span><span class="n">F</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span><span class="o">+</span><span class="p">(</span><span class="n">xₐ</span><span class="o">.-</span><span class="n">x</span><span class="p">)</span><span class="o">&#39;*</span><span class="p">(</span><span class="n">Sₐ⁻¹</span><span class="o">*</span><span class="p">(</span><span class="n">xₐ</span><span class="o">.-</span><span class="n">x</span><span class="p">))</span><span class="w"> </span>
+<span class="w">    </span><span class="n">xᵢ</span><span class="o">=</span><span class="n">copy</span><span class="p">(</span><span class="n">xₐ</span><span class="p">)</span>
+<span class="w">    </span><span class="n">Jᵢ</span><span class="o">=</span><span class="n">J</span><span class="p">(</span><span class="n">Ta</span><span class="p">,</span><span class="n">xᵢ</span><span class="p">,</span><span class="n">Sₑ⁻¹</span><span class="p">,</span><span class="n">Sₐ⁻¹</span><span class="p">,</span><span class="n">xₐ</span><span class="p">,</span><span class="n">F</span><span class="p">)</span>
+<span class="w">    </span><span class="n">γ</span><span class="o">=</span><span class="mf">1e-5</span><span class="w"> </span><span class="c">#set to 0 for gauss newton</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="o">:</span><span class="mi">2000</span><span class="w"> </span>
+<span class="w">        </span><span class="n">Kᵢ</span><span class="o">=</span><span class="n">ForwardDiff</span><span class="o">.</span><span class="n">jacobian</span><span class="p">(</span><span class="n">F</span><span class="p">,</span><span class="n">xᵢ</span><span class="p">)</span>
+<span class="w">        </span><span class="n">Ŝ⁻¹</span><span class="o">=</span><span class="n">Sₐ⁻¹</span><span class="o">+</span><span class="n">Kᵢ</span><span class="o">&#39;*</span><span class="n">Sₑ⁻¹</span><span class="o">*</span><span class="n">Kᵢ</span><span class="w"> </span><span class="c">#eq 5.13</span>
+<span class="w">        </span><span class="n">xᵢ₊₁</span><span class="o">=</span><span class="n">xᵢ</span><span class="o">+</span><span class="p">((</span><span class="mi">1</span><span class="o">+</span><span class="n">γ</span><span class="p">)</span><span class="o">*</span><span class="n">Sₐ⁻¹</span><span class="o">+</span><span class="n">Kᵢ</span><span class="o">&#39;*</span><span class="n">Sₑ⁻¹</span><span class="o">*</span><span class="n">Kᵢ</span><span class="p">)</span><span class="o">\</span><span class="p">(</span><span class="n">Kᵢ</span><span class="o">&#39;*</span><span class="n">Sₑ⁻¹</span><span class="o">*</span><span class="p">(</span><span class="n">Ta</span><span class="o">-</span><span class="n">F</span><span class="p">(</span><span class="n">xᵢ</span><span class="p">))</span><span class="o">-</span><span class="n">Sₐ⁻¹</span><span class="o">*</span><span class="p">(</span><span class="n">xᵢ</span><span class="o">-</span><span class="n">xₐ</span><span class="p">))</span><span class="w"> </span><span class="c">#eq 5.36</span>
+<span class="w">        </span><span class="n">Jᵢ₊₁</span><span class="o">=</span><span class="n">J</span><span class="p">(</span><span class="n">Ta</span><span class="p">,</span><span class="n">xᵢ₊₁</span><span class="p">,</span><span class="n">Sₑ⁻¹</span><span class="p">,</span><span class="n">Sₐ⁻¹</span><span class="p">,</span><span class="n">xₐ</span><span class="p">,</span><span class="n">F</span><span class="p">)</span>
+<span class="w">        </span><span class="n">d²</span><span class="o">=</span><span class="p">(</span><span class="n">xᵢ</span><span class="o">-</span><span class="n">xᵢ₊₁</span><span class="p">)</span><span class="o">&#39;*</span><span class="n">Ŝ⁻¹</span><span class="o">*</span><span class="p">(</span><span class="n">xᵢ</span><span class="o">-</span><span class="n">xᵢ₊₁</span><span class="p">)</span><span class="w"> </span><span class="c">#eq 5.29</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">Jᵢ₊₁</span><span class="o">&lt;</span><span class="n">Jᵢ</span><span class="w"> </span>
+<span class="w">            </span><span class="n">γ</span><span class="o">/=</span><span class="mi">2</span>
+<span class="w">        </span><span class="k">else</span>
+<span class="w">            </span><span class="n">γ</span><span class="o">*=</span><span class="mi">10</span>
+<span class="w">            </span><span class="k">continue</span>
+<span class="w">        </span><span class="k">end</span>
+<span class="w">        </span><span class="n">xᵢ</span><span class="o">=</span><span class="n">xᵢ₊₁</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">d²</span><span class="o">&lt;</span><span class="mf">1e-10</span>
+<span class="w">            </span><span class="k">break</span>
+<span class="w">        </span><span class="k">end</span>
+<span class="w">        </span><span class="n">Jᵢ</span><span class="o">=</span><span class="n">Jᵢ₊₁</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="w">    </span><span class="n">Kᵢ</span><span class="o">=</span><span class="n">ForwardDiff</span><span class="o">.</span><span class="n">jacobian</span><span class="p">(</span><span class="n">F</span><span class="p">,</span><span class="n">xᵢ</span><span class="p">)</span>
+<span class="w">    </span><span class="n">Ŝ</span><span class="o">=</span><span class="n">inv</span><span class="p">(</span><span class="n">Sₐ⁻¹</span><span class="o">+</span><span class="n">Kᵢ</span><span class="o">&#39;*</span><span class="n">Sₑ⁻¹</span><span class="o">*</span><span class="n">Kᵢ</span><span class="p">)</span><span class="w"> </span><span class="c"># eq 5.38</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">xᵢ</span><span class="p">,</span><span class="n">Ŝ</span>
+<span class="k">end</span>
+
+
+<span class="n">retrievallm</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="n">v</span><span class="p">)</span><span class="o">=</span><span class="n">first</span><span class="o">.</span><span class="p">(</span><span class="n">lm_retrieval</span><span class="p">(</span><span class="n">SA</span><span class="p">[</span><span class="n">h</span><span class="p">,</span><span class="n">v</span><span class="p">],</span><span class="n">SA</span><span class="p">[</span><span class="mi">25</span><span class="w"> </span><span class="mi">15</span><span class="p">;</span><span class="mi">15</span><span class="w"> </span><span class="mf">25.0</span><span class="p">],</span><span class="kt">SMatrix</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="kt">Float64</span><span class="p">,</span><span class="mi">1</span><span class="p">}(</span><span class="mf">20000.0</span><span class="p">),</span><span class="n">SA</span><span class="p">[</span><span class="mf">100.</span><span class="p">],</span><span class="n">Fw_TB</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>retrievallm (generic function with 1 method)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">zfn</span><span class="o">=</span><span class="s">&quot;../data/RRDP_v3.zip&quot;</span>
+<span class="k">if</span><span class="w"> </span><span class="o">!</span><span class="n">isfile</span><span class="p">(</span><span class="n">zfn</span><span class="p">)</span>
+<span class="w">    </span><span class="n">download</span><span class="p">(</span><span class="s">&quot;https://figshare.com/ndownloader/files/31422043&quot;</span><span class="p">,</span><span class="n">zfn</span><span class="p">)</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">zf</span><span class="o">=</span><span class="n">ZipFile</span><span class="o">.</span><span class="n">Reader</span><span class="p">(</span><span class="n">zfn</span><span class="p">);</span>
+<span class="n">idxs</span><span class="o">=</span><span class="n">findall</span><span class="p">(</span><span class="n">x</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">occursin</span><span class="p">(</span><span class="s">&quot;RRDP_v3/UB_THINICE/S&quot;</span><span class="p">,</span><span class="n">x</span><span class="p">)),</span><span class="n">getfield</span><span class="o">.</span><span class="p">(</span><span class="n">zf</span><span class="o">.</span><span class="n">files</span><span class="p">,</span><span class="ss">:name</span><span class="p">))</span>
+<span class="n">D</span><span class="o">=</span><span class="n">DataFrame</span><span class="p">[]</span>
+<span class="k">for</span><span class="w"> </span><span class="n">idx</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">idxs</span>
+<span class="w">    </span><span class="n">push!</span><span class="p">(</span><span class="n">D</span><span class="p">,</span><span class="n">CSV</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">read</span><span class="p">(</span><span class="n">zf</span><span class="o">.</span><span class="n">files</span><span class="p">[</span><span class="n">idx</span><span class="p">]),</span><span class="n">DataFrame</span><span class="p">;</span><span class="n">skipto</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">missingstring</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;-999&quot;</span><span class="p">,</span><span class="s">&quot;noval&quot;</span><span class="p">]))</span>
+<span class="c">#    fio,DataFrame;skipto=3,header=2)</span>
+<span class="k">end</span>
+
+<span class="n">allD</span><span class="o">=</span><span class="n">vcat</span><span class="p">(</span><span class="n">D</span><span class="o">...</span><span class="p">);</span>
+<span class="n">sort!</span><span class="p">(</span><span class="n">allD</span><span class="p">,[</span><span class="s">&quot;date&quot;</span><span class="p">]);</span>
+
+<span class="n">d</span><span class="o">=</span><span class="n">allD</span><span class="o">.</span><span class="n">date</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">datef</span><span class="o">=</span><span class="sa">dateformat</span><span class="s">&quot;yyyymmdd&quot;</span>
+<span class="n">Dates</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="sa">dateformat</span><span class="s">&quot;yyyymmdd&quot;</span><span class="p">)</span>
+
+<span class="k">for</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">eachrow</span><span class="p">(</span><span class="n">allD</span><span class="p">)</span>
+<span class="w">    </span><span class="n">cday</span><span class="o">=</span><span class="n">Dates</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">date</span><span class="p">,</span><span class="n">datef</span><span class="p">)</span>
+<span class="w">  </span><span class="c">#  println(&quot;$(r.latitude) $(r.longitude) 51/55 $cday $cday&quot;)</span>
+<span class="k">end</span>
+<span class="n">rrdp_extract</span><span class="o">=</span><span class="n">CSV</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s">&quot;../data/rrdp_thinice_51-55_724.txt&quot;</span><span class="p">,</span><span class="n">DataFrame</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;date&quot;</span><span class="p">,</span><span class="s">&quot;tbh53&quot;</span><span class="p">,</span><span class="s">&quot;tbv53&quot;</span><span class="p">,</span><span class="s">&quot;mean_inc&quot;</span><span class="p">,</span><span class="s">&quot;tbh53_std&quot;</span><span class="p">,</span><span class="s">&quot;tbv53_std&quot;</span><span class="p">]);</span>
+<span class="n">fulltable</span><span class="o">=</span><span class="n">hcat</span><span class="p">(</span><span class="n">allD</span><span class="p">,</span><span class="n">rrdp_extract</span><span class="p">,</span><span class="n">makeunique</span><span class="o">=</span><span class="nb">true</span><span class="p">);</span>
+<span class="n">replace!</span><span class="p">(</span><span class="w"> </span><span class="n">x</span><span class="o">-&gt;</span><span class="n">ismissing</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nb">NaN</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="n">fulltable</span><span class="p">[</span><span class="o">!</span><span class="p">,</span><span class="s">&quot;89.0H&quot;</span><span class="p">])</span><span class="w"> </span><span class="o">.|&gt;</span><span class="w"> </span><span class="kt">Float64</span>
+<span class="n">replace!</span><span class="p">(</span><span class="w"> </span><span class="n">x</span><span class="o">-&gt;</span><span class="n">ismissing</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nb">NaN</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="n">fulltable</span><span class="p">[</span><span class="o">!</span><span class="p">,</span><span class="s">&quot;89.0V&quot;</span><span class="p">])</span><span class="w"> </span><span class="o">.|&gt;</span><span class="w"> </span><span class="kt">Float64</span>
+<span class="n">replace!</span><span class="p">(</span><span class="n">x</span><span class="o">-&gt;</span><span class="n">ismissing</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nb">NaN</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="n">fulltable</span><span class="p">[</span><span class="o">!</span><span class="p">,</span><span class="s">&quot;SIT&quot;</span><span class="p">])</span><span class="w"> </span><span class="o">.|&gt;</span><span class="w"> </span><span class="kt">Float64</span>
+<span class="n">replace!</span><span class="p">(</span><span class="n">x</span><span class="o">-&gt;</span><span class="n">ismissing</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nb">NaN</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="n">fulltable</span><span class="p">[</span><span class="o">!</span><span class="p">,</span><span class="s">&quot;sigma_40&quot;</span><span class="p">])</span><span class="w"> </span><span class="o">.|&gt;</span><span class="w"> </span><span class="kt">Float64</span>
+<span class="n">fulltable</span><span class="p">[</span><span class="o">!</span><span class="p">,</span><span class="s">&quot;newSIT&quot;</span><span class="p">]</span><span class="o">=</span><span class="n">retrievallm</span><span class="o">.</span><span class="p">(</span><span class="n">fulltable</span><span class="p">[</span><span class="o">!</span><span class="p">,</span><span class="s">&quot;tbh53&quot;</span><span class="p">],</span><span class="n">fulltable</span><span class="p">[</span><span class="o">!</span><span class="p">,</span><span class="s">&quot;tbv53&quot;</span><span class="p">])</span><span class="w"> </span><span class="o">.|&gt;</span><span class="w"> </span><span class="n">first</span>
+<span class="n">fulltable</span><span class="p">[</span><span class="o">!</span><span class="p">,</span><span class="s">&quot;newSIT_std&quot;</span><span class="p">]</span><span class="o">=</span><span class="n">retrievallm</span><span class="o">.</span><span class="p">(</span><span class="n">fulltable</span><span class="p">[</span><span class="o">!</span><span class="p">,</span><span class="s">&quot;tbh53&quot;</span><span class="p">],</span><span class="n">fulltable</span><span class="p">[</span><span class="o">!</span><span class="p">,</span><span class="s">&quot;tbv53&quot;</span><span class="p">])</span><span class="w"> </span><span class="o">.|&gt;</span><span class="w"> </span><span class="n">last</span>
+<span class="n">iidx</span><span class="o">=</span><span class="n">isnan</span><span class="o">.</span><span class="p">(</span><span class="n">fulltable</span><span class="p">[</span><span class="o">!</span><span class="p">,</span><span class="s">&quot;tbh53&quot;</span><span class="p">])</span>
+<span class="c">#fulltable[iidx,&quot;newSIT&quot;].=NaN</span>
+<span class="c">#fulltable[iidx,&quot;newSIT_std&quot;].=NaN</span>
+<span class="n">fulltable</span><span class="o">=</span><span class="n">fulltable</span><span class="p">[</span><span class="o">.!</span><span class="n">iidx</span><span class="p">,</span><span class="o">:</span><span class="p">]</span>
+
+<span class="c">#iidx=fulltable[!,:SIT].!=-999</span>
+<span class="c">#fulltable=fulltable[iidx,:];</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><div style = "float: left;"><span>369×85 DataFrame</span></div><div style = "float: right;"><span style = "font-style: italic;">344 rows omitted</span></div><div style = "clear: both;"></div></div><div class = "data-frame" style = "overflow-x: scroll;"><table class = "data-frame" style = "margin-bottom: 6px;"><thead><tr class = "header"><th class = "rowNumber" style = "font-weight: bold; text-align: right;">Row</th><th style = "text-align: left;"># latitude</th><th style = "text-align: left;">longitude</th><th style = "text-align: left;">date</th><th style = "text-align: left;">reference-id</th><th style = "text-align: left;">SIC</th><th style = "text-align: left;">SIT</th><th style = "text-align: left;">latitude</th><th style = "text-align: left;">longitude_1</th><th style = "text-align: left;">time</th><th style = "text-align: left;">reference-id_1</th><th style = "text-align: left;">upstreamfile</th><th style = "text-align: left;">msl</th><th style = "text-align: left;">u10</th><th style = "text-align: left;">v10</th><th style = "text-align: left;">ws</th><th style = "text-align: left;">t2m</th><th style = "text-align: left;">skt</th><th style = "text-align: left;">istl1</th><th style = "text-align: left;">istl2</th><th style = "text-align: left;">istl3</th><th style = "text-align: left;">istl4</th><th style = "text-align: left;">sst</th><th style = "text-align: left;">d2m</th><th style = "text-align: left;">tcwv</th><th style = "text-align: left;">tclw</th><th style = "text-align: left;">tciw</th><th style = "text-align: left;">ssrd</th><th style = "text-align: left;">strd</th><th style = "text-align: left;">e</th><th style = "text-align: left;">tp</th><th style = "text-align: left;">sf</th><th style = "text-align: left;">fal</th><th style = "text-align: left;">ci</th><th style = "text-align: left;">latitude_1</th><th style = "text-align: left;">longitude_2</th><th style = "text-align: left;">time_1</th><th style = "text-align: left;">identification</th><th style = "text-align: left;">6.9H</th><th style = "text-align: left;">6.9V</th><th style = "text-align: left;">7.3H</th><th style = "text-align: left;">7.3V</th><th style = "text-align: left;">10.7H</th><th style = "text-align: left;">10.7V</th><th style = "text-align: left;">18.7H</th><th style = "text-align: left;">18.7V</th><th style = "text-align: left;">23.8H</th><th style = "text-align: left;">23.8V</th><th style = "text-align: left;">36.5H</th><th style = "text-align: left;">36.5V</th><th style = "text-align: left;">89.0H</th><th style = "text-align: left;">89.0V</th><th style = "text-align: left;">Earth_Incidence</th><th style = "text-align: left;">Earth_Azimuth</th><th style = "text-align: left;">scanpos</th><th style = "text-align: left;">upstreamfile_1</th><th style = "text-align: left;">timediff</th><th style = "text-align: left;">latitude_2</th><th style = "text-align: left;">longitude_3</th><th style = "text-align: left;">time_2</th><th style = "text-align: left;">reference-id_2</th><th style = "text-align: left;">upstreamfile_2</th><th style = "text-align: left;">sigma_40</th><th style = "text-align: left;">sigma_40_mask</th><th style = "text-align: left;">nb_samples</th><th style = "text-align: left;">warning</th><th style = "text-align: left;">std</th><th style = "text-align: left;">latitude_3</th><th style = "text-align: left;">longitude_4</th><th style = "text-align: left;">time_3</th><th style = "text-align: left;">reference-id_3</th><th style = "text-align: left;">upstreamfile_3</th><th style = "text-align: left;">SMOS_Tbv</th><th style = "text-align: left;">SMOS_Tbh</th><th style = "text-align: left;">SMOS_RMSE_v</th><th style = "text-align: left;">SMOS_RMSE_h</th><th style = "text-align: left;">SMOS_nmp</th><th style = "text-align: left;">SMOS_dataloss</th><th style = "text-align: left;">date_1</th><th style = "text-align: left;">tbh53</th><th style = "text-align: left;">tbv53</th><th style = "text-align: left;">mean_inc</th><th style = "text-align: left;">tbh53_std</th><th style = "text-align: left;">tbv53_std</th><th style = "text-align: left;">newSIT</th><th style = "text-align: left;">newSIT_std</th></tr><tr class = "subheader headerLastRow"><th class = "rowNumber" style = "font-weight: bold; text-align: right;"></th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Date" style = "text-align: left;">Date</th><th title = "String15" style = "text-align: left;">String15</th><th title = "Int64" style = "text-align: left;">Int64</th><th title = "Union{Missing, Float64}" style = "text-align: left;">Float64?</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "String31" style = "text-align: left;">String31</th><th title = "String15" style = "text-align: left;">String15</th><th title = "String15" style = "text-align: left;">String15</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "String31" style = "text-align: left;">String31</th><th title = "String31" style = "text-align: left;">String31</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Missing" style = "text-align: left;">Missing</th><th title = "Missing" style = "text-align: left;">Missing</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Union{Missing, Float64}" style = "text-align: left;">Float64?</th><th title = "Union{Missing, Float64}" style = "text-align: left;">Float64?</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Int64" style = "text-align: left;">Int64</th><th title = "String" style = "text-align: left;">String</th><th title = "Int64" style = "text-align: left;">Int64</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "String31" style = "text-align: left;">String31</th><th title = "String31" style = "text-align: left;">String31</th><th title = "String31" style = "text-align: left;">String31</th><th title = "Union{Missing, Float64}" style = "text-align: left;">Float64?</th><th title = "Union{Missing, Float64}" style = "text-align: left;">Float64?</th><th title = "Union{Missing, Int64}" style = "text-align: left;">Int64?</th><th title = "Union{Missing, Int64}" style = "text-align: left;">Int64?</th><th title = "Union{Missing, Float64}" style = "text-align: left;">Float64?</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "String31" style = "text-align: left;">String31</th><th title = "String15" style = "text-align: left;">String15</th><th title = "String31" style = "text-align: left;">String31</th><th title = "Union{Missing, Float64}" style = "text-align: left;">Float64?</th><th title = "Union{Missing, Float64}" style = "text-align: left;">Float64?</th><th title = "Union{Missing, Float64}" style = "text-align: left;">Float64?</th><th title = "Union{Missing, Float64}" style = "text-align: left;">Float64?</th><th title = "Union{Missing, Int64}" style = "text-align: left;">Int64?</th><th title = "Union{Missing, Int64}" style = "text-align: left;">Int64?</th><th title = "Int64" style = "text-align: left;">Int64</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Float64" style = "text-align: left;">Float64</th></tr></thead><tbody><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">1</td><td style = "text-align: right;">79.26</td><td style = "text-align: right;">-168.82</td><td style = "text-align: left;">2010-10-01</td><td style = "text-align: left;">THINICE_UB</td><td style = "text-align: right;">1</td><td style = "text-align: right;">0.18</td><td style = "text-align: right;">79.5</td><td style = "text-align: right;">-168.75</td><td style = "text-align: left;">2010-10-01T12:00:00Z</td><td style = "text-align: left;">NWP_ECMWF</td><td style = "text-align: left;">2010q4.nc</td><td style = "text-align: right;">998.7</td><td style = "text-align: right;">5.37</td><td style = "text-align: right;">-3.68</td><td style = "text-align: right;">6.5</td><td style = "text-align: right;">269.01</td><td style = "text-align: right;">268.81</td><td style = "text-align: right;">268.62</td><td style = "text-align: right;">268.4</td><td style = "text-align: right;">268.9</td><td style = "text-align: right;">270.5</td><td style = "text-align: right;">271.46</td><td style = "text-align: right;">268.16</td><td style = "text-align: right;">7.1841</td><td style = "text-align: right;">0.04279</td><td style = "text-align: right;">0.119196</td><td style = "text-align: right;">6.42</td><td style = "text-align: right;">582.72</td><td style = "text-align: right;">0.003</td><td style = "text-align: right;">0.767</td><td style = "text-align: right;">0.6048</td><td style = "text-align: right;">0.7336</td><td style = "text-align: right;">0.9546</td><td style = "text-align: right;">79.266</td><td style = "text-align: right;">-168.595</td><td style = "text-align: left;">2010-10-01T13:33:04Z</td><td style = "text-align: left;">AMSR_NSIDCWENTZ_REV3</td><td style = "text-align: right;">207.54</td><td style = "text-align: right;">240.33</td><td style = "font-style: italic; text-align: right;">missing</td><td style = "font-style: italic; text-align: right;">missing</td><td style = "text-align: right;">215.75</td><td style = "text-align: right;">244.46</td><td style = "text-align: right;">230.5</td><td style = "text-align: right;">251.08</td><td style = "text-align: right;">237.94</td><td style = "text-align: right;">254.81</td><td style = "text-align: right;">245.2</td><td style = "text-align: right;">257.82</td><td style = "text-align: right;">255.03</td><td style = "text-align: right;">260.13</td><td style = "text-align: right;">55.065</td><td style = "text-align: right;">-115.1</td><td style = "text-align: right;">35</td><td style = "text-align: left;">AMSR_E_L2A_BrightnessTemperatures_V12_201010011329_D.hdf</td><td style = "text-align: right;">5584</td><td style = "text-align: right;">79.29</td><td style = "text-align: right;">-168.6</td><td style = "text-align: left;">2014-06-19T12:00:00Z</td><td style = "text-align: left;">ASCAT_CERSAT_IFREMER</td><td style = "text-align: left;">ASCAT_20140619.nc</td><td style = "text-align: right;">-18.1187</td><td style = "text-align: right;">-18.1187</td><td style = "text-align: right;">6</td><td style = "text-align: right;">0</td><td style = "text-align: right;">0.10281</td><td style = "text-align: right;">79.317</td><td style = "text-align: right;">-168.808</td><td style = "text-align: left;">2010-10-01T12:00:00Z</td><td style = "text-align: left;">SMOS_UHAM</td><td style = "text-align: left;">SMOS_40deg_e12.5_20101001.nc</td><td style = "text-align: right;">216.985</td><td style = "text-align: right;">188.229</td><td style = "text-align: right;">4.73857</td><td style = "text-align: right;">5.60743</td><td style = "text-align: right;">178</td><td style = "text-align: right;">37</td><td style = "text-align: right;">20101001</td><td style = "text-align: right;">174.4</td><td style = "text-align: right;">233.8</td><td style = "text-align: right;">53.2</td><td style = "text-align: right;">7.9</td><td style = "text-align: right;">3.0</td><td style = "text-align: right;">25.1316</td><td style = "text-align: right;">5.83726</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">2</td><td style = "text-align: right;">79.26</td><td style = "text-align: right;">-168.82</td><td style = "text-align: left;">2010-10-02</td><td style = "text-align: left;">THINICE_UB</td><td style = "text-align: right;">1</td><td style = "text-align: right;">0.3</td><td style = "text-align: right;">79.5</td><td style = "text-align: right;">-168.75</td><td style = "text-align: left;">2010-10-02T12:00:00Z</td><td style = "text-align: left;">NWP_ECMWF</td><td style = "text-align: left;">2010q4.nc</td><td style = "text-align: right;">1009.7</td><td style = "text-align: right;">-0.66</td><td style = "text-align: right;">-1.45</td><td style = "text-align: right;">1.59</td><td style = "text-align: right;">262.16</td><td style = "text-align: right;">262.85</td><td style = "text-align: right;">262.85</td><td style = "text-align: right;">265.27</td><td style = "text-align: right;">268.78</td><td style = "text-align: right;">270.41</td><td style = "text-align: right;">271.46</td><td style = "text-align: right;">259.05</td><td style = "text-align: right;">4.6032</td><td style = "text-align: right;">0.00356</td><td style = "text-align: right;">0.025132</td><td style = "text-align: right;">11.37</td><td style = "text-align: right;">485.19</td><td style = "text-align: right;">-0.129</td><td style = "text-align: right;">0.13</td><td style = "text-align: right;">0.1095</td><td style = "text-align: right;">0.7213</td><td style = "text-align: right;">0.9372</td><td style = "text-align: right;">79.226</td><td style = "text-align: right;">-168.965</td><td style = "text-align: left;">2010-10-02T14:15:43Z</td><td style = "text-align: left;">AMSR_NSIDCWENTZ_REV3</td><td style = "text-align: right;">224.15</td><td style = "text-align: right;">251.44</td><td style = "font-style: italic; text-align: right;">missing</td><td style = "font-style: italic; text-align: right;">missing</td><td style = "text-align: right;">227.24</td><td style = "text-align: right;">252.39</td><td style = "text-align: right;">234.14</td><td style = "text-align: right;">253.93</td><td style = "text-align: right;">238.56</td><td style = "text-align: right;">255.44</td><td style = "text-align: right;">241.8</td><td style = "text-align: right;">255.62</td><td style = "text-align: right;">243.56</td><td style = "text-align: right;">252.67</td><td style = "text-align: right;">55.085</td><td style = "text-align: right;">-124.4</td><td style = "text-align: right;">66</td><td style = "text-align: left;">AMSR_E_L2A_BrightnessTemperatures_V12_201010021412_D.hdf</td><td style = "text-align: right;">8143</td><td style = "text-align: right;">79.29</td><td style = "text-align: right;">-168.6</td><td style = "text-align: left;">2014-06-20T12:00:00Z</td><td style = "text-align: left;">ASCAT_CERSAT_IFREMER</td><td style = "text-align: left;">ASCAT_20140620.nc</td><td style = "text-align: right;">-18.399</td><td style = "text-align: right;">-18.399</td><td style = "text-align: right;">9</td><td style = "text-align: right;">0</td><td style = "text-align: right;">0.151</td><td style = "text-align: right;">79.317</td><td style = "text-align: right;">-168.808</td><td style = "text-align: left;">2010-10-03T12:00:00Z</td><td style = "text-align: left;">SMOS_UHAM</td><td style = "text-align: left;">SMOS_40deg_e12.5_20101003.nc</td><td style = "text-align: right;">234.626</td><td style = "text-align: right;">206.705</td><td style = "text-align: right;">4.65696</td><td style = "text-align: right;">6.60902</td><td style = "text-align: right;">162</td><td style = "text-align: right;">46</td><td style = "text-align: right;">20101002</td><td style = "text-align: right;">193.4</td><td style = "text-align: right;">249.9</td><td style = "text-align: right;">53.4</td><td style = "text-align: right;">4.8</td><td style = "text-align: right;">3.6</td><td style = "text-align: right;">35.3206</td><td style = "text-align: right;">14.4309</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">3</td><td style = "text-align: right;">78.777</td><td style = "text-align: right;">129.225</td><td style = "text-align: left;">2010-10-02</td><td style = "text-align: left;">THINICE_UB</td><td style = "text-align: right;">1</td><td style = "text-align: right;">0.1</td><td style = "text-align: right;">78.75</td><td style = "text-align: right;">129.0</td><td style = "text-align: left;">2010-10-02T12:00:00Z</td><td style = "text-align: left;">NWP_ECMWF</td><td style = "text-align: left;">2010q4.nc</td><td style = "text-align: right;">1002.3</td><td style = "text-align: right;">-1.98</td><td style = "text-align: right;">-2.58</td><td style = "text-align: right;">3.25</td><td style = "text-align: right;">269.18</td><td style = "text-align: right;">269.45</td><td style = "text-align: right;">268.09</td><td style = "text-align: right;">268.89</td><td style = "text-align: right;">270.31</td><td style = "text-align: right;">271.01</td><td style = "text-align: right;">271.46</td><td style = "text-align: right;">267.57</td><td style = "text-align: right;">7.8174</td><td style = "text-align: right;">0.02222</td><td style = "text-align: right;">0.095501</td><td style = "text-align: right;">21.09</td><td style = "text-align: right;">555.76</td><td style = "text-align: right;">-0.062</td><td style = "text-align: right;">0.381</td><td style = "text-align: right;">0.3411</td><td style = "text-align: right;">0.4561</td><td style = "text-align: right;">0.5614</td><td style = "text-align: right;">78.794</td><td style = "text-align: right;">129.306</td><td style = "text-align: left;">2010-10-02T17:34:21Z</td><td style = "text-align: left;">AMSR_NSIDCWENTZ_REV3</td><td style = "text-align: right;">150.72</td><td style = "text-align: right;">223.67</td><td style = "font-style: italic; text-align: right;">missing</td><td style = "font-style: italic; text-align: right;">missing</td><td style = "text-align: right;">160.66</td><td style = "text-align: right;">227.69</td><td style = "text-align: right;">179.24</td><td style = "text-align: right;">236.3</td><td style = "text-align: right;">195.18</td><td style = "text-align: right;">241.59</td><td style = "text-align: right;">204.59</td><td style = "text-align: right;">243.76</td><td style = "text-align: right;">230.72</td><td style = "text-align: right;">249.11</td><td style = "text-align: right;">55.06</td><td style = "text-align: right;">-113.65</td><td style = "text-align: right;">30</td><td style = "text-align: left;">AMSR_E_L2A_BrightnessTemperatures_V12_201010021730_D.hdf</td><td style = "text-align: right;">20061</td><td style = "text-align: right;">78.73</td><td style = "text-align: right;">129.43</td><td style = "text-align: left;">2014-06-25T12:00:00Z</td><td style = "text-align: left;">ASCAT_CERSAT_IFREMER</td><td style = "text-align: left;">ASCAT_20140625.nc</td><td style = "text-align: right;">-18.1187</td><td style = "text-align: right;">-18.1187</td><td style = "text-align: right;">9</td><td style = "text-align: right;">0</td><td style = "text-align: right;">0.03213</td><td style = "text-align: right;">78.768</td><td style = "text-align: right;">129.33</td><td style = "text-align: left;">2010-10-03T12:00:00Z</td><td style = "text-align: left;">SMOS_UHAM</td><td style = "text-align: left;">SMOS_40deg_e12.5_20101003.nc</td><td style = "text-align: right;">194.985</td><td style = "text-align: right;">168.608</td><td style = "text-align: right;">7.94988</td><td style = "text-align: right;">7.78475</td><td style = "text-align: right;">155</td><td style = "text-align: right;">47</td><td style = "text-align: right;">20101002</td><td style = "text-align: right;">143.6</td><td style = "text-align: right;">210.5</td><td style = "text-align: right;">53.0</td><td style = "text-align: right;">10.8</td><td style = "text-align: right;">6.1</td><td style = "text-align: right;">13.6045</td><td style = "text-align: right;">1.87511</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">4</td><td style = "text-align: right;">79.26</td><td style = "text-align: right;">-168.82</td><td style = "text-align: left;">2010-10-03</td><td style = "text-align: left;">THINICE_UB</td><td style = "text-align: right;">1</td><td style = "text-align: right;">0.26</td><td style = "text-align: right;">79.5</td><td style = "text-align: right;">-168.75</td><td style = "text-align: left;">2010-10-03T12:00:00Z</td><td style = "text-align: left;">NWP_ECMWF</td><td style = "text-align: left;">2010q4.nc</td><td style = "text-align: right;">1015.1</td><td style = "text-align: right;">-2.36</td><td style = "text-align: right;">2.22</td><td style = "text-align: right;">3.24</td><td style = "text-align: right;">258.86</td><td style = "text-align: right;">258.19</td><td style = "text-align: right;">258.74</td><td style = "text-align: right;">261.49</td><td style = "text-align: right;">267.8</td><td style = "text-align: right;">270.22</td><td style = "text-align: right;">271.46</td><td style = "text-align: right;">256.78</td><td style = "text-align: right;">4.5502</td><td style = "text-align: right;">0.00095</td><td style = "text-align: right;">0.009335</td><td style = "text-align: right;">15.6</td><td style = "text-align: right;">396.41</td><td style = "text-align: right;">0.002</td><td style = "text-align: right;">-0.0</td><td style = "text-align: right;">-0.0</td><td style = "text-align: right;">0.7584</td><td style = "text-align: right;">0.9898</td><td style = "text-align: right;">79.239</td><td style = "text-align: right;">-168.777</td><td style = "text-align: left;">2010-10-03T13:21:01Z</td><td style = "text-align: left;">AMSR_NSIDCWENTZ_REV3</td><td style = "text-align: right;">226.92</td><td style = "text-align: right;">251.49</td><td style = "font-style: italic; text-align: right;">missing</td><td style = "font-style: italic; text-align: right;">missing</td><td style = "text-align: right;">231.15</td><td style = "text-align: right;">252.74</td><td style = "text-align: right;">239.17</td><td style = "text-align: right;">255.08</td><td style = "text-align: right;">243.0</td><td style = "text-align: right;">256.41</td><td style = "text-align: right;">246.17</td><td style = "text-align: right;">256.86</td><td style = "text-align: right;">244.11</td><td style = "text-align: right;">252.43</td><td style = "text-align: right;">55.06</td><td style = "text-align: right;">-110.07</td><td style = "text-align: right;">22</td><td style = "text-align: left;">AMSR_E_L2A_BrightnessTemperatures_V12_201010031316_D.hdf</td><td style = "text-align: right;">4861</td><td style = "text-align: right;">79.29</td><td style = "text-align: right;">-168.6</td><td style = "text-align: left;">2014-06-21T12:00:00Z</td><td style = "text-align: left;">ASCAT_CERSAT_IFREMER</td><td style = "text-align: left;">ASCAT_20140621.nc</td><td style = "text-align: right;">-18.5462</td><td style = "text-align: right;">-18.5462</td><td style = "text-align: right;">6</td><td style = "text-align: right;">0</td><td style = "text-align: right;">0.11566</td><td style = "text-align: right;">79.317</td><td style = "text-align: right;">-168.808</td><td style = "text-align: left;">2010-10-03T12:00:00Z</td><td style = "text-align: left;">SMOS_UHAM</td><td style = "text-align: left;">SMOS_40deg_e12.5_20101003.nc</td><td style = "text-align: right;">234.626</td><td style = "text-align: right;">206.705</td><td style = "text-align: right;">4.65696</td><td style = "text-align: right;">6.60902</td><td style = "text-align: right;">162</td><td style = "text-align: right;">46</td><td style = "text-align: right;">20101003</td><td style = "text-align: right;">189.6</td><td style = "text-align: right;">249.4</td><td style = "text-align: right;">53.0</td><td style = "text-align: right;">4.0</td><td style = "text-align: right;">3.7</td><td style = "text-align: right;">32.5825</td><td style = "text-align: right;">11.3567</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">5</td><td style = "text-align: right;">78.777</td><td style = "text-align: right;">129.225</td><td style = "text-align: left;">2010-10-03</td><td style = "text-align: left;">THINICE_UB</td><td style = "text-align: right;">1</td><td style = "text-align: right;">0.11</td><td style = "text-align: right;">78.75</td><td style = "text-align: right;">129.0</td><td style = "text-align: left;">2010-10-03T12:00:00Z</td><td style = "text-align: left;">NWP_ECMWF</td><td style = "text-align: left;">2010q4.nc</td><td style = "text-align: right;">991.8</td><td style = "text-align: right;">-3.46</td><td style = "text-align: right;">3.16</td><td style = "text-align: right;">4.69</td><td style = "text-align: right;">271.8</td><td style = "text-align: right;">271.29</td><td style = "text-align: right;">271.06</td><td style = "text-align: right;">270.56</td><td style = "text-align: right;">270.25</td><td style = "text-align: right;">270.96</td><td style = "text-align: right;">271.46</td><td style = "text-align: right;">271.15</td><td style = "text-align: right;">10.2725</td><td style = "text-align: right;">0.07359</td><td style = "text-align: right;">0.122274</td><td style = "text-align: right;">7.51</td><td style = "text-align: right;">606.18</td><td style = "text-align: right;">0.066</td><td style = "text-align: right;">4.286</td><td style = "text-align: right;">3.4746</td><td style = "text-align: right;">0.4713</td><td style = "text-align: right;">0.5829</td><td style = "text-align: right;">78.805</td><td style = "text-align: right;">129.093</td><td style = "text-align: left;">2010-10-03T18:16:55Z</td><td style = "text-align: left;">AMSR_NSIDCWENTZ_REV3</td><td style = "text-align: right;">156.68</td><td style = "text-align: right;">221.03</td><td style = "font-style: italic; text-align: right;">missing</td><td style = "font-style: italic; text-align: right;">missing</td><td style = "text-align: right;">168.17</td><td style = "text-align: right;">226.44</td><td style = "text-align: right;">190.1</td><td style = "text-align: right;">236.37</td><td style = "text-align: right;">207.52</td><td style = "text-align: right;">243.68</td><td style = "text-align: right;">213.44</td><td style = "text-align: right;">247.07</td><td style = "text-align: right;">241.58</td><td style = "text-align: right;">256.74</td><td style = "text-align: right;">55.075</td><td style = "text-align: right;">-124.72</td><td style = "text-align: right;">64</td><td style = "text-align: left;">AMSR_E_L2A_BrightnessTemperatures_V12_201010031813_D.hdf</td><td style = "text-align: right;">22615</td><td style = "text-align: right;">78.73</td><td style = "text-align: right;">129.43</td><td style = "text-align: left;">2014-06-21T12:00:00Z</td><td style = "text-align: left;">ASCAT_CERSAT_IFREMER</td><td style = "text-align: left;">ASCAT_20140621.nc</td><td style = "text-align: right;">-17.8554</td><td style = "text-align: right;">-17.8554</td><td style = "text-align: right;">9</td><td style = "text-align: right;">0</td><td style = "text-align: right;">0.0755</td><td style = "text-align: right;">78.768</td><td style = "text-align: right;">129.33</td><td style = "text-align: left;">2010-10-03T12:00:00Z</td><td style = "text-align: left;">SMOS_UHAM</td><td style = "text-align: left;">SMOS_40deg_e12.5_20101003.nc</td><td style = "text-align: right;">194.985</td><td style = "text-align: right;">168.608</td><td style = "text-align: right;">7.94988</td><td style = "text-align: right;">7.78475</td><td style = "text-align: right;">155</td><td style = "text-align: right;">47</td><td style = "text-align: right;">20101003</td><td style = "text-align: right;">145.2</td><td style = "text-align: right;">206.1</td><td style = "text-align: right;">53.1</td><td style = "text-align: right;">3.4</td><td style = "text-align: right;">5.0</td><td style = "text-align: right;">13.6471</td><td style = "text-align: right;">1.88376</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">6</td><td style = "text-align: right;">75.558</td><td style = "text-align: right;">-144.337</td><td style = "text-align: left;">2010-10-03</td><td style = "text-align: left;">THINICE_UB</td><td style = "text-align: right;">1</td><td style = "text-align: right;">0.2</td><td style = "text-align: right;">75.75</td><td style = "text-align: right;">-144.0</td><td style = "text-align: left;">2010-10-03T12:00:00Z</td><td style = "text-align: left;">NWP_ECMWF</td><td style = "text-align: left;">2010q4.nc</td><td style = "text-align: right;">1013.4</td><td style = "text-align: right;">-1.04</td><td style = "text-align: right;">-4.54</td><td style = "text-align: right;">4.66</td><td style = "text-align: right;">261.1</td><td style = "text-align: right;">264.26</td><td style = "text-align: right;">260.99</td><td style = "text-align: right;">263.89</td><td style = "text-align: right;">269.53</td><td style = "text-align: right;">270.93</td><td style = "text-align: right;">271.46</td><td style = "text-align: right;">258.88</td><td style = "text-align: right;">3.265</td><td style = "text-align: right;">0.00286</td><td style = "text-align: right;">0.019182</td><td style = "text-align: right;">8.83</td><td style = "text-align: right;">448.72</td><td style = "text-align: right;">-0.32</td><td style = "text-align: right;">0.143</td><td style = "text-align: right;">0.1202</td><td style = "text-align: right;">0.5199</td><td style = "text-align: right;">0.6517</td><td style = "text-align: right;">75.539</td><td style = "text-align: right;">-144.263</td><td style = "text-align: left;">2010-10-03T11:42:54Z</td><td style = "text-align: left;">AMSR_NSIDCWENTZ_REV3</td><td style = "text-align: right;">192.73</td><td style = "text-align: right;">249.96</td><td style = "font-style: italic; text-align: right;">missing</td><td style = "font-style: italic; text-align: right;">missing</td><td style = "text-align: right;">203.59</td><td style = "text-align: right;">249.61</td><td style = "text-align: right;">219.58</td><td style = "text-align: right;">251.31</td><td style = "text-align: right;">225.72</td><td style = "text-align: right;">252.76</td><td style = "text-align: right;">230.08</td><td style = "text-align: right;">253.69</td><td style = "text-align: right;">237.22</td><td style = "text-align: right;">254.77</td><td style = "text-align: right;">55.045</td><td style = "text-align: right;">-117.81</td><td style = "text-align: right;">35</td><td style = "text-align: left;">AMSR_E_L2A_BrightnessTemperatures_V12_201010031137_D.hdf</td><td style = "text-align: right;">-1026</td><td style = "text-align: right;">75.51</td><td style = "text-align: right;">-144.35</td><td style = "text-align: left;">2014-06-26T12:00:00Z</td><td style = "text-align: left;">ASCAT_CERSAT_IFREMER</td><td style = "text-align: left;">ASCAT_20140626.nc</td><td style = "text-align: right;">-17.2595</td><td style = "text-align: right;">-17.2595</td><td style = "text-align: right;">12</td><td style = "text-align: right;">0</td><td style = "text-align: right;">0.09478</td><td style = "text-align: right;">75.531</td><td style = "text-align: right;">-144.152</td><td style = "text-align: left;">2010-10-03T12:00:00Z</td><td style = "text-align: left;">SMOS_UHAM</td><td style = "text-align: left;">SMOS_40deg_e12.5_20101003.nc</td><td style = "text-align: right;">227.4</td><td style = "text-align: right;">193.32</td><td style = "text-align: right;">7.50068</td><td style = "text-align: right;">8.1402</td><td style = "text-align: right;">74</td><td style = "text-align: right;">53</td><td style = "text-align: right;">20101003</td><td style = "text-align: right;">164.8</td><td style = "text-align: right;">247.0</td><td style = "text-align: right;">54.8</td><td style = "text-align: right;">0.0</td><td style = "text-align: right;">0.0</td><td style = "text-align: right;">21.0208</td><td style = "text-align: right;">3.97552</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">7</td><td style = "text-align: right;">75.558</td><td style = "text-align: right;">-144.337</td><td style = "text-align: left;">2010-10-04</td><td style = "text-align: left;">THINICE_UB</td><td style = "text-align: right;">1</td><td style = "text-align: right;">0.19</td><td style = "text-align: right;">75.75</td><td style = "text-align: right;">-144.0</td><td style = "text-align: left;">2010-10-04T12:00:00Z</td><td style = "text-align: left;">NWP_ECMWF</td><td style = "text-align: left;">2010q4.nc</td><td style = "text-align: right;">1020.3</td><td style = "text-align: right;">-3.75</td><td style = "text-align: right;">2.22</td><td style = "text-align: right;">4.35</td><td style = "text-align: right;">263.09</td><td style = "text-align: right;">264.68</td><td style = "text-align: right;">261.35</td><td style = "text-align: right;">262.93</td><td style = "text-align: right;">268.32</td><td style = "text-align: right;">270.6</td><td style = "text-align: right;">271.46</td><td style = "text-align: right;">260.64</td><td style = "text-align: right;">3.2014</td><td style = "text-align: right;">0.00512</td><td style = "text-align: right;">0.024003</td><td style = "text-align: right;">7.77</td><td style = "text-align: right;">470.17</td><td style = "text-align: right;">-0.211</td><td style = "text-align: right;">0.23</td><td style = "text-align: right;">0.1857</td><td style = "text-align: right;">0.5172</td><td style = "text-align: right;">0.6479</td><td style = "text-align: right;">75.533</td><td style = "text-align: right;">-144.335</td><td style = "text-align: left;">2010-10-04T12:25:23Z</td><td style = "text-align: left;">AMSR_NSIDCWENTZ_REV3</td><td style = "text-align: right;">197.26</td><td style = "text-align: right;">251.94</td><td style = "font-style: italic; text-align: right;">missing</td><td style = "font-style: italic; text-align: right;">missing</td><td style = "text-align: right;">210.2</td><td style = "text-align: right;">252.19</td><td style = "text-align: right;">223.53</td><td style = "text-align: right;">253.9</td><td style = "text-align: right;">228.15</td><td style = "text-align: right;">254.87</td><td style = "text-align: right;">233.31</td><td style = "text-align: right;">255.88</td><td style = "text-align: right;">241.09</td><td style = "text-align: right;">256.26</td><td style = "text-align: right;">55.065</td><td style = "text-align: right;">-133.23</td><td style = "text-align: right;">76</td><td style = "text-align: left;">AMSR_E_L2A_BrightnessTemperatures_V12_201010041221_D.hdf</td><td style = "text-align: right;">1523</td><td style = "text-align: right;">75.51</td><td style = "text-align: right;">-144.35</td><td style = "text-align: left;">2014-06-22T12:00:00Z</td><td style = "text-align: left;">ASCAT_CERSAT_IFREMER</td><td style = "text-align: left;">ASCAT_20140622.nc</td><td style = "text-align: right;">-16.4492</td><td style = "text-align: right;">-16.4492</td><td style = "text-align: right;">15</td><td style = "text-align: right;">0</td><td style = "text-align: right;">0.3004</td><td style = "text-align: right;">75.531</td><td style = "text-align: right;">-144.152</td><td style = "text-align: left;">2010-10-05T12:00:00Z</td><td style = "text-align: left;">SMOS_UHAM</td><td style = "text-align: left;">SMOS_40deg_e12.5_20101005.nc</td><td style = "text-align: right;">227.876</td><td style = "text-align: right;">193.866</td><td style = "text-align: right;">6.46533</td><td style = "text-align: right;">6.02972</td><td style = "text-align: right;">80</td><td style = "text-align: right;">57</td><td style = "text-align: right;">20101004</td><td style = "text-align: right;">178.2</td><td style = "text-align: right;">253.0</td><td style = "text-align: right;">52.7</td><td style = "text-align: right;">3.2</td><td style = "text-align: right;">3.4</td><td style = "text-align: right;">25.9447</td><td style = "text-align: right;">6.28661</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">8</td><td style = "text-align: right;">79.26</td><td style = "text-align: right;">-168.82</td><td style = "text-align: left;">2010-10-04</td><td style = "text-align: left;">THINICE_UB</td><td style = "text-align: right;">1</td><td style = "text-align: right;">0.24</td><td style = "text-align: right;">79.5</td><td style = "text-align: right;">-168.75</td><td style = "text-align: left;">2010-10-04T12:00:00Z</td><td style = "text-align: left;">NWP_ECMWF</td><td style = "text-align: left;">2010q4.nc</td><td style = "text-align: right;">1017.2</td><td style = "text-align: right;">2.29</td><td style = "text-align: right;">4.22</td><td style = "text-align: right;">4.8</td><td style = "text-align: right;">263.5</td><td style = "text-align: right;">262.72</td><td style = "text-align: right;">262.14</td><td style = "text-align: right;">262.42</td><td style = "text-align: right;">266.7</td><td style = "text-align: right;">269.86</td><td style = "text-align: right;">271.46</td><td style = "text-align: right;">262.14</td><td style = "text-align: right;">5.8883</td><td style = "text-align: right;">0.00816</td><td style = "text-align: right;">0.049546</td><td style = "text-align: right;">9.72</td><td style = "text-align: right;">500.06</td><td style = "text-align: right;">0.012</td><td style = "text-align: right;">0.104</td><td style = "text-align: right;">0.0875</td><td style = "text-align: right;">0.7205</td><td style = "text-align: right;">0.9361</td><td style = "text-align: right;">79.229</td><td style = "text-align: right;">-168.946</td><td style = "text-align: left;">2010-10-04T14:03:32Z</td><td style = "text-align: left;">AMSR_NSIDCWENTZ_REV3</td><td style = "text-align: right;">225.56</td><td style = "text-align: right;">250.47</td><td style = "font-style: italic; text-align: right;">missing</td><td style = "font-style: italic; text-align: right;">missing</td><td style = "text-align: right;">228.65</td><td style = "text-align: right;">252.64</td><td style = "text-align: right;">239.52</td><td style = "text-align: right;">255.66</td><td style = "text-align: right;">243.96</td><td style = "text-align: right;">257.59</td><td style = "text-align: right;">247.93</td><td style = "text-align: right;">258.37</td><td style = "text-align: right;">246.91</td><td style = "text-align: right;">253.64</td><td style = "text-align: right;">55.075</td><td style = "text-align: right;">-122.37</td><td style = "text-align: right;">58</td><td style = "text-align: left;">AMSR_E_L2A_BrightnessTemperatures_V12_201010041359_D.hdf</td><td style = "text-align: right;">7412</td><td style = "text-align: right;">79.29</td><td style = "text-align: right;">-168.6</td><td style = "text-align: left;">2014-06-26T12:00:00Z</td><td style = "text-align: left;">ASCAT_CERSAT_IFREMER</td><td style = "text-align: left;">ASCAT_20140626.nc</td><td style = "text-align: right;">-16.5426</td><td style = "text-align: right;">-16.5426</td><td style = "text-align: right;">9</td><td style = "text-align: right;">0</td><td style = "text-align: right;">0.06426</td><td style = "text-align: right;">79.317</td><td style = "text-align: right;">-168.808</td><td style = "text-align: left;">2010-10-05T12:00:00Z</td><td style = "text-align: left;">SMOS_UHAM</td><td style = "text-align: left;">SMOS_40deg_e12.5_20101005.nc</td><td style = "text-align: right;">234.001</td><td style = "text-align: right;">207.888</td><td style = "text-align: right;">4.98424</td><td style = "text-align: right;">6.17568</td><td style = "text-align: right;">135</td><td style = "text-align: right;">51</td><td style = "text-align: right;">20101004</td><td style = "text-align: right;">185.4</td><td style = "text-align: right;">244.3</td><td style = "text-align: right;">53.0</td><td style = "text-align: right;">2.4</td><td style = "text-align: right;">3.2</td><td style = "text-align: right;">30.5382</td><td style = "text-align: right;">9.48508</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">9</td><td style = "text-align: right;">78.777</td><td style = "text-align: right;">129.225</td><td style = "text-align: left;">2010-10-04</td><td style = "text-align: left;">THINICE_UB</td><td style = "text-align: right;">1</td><td style = "text-align: right;">0.07</td><td style = "text-align: right;">78.75</td><td style = "text-align: right;">129.0</td><td style = "text-align: left;">2010-10-04T12:00:00Z</td><td style = "text-align: left;">NWP_ECMWF</td><td style = "text-align: left;">2010q4.nc</td><td style = "text-align: right;">993.3</td><td style = "text-align: right;">-4.83</td><td style = "text-align: right;">3.08</td><td style = "text-align: right;">5.73</td><td style = "text-align: right;">271.97</td><td style = "text-align: right;">270.98</td><td style = "text-align: right;">270.73</td><td style = "text-align: right;">270.93</td><td style = "text-align: right;">270.52</td><td style = "text-align: right;">270.97</td><td style = "text-align: right;">271.46</td><td style = "text-align: right;">270.61</td><td style = "text-align: right;">10.3122</td><td style = "text-align: right;">0.01146</td><td style = "text-align: right;">0.076113</td><td style = "text-align: right;">14.3</td><td style = "text-align: right;">578.09</td><td style = "text-align: right;">0.032</td><td style = "text-align: right;">0.676</td><td style = "text-align: right;">0.4632</td><td style = "text-align: right;">0.4714</td><td style = "text-align: right;">0.5831</td><td style = "text-align: right;">78.757</td><td style = "text-align: right;">129.338</td><td style = "text-align: left;">2010-10-04T17:22:19Z</td><td style = "text-align: left;">AMSR_NSIDCWENTZ_REV3</td><td style = "text-align: right;">130.79</td><td style = "text-align: right;">207.23</td><td style = "font-style: italic; text-align: right;">missing</td><td style = "font-style: italic; text-align: right;">missing</td><td style = "text-align: right;">142.92</td><td style = "text-align: right;">213.64</td><td style = "text-align: right;">168.7</td><td style = "text-align: right;">226.17</td><td style = "text-align: right;">190.42</td><td style = "text-align: right;">235.52</td><td style = "text-align: right;">199.9</td><td style = "text-align: right;">240.12</td><td style = "text-align: right;">236.81</td><td style = "text-align: right;">254.35</td><td style = "text-align: right;">55.06</td><td style = "text-align: right;">-107.77</td><td style = "text-align: right;">16</td><td style = "text-align: left;">AMSR_E_L2A_BrightnessTemperatures_V12_201010041717_D.hdf</td><td style = "text-align: right;">19339</td><td style = "text-align: right;">78.73</td><td style = "text-align: right;">129.43</td><td style = "text-align: left;">2014-06-26T12:00:00Z</td><td style = "text-align: left;">ASCAT_CERSAT_IFREMER</td><td style = "text-align: left;">ASCAT_20140626.nc</td><td style = "text-align: right;">-19.1908</td><td style = "text-align: right;">-19.1908</td><td style = "text-align: right;">6</td><td style = "text-align: right;">0</td><td style = "text-align: right;">0.13333</td><td style = "text-align: right;">78.768</td><td style = "text-align: right;">129.33</td><td style = "text-align: left;">2010-10-05T12:00:00Z</td><td style = "text-align: left;">SMOS_UHAM</td><td style = "text-align: left;">SMOS_40deg_e12.5_20101005.nc</td><td style = "text-align: right;">207.249</td><td style = "text-align: right;">175.371</td><td style = "text-align: right;">7.98493</td><td style = "text-align: right;">6.81444</td><td style = "text-align: right;">126</td><td style = "text-align: right;">56</td><td style = "text-align: right;">20101004</td><td style = "text-align: right;">122.6</td><td style = "text-align: right;">192.3</td><td style = "text-align: right;">53.5</td><td style = "text-align: right;">5.1</td><td style = "text-align: right;">4.5</td><td style = "text-align: right;">8.23944</td><td style = "text-align: right;">1.01562</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">10</td><td style = "text-align: right;">75.558</td><td style = "text-align: right;">-144.337</td><td style = "text-align: left;">2010-10-05</td><td style = "text-align: left;">THINICE_UB</td><td style = "text-align: right;">1</td><td style = "text-align: right;">0.18</td><td style = "text-align: right;">75.75</td><td style = "text-align: right;">-144.0</td><td style = "text-align: left;">2010-10-05T12:00:00Z</td><td style = "text-align: left;">NWP_ECMWF</td><td style = "text-align: left;">2010q4.nc</td><td style = "text-align: right;">1018.5</td><td style = "text-align: right;">-2.19</td><td style = "text-align: right;">-0.89</td><td style = "text-align: right;">2.37</td><td style = "text-align: right;">261.91</td><td style = "text-align: right;">262.04</td><td style = "text-align: right;">260.59</td><td style = "text-align: right;">262.67</td><td style = "text-align: right;">267.5</td><td style = "text-align: right;">270.22</td><td style = "text-align: right;">271.46</td><td style = "text-align: right;">260.07</td><td style = "text-align: right;">3.5221</td><td style = "text-align: right;">0.00425</td><td style = "text-align: right;">0.021439</td><td style = "text-align: right;">6.32</td><td style = "text-align: right;">462.91</td><td style = "text-align: right;">-0.077</td><td style = "text-align: right;">0.121</td><td style = "text-align: right;">0.0975</td><td style = "text-align: right;">0.6449</td><td style = "text-align: right;">0.829</td><td style = "text-align: right;">75.597</td><td style = "text-align: right;">-144.349</td><td style = "text-align: left;">2010-10-05T11:30:55Z</td><td style = "text-align: left;">AMSR_NSIDCWENTZ_REV3</td><td style = "text-align: right;">202.81</td><td style = "text-align: right;">252.59</td><td style = "font-style: italic; text-align: right;">missing</td><td style = "font-style: italic; text-align: right;">missing</td><td style = "text-align: right;">214.93</td><td style = "text-align: right;">252.94</td><td style = "text-align: right;">225.73</td><td style = "text-align: right;">254.48</td><td style = "text-align: right;">230.56</td><td style = "text-align: right;">255.86</td><td style = "text-align: right;">235.73</td><td style = "text-align: right;">256.7</td><td style = "text-align: right;">241.75</td><td style = "text-align: right;">257.36</td><td style = "text-align: right;">55.045</td><td style = "text-align: right;">-109.5</td><td style = "text-align: right;">17</td><td style = "text-align: left;">AMSR_E_L2A_BrightnessTemperatures_V12_201010051125_D.hdf</td><td style = "text-align: right;">-1745</td><td style = "text-align: right;">75.51</td><td style = "text-align: right;">-144.35</td><td style = "text-align: left;">2014-06-23T12:00:00Z</td><td style = "text-align: left;">ASCAT_CERSAT_IFREMER</td><td style = "text-align: left;">ASCAT_20140623.nc</td><td style = "text-align: right;">-16.8355</td><td style = "text-align: right;">-16.8355</td><td style = "text-align: right;">15</td><td style = "text-align: right;">0</td><td style = "text-align: right;">0.12851</td><td style = "text-align: right;">75.531</td><td style = "text-align: right;">-144.152</td><td style = "text-align: left;">2010-10-05T12:00:00Z</td><td style = "text-align: left;">SMOS_UHAM</td><td style = "text-align: left;">SMOS_40deg_e12.5_20101005.nc</td><td style = "text-align: right;">227.876</td><td style = "text-align: right;">193.866</td><td style = "text-align: right;">6.46533</td><td style = "text-align: right;">6.02972</td><td style = "text-align: right;">80</td><td style = "text-align: right;">57</td><td style = "text-align: right;">20101005</td><td style = "text-align: right;">179.9</td><td style = "text-align: right;">239.0</td><td style = "text-align: right;">51.8</td><td style = "text-align: right;">1.3</td><td style = "text-align: right;">4.2</td><td style = "text-align: right;">27.7638</td><td style = "text-align: right;">7.40889</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">11</td><td style = "text-align: right;">78.899</td><td style = "text-align: right;">-170.305</td><td style = "text-align: left;">2010-10-06</td><td style = "text-align: left;">THINICE_UB</td><td style = "text-align: right;">1</td><td style = "text-align: right;">0.3</td><td style = "text-align: right;">78.75</td><td style = "text-align: right;">-170.25</td><td style = "text-align: left;">2010-10-06T12:00:00Z</td><td style = "text-align: left;">NWP_ECMWF</td><td style = "text-align: left;">2010q4.nc</td><td style = "text-align: right;">1012.3</td><td style = "text-align: right;">5.87</td><td style = "text-align: right;">-2.59</td><td style = "text-align: right;">6.42</td><td style = "text-align: right;">268.22</td><td style = "text-align: right;">267.84</td><td style = "text-align: right;">267.61</td><td style = "text-align: right;">267.18</td><td style = "text-align: right;">267.52</td><td style = "text-align: right;">269.82</td><td style = "text-align: right;">271.46</td><td style = "text-align: right;">267.32</td><td style = "text-align: right;">7.1443</td><td style = "text-align: right;">0.04773</td><td style = "text-align: right;">0.105041</td><td style = "text-align: right;">4.46</td><td style = "text-align: right;">568.68</td><td style = "text-align: right;">0.019</td><td style = "text-align: right;">0.797</td><td style = "text-align: right;">0.6413</td><td style = "text-align: right;">0.7466</td><td style = "text-align: right;">0.973</td><td style = "text-align: right;">78.923</td><td style = "text-align: right;">-170.141</td><td style = "text-align: left;">2010-10-06T13:51:30Z</td><td style = "text-align: left;">AMSR_NSIDCWENTZ_REV3</td><td style = "text-align: right;">225.22</td><td style = "text-align: right;">251.43</td><td style = "font-style: italic; text-align: right;">missing</td><td style = "font-style: italic; text-align: right;">missing</td><td style = "text-align: right;">227.56</td><td style = "text-align: right;">252.99</td><td style = "text-align: right;">232.43</td><td style = "text-align: right;">256.68</td><td style = "text-align: right;">238.93</td><td style = "text-align: right;">258.92</td><td style = "text-align: right;">243.87</td><td style = "text-align: right;">259.85</td><td style = "text-align: right;">245.9</td><td style = "text-align: right;">256.51</td><td style = "text-align: right;">55.065</td><td style = "text-align: right;">-119.57</td><td style = "text-align: right;">47</td><td style = "text-align: left;">AMSR_E_L2A_BrightnessTemperatures_V12_201010061347_D.hdf</td><td style = "text-align: right;">6690</td><td style = "text-align: right;">78.93</td><td style = "text-align: right;">-170.26</td><td style = "text-align: left;">2014-06-29T12:00:00Z</td><td style = "text-align: left;">ASCAT_CERSAT_IFREMER</td><td style = "text-align: left;">ASCAT_20140629.nc</td><td style = "text-align: right;">-15.1768</td><td style = "text-align: right;">-15.1768</td><td style = "text-align: right;">3</td><td style = "text-align: right;">0</td><td style = "text-align: right;">0.10442</td><td style = "text-align: right;">78.915</td><td style = "text-align: right;">-170.395</td><td style = "text-align: left;">2010-10-06T12:00:00Z</td><td style = "text-align: left;">SMOS_UHAM</td><td style = "text-align: left;">SMOS_40deg_e12.5_20101006.nc</td><td style = "text-align: right;">236.571</td><td style = "text-align: right;">215.353</td><td style = "text-align: right;">4.97496</td><td style = "text-align: right;">5.44048</td><td style = "text-align: right;">177</td><td style = "text-align: right;">38</td><td style = "text-align: right;">20101006</td><td style = "text-align: right;">202.1</td><td style = "text-align: right;">245.1</td><td style = "text-align: right;">53.2</td><td style = "text-align: right;">4.6</td><td style = "text-align: right;">3.1</td><td style = "text-align: right;">46.6126</td><td style = "text-align: right;">38.5753</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">12</td><td style = "text-align: right;">80.591</td><td style = "text-align: right;">130.632</td><td style = "text-align: left;">2010-10-06</td><td style = "text-align: left;">THINICE_UB</td><td style = "text-align: right;">1</td><td style = "text-align: right;">0.12</td><td style = "text-align: right;">80.25</td><td style = "text-align: right;">130.5</td><td style = "text-align: left;">2010-10-06T12:00:00Z</td><td style = "text-align: left;">NWP_ECMWF</td><td style = "text-align: left;">2010q4.nc</td><td style = "text-align: right;">1010.2</td><td style = "text-align: right;">1.04</td><td style = "text-align: right;">-0.1</td><td style = "text-align: right;">1.05</td><td style = "text-align: right;">268.79</td><td style = "text-align: right;">268.9</td><td style = "text-align: right;">268.12</td><td style = "text-align: right;">269.19</td><td style = "text-align: right;">270.36</td><td style = "text-align: right;">270.97</td><td style = "text-align: right;">271.46</td><td style = "text-align: right;">267.59</td><td style = "text-align: right;">5.475</td><td style = "text-align: right;">0.0112</td><td style = "text-align: right;">0.024414</td><td style = "text-align: right;">16.53</td><td style = "text-align: right;">561.49</td><td style = "text-align: right;">-0.035</td><td style = "text-align: right;">0.121</td><td style = "text-align: right;">0.0762</td><td style = "text-align: right;">0.5675</td><td style = "text-align: right;">0.7193</td><td style = "text-align: right;">80.625</td><td style = "text-align: right;">130.571</td><td style = "text-align: left;">2010-10-06T18:47:05Z</td><td style = "text-align: left;">AMSR_NSIDCWENTZ_REV3</td><td style = "text-align: right;">167.47</td><td style = "text-align: right;">232.95</td><td style = "font-style: italic; text-align: right;">missing</td><td style = "font-style: italic; text-align: right;">missing</td><td style = "text-align: right;">178.86</td><td style = "text-align: right;">238.99</td><td style = "text-align: right;">201.35</td><td style = "text-align: right;">247.82</td><td style = "text-align: right;">212.73</td><td style = "text-align: right;">251.83</td><td style = "text-align: right;">223.94</td><td style = "text-align: right;">254.84</td><td style = "text-align: right;">238.92</td><td style = "text-align: right;">254.21</td><td style = "text-align: right;">55.105</td><td style = "text-align: right;">-122.23</td><td style = "text-align: right;">74</td><td style = "text-align: left;">AMSR_E_L2A_BrightnessTemperatures_V12_201010061844_D.hdf</td><td style = "text-align: right;">24425</td><td style = "text-align: right;">80.58</td><td style = "text-align: right;">130.44</td><td style = "text-align: left;">2014-06-29T12:00:00Z</td><td style = "text-align: left;">ASCAT_CERSAT_IFREMER</td><td style = "text-align: left;">ASCAT_20140629.nc</td><td style = "text-align: right;">-16.4492</td><td style = "text-align: right;">-16.4492</td><td style = "text-align: right;">6</td><td style = "text-align: right;">0</td><td style = "text-align: right;">0.1012</td><td style = "text-align: right;">80.624</td><td style = "text-align: right;">130.638</td><td style = "text-align: left;">2010-10-06T12:00:00Z</td><td style = "text-align: left;">SMOS_UHAM</td><td style = "text-align: left;">SMOS_40deg_e12.5_20101006.nc</td><td style = "text-align: right;">199.244</td><td style = "text-align: right;">165.614</td><td style = "text-align: right;">9.73051</td><td style = "text-align: right;">8.17281</td><td style = "text-align: right;">65</td><td style = "text-align: right;">69</td><td style = "text-align: right;">20101006</td><td style = "text-align: right;">154.2</td><td style = "text-align: right;">222.6</td><td style = "text-align: right;">52.3</td><td style = "text-align: right;">2.5</td><td style = "text-align: right;">1.6</td><td style = "text-align: right;">17.1362</td><td style = "text-align: right;">2.71314</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">13</td><td style = "text-align: right;">75.661</td><td style = "text-align: right;">-148.733</td><td style = "text-align: left;">2010-10-06</td><td style = "text-align: left;">THINICE_UB</td><td style = "text-align: right;">1</td><td style = "text-align: right;">0.18</td><td style = "text-align: right;">75.75</td><td style = "text-align: right;">-148.5</td><td style = "text-align: left;">2010-10-06T12:00:00Z</td><td style = "text-align: left;">NWP_ECMWF</td><td style = "text-align: left;">2010q4.nc</td><td style = "text-align: right;">1013.4</td><td style = "text-align: right;">3.32</td><td style = "text-align: right;">2.77</td><td style = "text-align: right;">4.33</td><td style = "text-align: right;">262.92</td><td style = "text-align: right;">262.26</td><td style = "text-align: right;">261.38</td><td style = "text-align: right;">262.56</td><td style = "text-align: right;">266.86</td><td style = "text-align: right;">269.84</td><td style = "text-align: right;">271.46</td><td style = "text-align: right;">261.1</td><td style = "text-align: right;">5.2206</td><td style = "text-align: right;">0.0059</td><td style = "text-align: right;">0.033646</td><td style = "text-align: right;">7.02</td><td style = "text-align: right;">467.34</td><td style = "text-align: right;">-0.035</td><td style = "text-align: right;">-0.0</td><td style = "text-align: right;">-0.0</td><td style = "text-align: right;">0.6917</td><td style = "text-align: right;">0.8952</td><td style = "text-align: right;">75.66</td><td style = "text-align: right;">-148.71</td><td style = "text-align: left;">2010-10-06T12:13:30Z</td><td style = "text-align: left;">AMSR_NSIDCWENTZ_REV3</td><td style = "text-align: right;">189.35</td><td style = "text-align: right;">248.05</td><td style = "font-style: italic; text-align: right;">missing</td><td style = "font-style: italic; text-align: right;">missing</td><td style = "text-align: right;">198.15</td><td style = "text-align: right;">246.84</td><td style = "text-align: right;">214.94</td><td style = "text-align: right;">248.96</td><td style = "text-align: right;">222.62</td><td style = "text-align: right;">251.27</td><td style = "text-align: right;">228.63</td><td style = "text-align: right;">252.74</td><td style = "text-align: right;">241.5</td><td style = "text-align: right;">254.34</td><td style = "text-align: right;">55.045</td><td style = "text-align: right;">-123.48</td><td style = "text-align: right;">49</td><td style = "text-align: left;">AMSR_E_L2A_BrightnessTemperatures_V12_201010061208_D.hdf</td><td style = "text-align: right;">810</td><td style = "text-align: right;">75.64</td><td style = "text-align: right;">-148.64</td><td style = "text-align: left;">2014-06-29T12:00:00Z</td><td style = "text-align: left;">ASCAT_CERSAT_IFREMER</td><td style = "text-align: left;">ASCAT_20140629.nc</td><td style = "text-align: right;">-14.3053</td><td style = "text-align: right;">-14.3053</td><td style = "text-align: right;">12</td><td style = "text-align: right;">0</td><td style = "text-align: right;">0.11406</td><td style = "text-align: right;">75.622</td><td style = "text-align: right;">-148.729</td><td style = "text-align: left;">2010-10-06T12:00:00Z</td><td style = "text-align: left;">SMOS_UHAM</td><td style = "text-align: left;">SMOS_40deg_e12.5_20101006.nc</td><td style = "text-align: right;">219.965</td><td style = "text-align: right;">188.397</td><td style = "text-align: right;">6.20162</td><td style = "text-align: right;">7.47495</td><td style = "text-align: right;">96</td><td style = "text-align: right;">51</td><td style = "text-align: right;">20101006</td><td style = "text-align: right;">166.9</td><td style = "text-align: right;">251.6</td><td style = "text-align: right;">52.9</td><td style = "text-align: right;">4.6</td><td style = "text-align: right;">5.6</td><td style = "text-align: right;">21.7052</td><td style = "text-align: right;">4.24329</td></tr><tr><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td><td style = "text-align: right;">&vellip;</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">358</td><td style = "text-align: right;">77.685</td><td style = "text-align: right;">79.739</td><td style = "text-align: left;">2010-12-11</td><td style = "text-align: left;">THINICE_UB</td><td style = "text-align: right;">1</td><td style = "text-align: right;">0.51</td><td style = "text-align: right;">78.0</td><td style = "text-align: right;">79.5</td><td style = "text-align: left;">2010-12-11T12:00:00Z</td><td style = "text-align: left;">NWP_ECMWF</td><td style = "text-align: left;">2010q4.nc</td><td style = "text-align: right;">1031.1</td><td style = "text-align: right;">-0.32</td><td style = "text-align: right;">7.09</td><td style = "text-align: right;">7.1</td><td style = "text-align: right;">251.17</td><td style = "text-align: right;">252.12</td><td style = "text-align: right;">251.1</td><td style = "text-align: right;">252.54</td><td style = "text-align: right;">256.88</td><td style = "text-align: right;">264.87</td><td style = "text-align: right;">271.46</td><td style = "text-align: right;">248.42</td><td style = "text-align: right;">2.7854</td><td style = "text-align: right;">0.00069</td><td style = "text-align: right;">0.0358</td><td style = "text-align: right;">0.0</td><td style = "text-align: right;">414.61</td><td style = "text-align: right;">-0.107</td><td style = "text-align: right;">0.221</td><td style = "text-align: right;">0.2152</td><td style = "text-align: right;">0.7212</td><td style = "text-align: right;">0.937</td><td style = "text-align: right;">77.675</td><td style = "text-align: right;">79.815</td><td style = "text-align: left;">2010-12-11T06:57:06Z</td><td style = "text-align: left;">AMSR_NSIDCWENTZ_REV3</td><td style = "text-align: right;">228.61</td><td style = "text-align: right;">250.47</td><td style = "font-style: italic; text-align: right;">missing</td><td style = "font-style: italic; text-align: right;">missing</td><td style = "text-align: right;">232.19</td><td style = "text-align: right;">250.51</td><td style = "text-align: right;">237.06</td><td style = "text-align: right;">250.57</td><td style = "text-align: right;">238.87</td><td style = "text-align: right;">251.12</td><td style = "text-align: right;">239.24</td><td style = "text-align: right;">249.43</td><td style = "text-align: right;">232.25</td><td style = "text-align: right;">240.84</td><td style = "text-align: right;">55.22</td><td style = "text-align: right;">9.29</td><td style = "text-align: right;">71</td><td style = "text-align: left;">AMSR_E_L2A_BrightnessTemperatures_V12_201012110610_A.hdf</td><td style = "text-align: right;">-18174</td><td style = "text-align: right;">77.61</td><td style = "text-align: right;">79.79</td><td style = "text-align: left;">2014-09-02T12:00:00Z</td><td style = "text-align: left;">ASCAT_CERSAT_IFREMER</td><td style = "text-align: left;">ASCAT_20140902.nc</td><td style = "text-align: right;">-16.0945</td><td style = "text-align: right;">missing</td><td style = "text-align: right;">12</td><td style = "text-align: right;">0</td><td style = "text-align: right;">0.24096</td><td style = "text-align: right;">77.637</td><td style = "text-align: right;">79.811</td><td style = "text-align: left;">2010-12-11T12:00:00Z</td><td style = "text-align: left;">SMOS_UHAM</td><td style = "text-align: left;">SMOS_40deg_e12.5_20101211.nc</td><td style = "text-align: right;">244.186</td><td style = "text-align: right;">229.14</td><td style = "text-align: right;">5.581</td><td style = "text-align: right;">5.67327</td><td style = "text-align: right;">154</td><td style = "text-align: right;">38</td><td style = "text-align: right;">20101211</td><td style = "text-align: right;">214.7</td><td style = "text-align: right;">249.7</td><td style = "text-align: right;">53.2</td><td style = "text-align: right;">3.6</td><td style = "text-align: right;">2.3</td><td style = "text-align: right;">74.1313</td><td style = "text-align: right;">442.164</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">359</td><td style = "text-align: right;">79.049</td><td style = "text-align: right;">73.44</td><td style = "text-align: left;">2010-12-11</td><td style = "text-align: left;">THINICE_UB</td><td style = "text-align: right;">1</td><td style = "text-align: right;">0.51</td><td style = "text-align: right;">78.75</td><td style = "text-align: right;">73.5</td><td style = "text-align: left;">2010-12-11T12:00:00Z</td><td style = "text-align: left;">NWP_ECMWF</td><td style = "text-align: left;">2010q4.nc</td><td style = "text-align: right;">1028.0</td><td style = "text-align: right;">-2.16</td><td style = "text-align: right;">6.99</td><td style = "text-align: right;">7.32</td><td style = "text-align: right;">254.2</td><td style = "text-align: right;">255.09</td><td style = "text-align: right;">253.87</td><td style = "text-align: right;">254.49</td><td style = "text-align: right;">258.23</td><td style = "text-align: right;">265.5</td><td style = "text-align: right;">271.46</td><td style = "text-align: right;">251.6</td><td style = "text-align: right;">2.9868</td><td style = "text-align: right;">0.00217</td><td style = "text-align: right;">0.070779</td><td style = "text-align: right;">0.0</td><td style = "text-align: right;">445.14</td><td style = "text-align: right;">-0.115</td><td style = "text-align: right;">0.295</td><td style = "text-align: right;">0.2864</td><td style = "text-align: right;">0.7142</td><td style = "text-align: right;">0.9271</td><td style = "text-align: right;">79.048</td><td style = "text-align: right;">73.544</td><td style = "text-align: left;">2010-12-11T06:57:30Z</td><td style = "text-align: left;">AMSR_NSIDCWENTZ_REV3</td><td style = "text-align: right;">228.98</td><td style = "text-align: right;">252.03</td><td style = "font-style: italic; text-align: right;">missing</td><td style = "font-style: italic; text-align: right;">missing</td><td style = "text-align: right;">232.13</td><td style = "text-align: right;">251.63</td><td style = "text-align: right;">236.3</td><td style = "text-align: right;">252.04</td><td style = "text-align: right;">237.89</td><td style = "text-align: right;">252.47</td><td style = "text-align: right;">238.29</td><td style = "text-align: right;">250.88</td><td style = "text-align: right;">231.37</td><td style = "text-align: right;">240.76</td><td style = "text-align: right;">55.225</td><td style = "text-align: right;">-1.59</td><td style = "text-align: right;">79</td><td style = "text-align: left;">AMSR_E_L2A_BrightnessTemperatures_V12_201012110610_A.hdf</td><td style = "text-align: right;">-18150</td><td style = "text-align: right;">79.05</td><td style = "text-align: right;">73.58</td><td style = "text-align: left;">2014-09-02T12:00:00Z</td><td style = "text-align: left;">ASCAT_CERSAT_IFREMER</td><td style = "text-align: left;">ASCAT_20140902.nc</td><td style = "text-align: right;">-14.4196</td><td style = "text-align: right;">missing</td><td style = "text-align: right;">3</td><td style = "text-align: right;">0</td><td style = "text-align: right;">0.4</td><td style = "text-align: right;">79.075</td><td style = "text-align: right;">73.61</td><td style = "text-align: left;">2010-12-11T12:00:00Z</td><td style = "text-align: left;">SMOS_UHAM</td><td style = "text-align: left;">SMOS_40deg_e12.5_20101211.nc</td><td style = "text-align: right;">247.752</td><td style = "text-align: right;">236.918</td><td style = "text-align: right;">5.23794</td><td style = "text-align: right;">7.02031</td><td style = "text-align: right;">156</td><td style = "text-align: right;">47</td><td style = "text-align: right;">20101211</td><td style = "text-align: right;">223.1</td><td style = "text-align: right;">250.3</td><td style = "text-align: right;">52.6</td><td style = "text-align: right;">3.0</td><td style = "text-align: right;">3.5</td><td style = "text-align: right;">140.767</td><td style = "text-align: right;">18395.0</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">360</td><td style = "text-align: right;">79.793</td><td style = "text-align: right;">64.21</td><td style = "text-align: left;">2010-12-11</td><td style = "text-align: left;">THINICE_UB</td><td style = "text-align: right;">1</td><td style = "text-align: right;">0.51</td><td style = "text-align: right;">79.5</td><td style = "text-align: right;">64.5</td><td style = "text-align: left;">2010-12-11T12:00:00Z</td><td style = "text-align: left;">NWP_ECMWF</td><td style = "text-align: left;">2010q4.nc</td><td style = "text-align: right;">1024.6</td><td style = "text-align: right;">-5.09</td><td style = "text-align: right;">3.5</td><td style = "text-align: right;">6.18</td><td style = "text-align: right;">255.82</td><td style = "text-align: right;">255.5</td><td style = "text-align: right;">254.75</td><td style = "text-align: right;">255.24</td><td style = "text-align: right;">259.51</td><td style = "text-align: right;">266.06</td><td style = "text-align: right;">271.46</td><td style = "text-align: right;">253.85</td><td style = "text-align: right;">2.4568</td><td style = "text-align: right;">0.0013</td><td style = "text-align: right;">0.051289</td><td style = "text-align: right;">0.0</td><td style = "text-align: right;">422.21</td><td style = "text-align: right;">-0.012</td><td style = "text-align: right;">0.104</td><td style = "text-align: right;">0.1013</td><td style = "text-align: right;">0.7304</td><td style = "text-align: right;">0.9501</td><td style = "text-align: right;">79.788</td><td style = "text-align: right;">64.445</td><td style = "text-align: left;">2010-12-11T08:37:01Z</td><td style = "text-align: left;">AMSR_NSIDCWENTZ_REV3</td><td style = "text-align: right;">231.93</td><td style = "text-align: right;">252.7</td><td style = "font-style: italic; text-align: right;">missing</td><td style = "font-style: italic; text-align: right;">missing</td><td style = "text-align: right;">232.93</td><td style = "text-align: right;">252.39</td><td style = "text-align: right;">235.07</td><td style = "text-align: right;">252.69</td><td style = "text-align: right;">236.67</td><td style = "text-align: right;">252.97</td><td style = "text-align: right;">237.55</td><td style = "text-align: right;">250.87</td><td style = "text-align: right;">231.09</td><td style = "text-align: right;">239.95</td><td style = "text-align: right;">55.16</td><td style = "text-align: right;">43.8</td><td style = "text-align: right;">31</td><td style = "text-align: left;">AMSR_E_L2A_BrightnessTemperatures_V12_201012110749_A.hdf</td><td style = "text-align: right;">-12179</td><td style = "text-align: right;">79.8</td><td style = "text-align: right;">64.45</td><td style = "text-align: left;">2014-09-02T12:00:00Z</td><td style = "text-align: left;">ASCAT_CERSAT_IFREMER</td><td style = "text-align: left;">ASCAT_20140902.nc</td><td style = "text-align: right;">-13.2138</td><td style = "text-align: right;">-13.2138</td><td style = "text-align: right;">6</td><td style = "text-align: right;">0</td><td style = "text-align: right;">0.08193</td><td style = "text-align: right;">79.749</td><td style = "text-align: right;">64.415</td><td style = "text-align: left;">2010-12-11T12:00:00Z</td><td style = "text-align: left;">SMOS_UHAM</td><td style = "text-align: left;">SMOS_40deg_e12.5_20101211.nc</td><td style = "text-align: right;">248.782</td><td style = "text-align: right;">236.466</td><td style = "text-align: right;">5.26423</td><td style = "text-align: right;">4.68716</td><td style = "text-align: right;">170</td><td style = "text-align: right;">40</td><td style = "text-align: right;">20101211</td><td style = "text-align: right;">223.4</td><td style = "text-align: right;">250.5</td><td style = "text-align: right;">53.0</td><td style = "text-align: right;">4.5</td><td style = "text-align: right;">3.4</td><td style = "text-align: right;">141.383</td><td style = "text-align: right;">18479.0</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">361</td><td style = "text-align: right;">75.058</td><td style = "text-align: right;">-69.258</td><td style = "text-align: left;">2010-12-11</td><td style = "text-align: left;">THINICE_UB</td><td style = "text-align: right;">1</td><td style = "text-align: right;">0.51</td><td style = "text-align: right;">75.0</td><td style = "text-align: right;">-69.0</td><td style = "text-align: left;">2010-12-11T12:00:00Z</td><td style = "text-align: left;">NWP_ECMWF</td><td style = "text-align: left;">2010q4.nc</td><td style = "text-align: right;">997.3</td><td style = "text-align: right;">-2.61</td><td style = "text-align: right;">1.35</td><td style = "text-align: right;">2.93</td><td style = "text-align: right;">260.09</td><td style = "text-align: right;">259.43</td><td style = "text-align: right;">258.44</td><td style = "text-align: right;">259.09</td><td style = "text-align: right;">261.06</td><td style = "text-align: right;">266.97</td><td style = "text-align: right;">271.46</td><td style = "text-align: right;">258.63</td><td style = "text-align: right;">4.1328</td><td style = "text-align: right;">0.00425</td><td style = "text-align: right;">0.032723</td><td style = "text-align: right;">0.0</td><td style = "text-align: right;">490.39</td><td style = "text-align: right;">0.012</td><td style = "text-align: right;">0.438</td><td style = "text-align: right;">0.3908</td><td style = "text-align: right;">0.7045</td><td style = "text-align: right;">0.9134</td><td style = "text-align: right;">75.046</td><td style = "text-align: right;">-69.178</td><td style = "text-align: left;">2010-12-11T11:58:05Z</td><td style = "text-align: left;">AMSR_NSIDCWENTZ_REV3</td><td style = "text-align: right;">216.25</td><td style = "text-align: right;">248.07</td><td style = "font-style: italic; text-align: right;">missing</td><td style = "font-style: italic; text-align: right;">missing</td><td style = "text-align: right;">214.27</td><td style = "text-align: right;">247.82</td><td style = "text-align: right;">216.98</td><td style = "text-align: right;">247.43</td><td style = "text-align: right;">221.53</td><td style = "text-align: right;">247.59</td><td style = "text-align: right;">222.49</td><td style = "text-align: right;">244.34</td><td style = "text-align: right;">223.84</td><td style = "text-align: right;">236.72</td><td style = "text-align: right;">55.205</td><td style = "text-align: right;">-156.33</td><td style = "text-align: right;">221</td><td style = "text-align: left;">AMSR_E_L2A_BrightnessTemperatures_V12_201012111156_D.hdf</td><td style = "text-align: right;">-115</td><td style = "text-align: right;">75.07</td><td style = "text-align: right;">-69.29</td><td style = "text-align: left;">2014-09-02T12:00:00Z</td><td style = "text-align: left;">ASCAT_CERSAT_IFREMER</td><td style = "text-align: left;">ASCAT_20140902.nc</td><td style = "text-align: right;">-18.5462</td><td style = "text-align: right;">missing</td><td style = "text-align: right;">15</td><td style = "text-align: right;">0</td><td style = "text-align: right;">0.4</td><td style = "text-align: right;">75.041</td><td style = "text-align: right;">-69.117</td><td style = "text-align: left;">2010-12-11T12:00:00Z</td><td style = "text-align: left;">SMOS_UHAM</td><td style = "text-align: left;">SMOS_40deg_e12.5_20101211.nc</td><td style = "text-align: right;">241.046</td><td style = "text-align: right;">220.862</td><td style = "text-align: right;">6.86945</td><td style = "text-align: right;">8.92203</td><td style = "text-align: right;">69</td><td style = "text-align: right;">51</td><td style = "text-align: right;">20101211</td><td style = "text-align: right;">211.2</td><td style = "text-align: right;">243.5</td><td style = "text-align: right;">51.8</td><td style = "text-align: right;">1.0</td><td style = "text-align: right;">1.3</td><td style = "text-align: right;">72.808</td><td style = "text-align: right;">392.919</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">362</td><td style = "text-align: right;">73.888</td><td style = "text-align: right;">-70.579</td><td style = "text-align: left;">2010-12-11</td><td style = "text-align: left;">THINICE_UB</td><td style = "text-align: right;">1</td><td style = "text-align: right;">0.33</td><td style = "text-align: right;">74.25</td><td style = "text-align: right;">-70.5</td><td style = "text-align: left;">2010-12-11T12:00:00Z</td><td style = "text-align: left;">NWP_ECMWF</td><td style = "text-align: left;">2010q4.nc</td><td style = "text-align: right;">996.7</td><td style = "text-align: right;">-1.44</td><td style = "text-align: right;">2.71</td><td style = "text-align: right;">3.07</td><td style = "text-align: right;">256.83</td><td style = "text-align: right;">256.1</td><td style = "text-align: right;">255.48</td><td style = "text-align: right;">257.23</td><td style = "text-align: right;">260.48</td><td style = "text-align: right;">266.71</td><td style = "text-align: right;">271.46</td><td style = "text-align: right;">255.07</td><td style = "text-align: right;">3.3405</td><td style = "text-align: right;">0.00113</td><td style = "text-align: right;">0.022362</td><td style = "text-align: right;">0.0</td><td style = "text-align: right;">452.75</td><td style = "text-align: right;">-0.009</td><td style = "text-align: right;">0.225</td><td style = "text-align: right;">0.2008</td><td style = "text-align: right;">0.7227</td><td style = "text-align: right;">0.9392</td><td style = "text-align: right;">73.89</td><td style = "text-align: right;">-70.463</td><td style = "text-align: left;">2010-12-11T13:35:22Z</td><td style = "text-align: left;">AMSR_NSIDCWENTZ_REV3</td><td style = "text-align: right;">228.28</td><td style = "text-align: right;">255.71</td><td style = "font-style: italic; text-align: right;">missing</td><td style = "font-style: italic; text-align: right;">missing</td><td style = "text-align: right;">221.97</td><td style = "text-align: right;">254.31</td><td style = "text-align: right;">214.16</td><td style = "text-align: right;">248.91</td><td style = "text-align: right;">215.35</td><td style = "text-align: right;">245.45</td><td style = "text-align: right;">214.75</td><td style = "text-align: right;">235.5</td><td style = "text-align: right;">210.05</td><td style = "text-align: right;">217.06</td><td style = "text-align: right;">55.22</td><td style = "text-align: right;">-138.34</td><td style = "text-align: right;">229</td><td style = "text-align: left;">AMSR_E_L2A_BrightnessTemperatures_V12_201012111245_A.hdf</td><td style = "text-align: right;">5722</td><td style = "text-align: right;">73.92</td><td style = "text-align: right;">-70.56</td><td style = "text-align: left;">2014-09-02T12:00:00Z</td><td style = "text-align: left;">ASCAT_CERSAT_IFREMER</td><td style = "text-align: left;">ASCAT_20140902.nc</td><td style = "text-align: right;">-17.4882</td><td style = "text-align: right;">missing</td><td style = "text-align: right;">12</td><td style = "text-align: right;">0</td><td style = "text-align: right;">0.4</td><td style = "text-align: right;">73.874</td><td style = "text-align: right;">-70.682</td><td style = "text-align: left;">2010-12-11T12:00:00Z</td><td style = "text-align: left;">SMOS_UHAM</td><td style = "text-align: left;">SMOS_40deg_e12.5_20101211.nc</td><td style = "text-align: right;">249.862</td><td style = "text-align: right;">235.231</td><td style = "text-align: right;">6.56982</td><td style = "text-align: right;">5.29858</td><td style = "text-align: right;">66</td><td style = "text-align: right;">54</td><td style = "text-align: right;">20101211</td><td style = "text-align: right;">224.1</td><td style = "text-align: right;">257.6</td><td style = "text-align: right;">51.6</td><td style = "text-align: right;">1.4</td><td style = "text-align: right;">0.9</td><td style = "text-align: right;">122.341</td><td style = "text-align: right;">13355.2</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">363</td><td style = "text-align: right;">73.338</td><td style = "text-align: right;">62.906</td><td style = "text-align: left;">2010-12-12</td><td style = "text-align: left;">THINICE_UB</td><td style = "text-align: right;">1</td><td style = "text-align: right;">0.51</td><td style = "text-align: right;">73.5</td><td style = "text-align: right;">63.0</td><td style = "text-align: left;">2010-12-12T12:00:00Z</td><td style = "text-align: left;">NWP_ECMWF</td><td style = "text-align: left;">2010q4.nc</td><td style = "text-align: right;">994.2</td><td style = "text-align: right;">4.0</td><td style = "text-align: right;">9.43</td><td style = "text-align: right;">10.24</td><td style = "text-align: right;">266.03</td><td style = "text-align: right;">264.65</td><td style = "text-align: right;">263.61</td><td style = "text-align: right;">262.13</td><td style = "text-align: right;">262.86</td><td style = "text-align: right;">267.55</td><td style = "text-align: right;">271.46</td><td style = "text-align: right;">263.56</td><td style = "text-align: right;">3.946</td><td style = "text-align: right;">0.00538</td><td style = "text-align: right;">0.023901</td><td style = "text-align: right;">0.0</td><td style = "text-align: right;">502.84</td><td style = "text-align: right;">0.041</td><td style = "text-align: right;">3.891</td><td style = "text-align: right;">3.2493</td><td style = "text-align: right;">0.7058</td><td style = "text-align: right;">0.9152</td><td style = "text-align: right;">73.322</td><td style = "text-align: right;">62.796</td><td style = "text-align: left;">2010-12-12T07:39:10Z</td><td style = "text-align: left;">AMSR_NSIDCWENTZ_REV3</td><td style = "text-align: right;">221.54</td><td style = "text-align: right;">250.52</td><td style = "font-style: italic; text-align: right;">missing</td><td style = "font-style: italic; text-align: right;">missing</td><td style = "text-align: right;">226.93</td><td style = "text-align: right;">252.54</td><td style = "text-align: right;">236.21</td><td style = "text-align: right;">255.77</td><td style = "text-align: right;">240.55</td><td style = "text-align: right;">257.65</td><td style = "text-align: right;">244.9</td><td style = "text-align: right;">258.67</td><td style = "text-align: right;">250.3</td><td style = "text-align: right;">258.35</td><td style = "text-align: right;">55.285</td><td style = "text-align: right;">-23.13</td><td style = "text-align: right;">113</td><td style = "text-align: left;">AMSR_E_L2A_BrightnessTemperatures_V12_201012120653_A.hdf</td><td style = "text-align: right;">-15650</td><td style = "text-align: right;">73.32</td><td style = "text-align: right;">62.81</td><td style = "text-align: left;">2014-09-03T12:00:00Z</td><td style = "text-align: left;">ASCAT_CERSAT_IFREMER</td><td style = "text-align: left;">ASCAT_20140903.nc</td><td style = "text-align: right;">-19.3681</td><td style = "text-align: right;">missing</td><td style = "text-align: right;">12</td><td style = "text-align: right;">0</td><td style = "text-align: right;">0.4</td><td style = "text-align: right;">73.294</td><td style = "text-align: right;">63.004</td><td style = "text-align: left;">2010-12-13T12:00:00Z</td><td style = "text-align: left;">SMOS_UHAM</td><td style = "text-align: left;">SMOS_40deg_e12.5_20101213.nc</td><td style = "text-align: right;">239.691</td><td style = "text-align: right;">222.777</td><td style = "text-align: right;">4.62395</td><td style = "text-align: right;">5.79137</td><td style = "text-align: right;">89</td><td style = "text-align: right;">31</td><td style = "text-align: right;">20101212</td><td style = "text-align: right;">210.9</td><td style = "text-align: right;">246.0</td><td style = "text-align: right;">53.4</td><td style = "text-align: right;">4.7</td><td style = "text-align: right;">3.7</td><td style = "text-align: right;">65.869</td><td style = "text-align: right;">211.446</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">364</td><td style = "text-align: right;">74.454</td><td style = "text-align: right;">64.511</td><td style = "text-align: left;">2010-12-12</td><td style = "text-align: left;">THINICE_UB</td><td style = "text-align: right;">1</td><td style = "text-align: right;">0.51</td><td style = "text-align: right;">74.25</td><td style = "text-align: right;">64.5</td><td style = "text-align: left;">2010-12-12T12:00:00Z</td><td style = "text-align: left;">NWP_ECMWF</td><td style = "text-align: left;">2010q4.nc</td><td style = "text-align: right;">993.8</td><td style = "text-align: right;">3.59</td><td style = "text-align: right;">8.85</td><td style = "text-align: right;">9.55</td><td style = "text-align: right;">265.3</td><td style = "text-align: right;">263.32</td><td style = "text-align: right;">262.15</td><td style = "text-align: right;">259.64</td><td style = "text-align: right;">262.13</td><td style = "text-align: right;">267.38</td><td style = "text-align: right;">271.46</td><td style = "text-align: right;">263.21</td><td style = "text-align: right;">3.7274</td><td style = "text-align: right;">0.00443</td><td style = "text-align: right;">0.018156</td><td style = "text-align: right;">0.0</td><td style = "text-align: right;">492.23</td><td style = "text-align: right;">-0.018</td><td style = "text-align: right;">4.654</td><td style = "text-align: right;">4.036</td><td style = "text-align: right;">0.7238</td><td style = "text-align: right;">0.9408</td><td style = "text-align: right;">74.445</td><td style = "text-align: right;">64.654</td><td style = "text-align: left;">2010-12-12T07:39:25Z</td><td style = "text-align: left;">AMSR_NSIDCWENTZ_REV3</td><td style = "text-align: right;">235.27</td><td style = "text-align: right;">255.0</td><td style = "font-style: italic; text-align: right;">missing</td><td style = "font-style: italic; text-align: right;">missing</td><td style = "text-align: right;">237.85</td><td style = "text-align: right;">254.78</td><td style = "text-align: right;">241.73</td><td style = "text-align: right;">255.62</td><td style = "text-align: right;">244.3</td><td style = "text-align: right;">256.28</td><td style = "text-align: right;">245.46</td><td style = "text-align: right;">255.83</td><td style = "text-align: right;">248.09</td><td style = "text-align: right;">253.96</td><td style = "text-align: right;">55.275</td><td style = "text-align: right;">-13.85</td><td style = "text-align: right;">101</td><td style = "text-align: left;">AMSR_E_L2A_BrightnessTemperatures_V12_201012120653_A.hdf</td><td style = "text-align: right;">-15635</td><td style = "text-align: right;">74.47</td><td style = "text-align: right;">64.63</td><td style = "text-align: left;">2014-09-03T12:00:00Z</td><td style = "text-align: left;">ASCAT_CERSAT_IFREMER</td><td style = "text-align: left;">ASCAT_20140903.nc</td><td style = "text-align: right;">-19.1908</td><td style = "text-align: right;">missing</td><td style = "text-align: right;">12</td><td style = "text-align: right;">0</td><td style = "text-align: right;">0.28755</td><td style = "text-align: right;">74.507</td><td style = "text-align: right;">64.456</td><td style = "text-align: left;">2010-12-13T12:00:00Z</td><td style = "text-align: left;">SMOS_UHAM</td><td style = "text-align: left;">SMOS_40deg_e12.5_20101213.nc</td><td style = "text-align: right;">247.348</td><td style = "text-align: right;">236.618</td><td style = "text-align: right;">5.45154</td><td style = "text-align: right;">5.03155</td><td style = "text-align: right;">104</td><td style = "text-align: right;">28</td><td style = "text-align: right;">20101212</td><td style = "text-align: right;">215.8</td><td style = "text-align: right;">250.0</td><td style = "text-align: right;">53.0</td><td style = "text-align: right;">2.1</td><td style = "text-align: right;">4.3</td><td style = "text-align: right;">79.5799</td><td style = "text-align: right;">717.724</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">365</td><td style = "text-align: right;">75.418</td><td style = "text-align: right;">67.474</td><td style = "text-align: left;">2010-12-12</td><td style = "text-align: left;">THINICE_UB</td><td style = "text-align: right;">1</td><td style = "text-align: right;">0.51</td><td style = "text-align: right;">75.75</td><td style = "text-align: right;">67.5</td><td style = "text-align: left;">2010-12-12T12:00:00Z</td><td style = "text-align: left;">NWP_ECMWF</td><td style = "text-align: left;">2010q4.nc</td><td style = "text-align: right;">997.0</td><td style = "text-align: right;">-6.11</td><td style = "text-align: right;">9.48</td><td style = "text-align: right;">11.28</td><td style = "text-align: right;">259.42</td><td style = "text-align: right;">258.81</td><td style = "text-align: right;">257.6</td><td style = "text-align: right;">256.16</td><td style = "text-align: right;">260.84</td><td style = "text-align: right;">266.84</td><td style = "text-align: right;">271.46</td><td style = "text-align: right;">257.37</td><td style = "text-align: right;">4.5237</td><td style = "text-align: right;">0.0322</td><td style = "text-align: right;">0.175512</td><td style = "text-align: right;">0.0</td><td style = "text-align: right;">467.52</td><td style = "text-align: right;">-0.207</td><td style = "text-align: right;">4.827</td><td style = "text-align: right;">4.4778</td><td style = "text-align: right;">0.7267</td><td style = "text-align: right;">0.9449</td><td style = "text-align: right;">75.43</td><td style = "text-align: right;">67.554</td><td style = "text-align: left;">2010-12-12T07:39:40Z</td><td style = "text-align: left;">AMSR_NSIDCWENTZ_REV3</td><td style = "text-align: right;">236.45</td><td style = "text-align: right;">255.35</td><td style = "font-style: italic; text-align: right;">missing</td><td style = "font-style: italic; text-align: right;">missing</td><td style = "text-align: right;">238.9</td><td style = "text-align: right;">255.08</td><td style = "text-align: right;">241.91</td><td style = "text-align: right;">255.5</td><td style = "text-align: right;">244.03</td><td style = "text-align: right;">256.08</td><td style = "text-align: right;">243.65</td><td style = "text-align: right;">254.64</td><td style = "text-align: right;">240.77</td><td style = "text-align: right;">249.14</td><td style = "text-align: right;">55.26</td><td style = "text-align: right;">-2.32</td><td style = "text-align: right;">87</td><td style = "text-align: left;">AMSR_E_L2A_BrightnessTemperatures_V12_201012120653_A.hdf</td><td style = "text-align: right;">-15620</td><td style = "text-align: right;">75.4</td><td style = "text-align: right;">67.42</td><td style = "text-align: left;">2014-09-03T12:00:00Z</td><td style = "text-align: left;">ASCAT_CERSAT_IFREMER</td><td style = "text-align: left;">ASCAT_20140903.nc</td><td style = "text-align: right;">-16.638</td><td style = "text-align: right;">missing</td><td style = "text-align: right;">12</td><td style = "text-align: right;">0</td><td style = "text-align: right;">0.4</td><td style = "text-align: right;">75.378</td><td style = "text-align: right;">67.668</td><td style = "text-align: left;">2010-12-13T12:00:00Z</td><td style = "text-align: left;">SMOS_UHAM</td><td style = "text-align: left;">SMOS_40deg_e12.5_20101213.nc</td><td style = "text-align: right;">248.284</td><td style = "text-align: right;">236.162</td><td style = "text-align: right;">4.98069</td><td style = "text-align: right;">5.51113</td><td style = "text-align: right;">146</td><td style = "text-align: right;">25</td><td style = "text-align: right;">20101212</td><td style = "text-align: right;">231.0</td><td style = "text-align: right;">254.8</td><td style = "text-align: right;">53.3</td><td style = "text-align: right;">3.5</td><td style = "text-align: right;">3.4</td><td style = "text-align: right;">152.974</td><td style = "text-align: right;">19465.7</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">366</td><td style = "text-align: right;">79.452</td><td style = "text-align: right;">61.992</td><td style = "text-align: left;">2010-12-12</td><td style = "text-align: left;">THINICE_UB</td><td style = "text-align: right;">1</td><td style = "text-align: right;">0.51</td><td style = "text-align: right;">79.5</td><td style = "text-align: right;">62.25</td><td style = "text-align: left;">2010-12-12T12:00:00Z</td><td style = "text-align: left;">NWP_ECMWF</td><td style = "text-align: left;">2010q4.nc</td><td style = "text-align: right;">1005.5</td><td style = "text-align: right;">-14.19</td><td style = "text-align: right;">4.01</td><td style = "text-align: right;">14.75</td><td style = "text-align: right;">254.53</td><td style = "text-align: right;">255.42</td><td style = "text-align: right;">254.66</td><td style = "text-align: right;">255.93</td><td style = "text-align: right;">260.17</td><td style = "text-align: right;">266.33</td><td style = "text-align: right;">271.46</td><td style = "text-align: right;">251.1</td><td style = "text-align: right;">4.1607</td><td style = "text-align: right;">0.00174</td><td style = "text-align: right;">0.251113</td><td style = "text-align: right;">0.0</td><td style = "text-align: right;">425.02</td><td style = "text-align: right;">-0.208</td><td style = "text-align: right;">0.966</td><td style = "text-align: right;">0.9604</td><td style = "text-align: right;">0.7235</td><td style = "text-align: right;">0.9404</td><td style = "text-align: right;">79.472</td><td style = "text-align: right;">61.971</td><td style = "text-align: left;">2010-12-12T07:40:54Z</td><td style = "text-align: left;">AMSR_NSIDCWENTZ_REV3</td><td style = "text-align: right;">230.04</td><td style = "text-align: right;">251.3</td><td style = "font-style: italic; text-align: right;">missing</td><td style = "font-style: italic; text-align: right;">missing</td><td style = "text-align: right;">232.57</td><td style = "text-align: right;">251.75</td><td style = "text-align: right;">235.38</td><td style = "text-align: right;">252.65</td><td style = "text-align: right;">237.35</td><td style = "text-align: right;">253.47</td><td style = "text-align: right;">237.78</td><td style = "text-align: right;">252.16</td><td style = "text-align: right;">234.51</td><td style = "text-align: right;">245.31</td><td style = "text-align: right;">55.225</td><td style = "text-align: right;">-1.66</td><td style = "text-align: right;">78</td><td style = "text-align: left;">AMSR_E_L2A_BrightnessTemperatures_V12_201012120653_A.hdf</td><td style = "text-align: right;">-15546</td><td style = "text-align: right;">79.47</td><td style = "text-align: right;">61.84</td><td style = "text-align: left;">2014-09-03T12:00:00Z</td><td style = "text-align: left;">ASCAT_CERSAT_IFREMER</td><td style = "text-align: left;">ASCAT_20140903.nc</td><td style = "text-align: right;">-15.3169</td><td style = "text-align: right;">missing</td><td style = "text-align: right;">9</td><td style = "text-align: right;">0</td><td style = "text-align: right;">0.20723</td><td style = "text-align: right;">79.395</td><td style = "text-align: right;">61.945</td><td style = "text-align: left;">2010-12-13T12:00:00Z</td><td style = "text-align: left;">SMOS_UHAM</td><td style = "text-align: left;">SMOS_40deg_e12.5_20101213.nc</td><td style = "text-align: right;">242.401</td><td style = "text-align: right;">225.75</td><td style = "text-align: right;">4.91261</td><td style = "text-align: right;">4.9291</td><td style = "text-align: right;">208</td><td style = "text-align: right;">28</td><td style = "text-align: right;">20101212</td><td style = "text-align: right;">219.1</td><td style = "text-align: right;">249.5</td><td style = "text-align: right;">53.0</td><td style = "text-align: right;">4.6</td><td style = "text-align: right;">5.7</td><td style = "text-align: right;">119.662</td><td style = "text-align: right;">12192.3</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">367</td><td style = "text-align: right;">79.398</td><td style = "text-align: right;">54.761</td><td style = "text-align: left;">2010-12-12</td><td style = "text-align: left;">THINICE_UB</td><td style = "text-align: right;">1</td><td style = "text-align: right;">0.51</td><td style = "text-align: right;">79.5</td><td style = "text-align: right;">54.75</td><td style = "text-align: left;">2010-12-12T12:00:00Z</td><td style = "text-align: left;">NWP_ECMWF</td><td style = "text-align: left;">2010q4.nc</td><td style = "text-align: right;">1003.8</td><td style = "text-align: right;">-13.98</td><td style = "text-align: right;">-2.25</td><td style = "text-align: right;">14.16</td><td style = "text-align: right;">254.97</td><td style = "text-align: right;">256.4</td><td style = "text-align: right;">255.15</td><td style = "text-align: right;">256.76</td><td style = "text-align: right;">261.83</td><td style = "text-align: right;">267.24</td><td style = "text-align: right;">271.46</td><td style = "text-align: right;">251.65</td><td style = "text-align: right;">3.901</td><td style = "text-align: right;">0.00069</td><td style = "text-align: right;">0.207004</td><td style = "text-align: right;">0.0</td><td style = "text-align: right;">422.54</td><td style = "text-align: right;">-0.259</td><td style = "text-align: right;">0.563</td><td style = "text-align: right;">0.5607</td><td style = "text-align: right;">0.6996</td><td style = "text-align: right;">0.9065</td><td style = "text-align: right;">79.366</td><td style = "text-align: right;">54.861</td><td style = "text-align: left;">2010-12-12T09:20:13Z</td><td style = "text-align: left;">AMSR_NSIDCWENTZ_REV3</td><td style = "text-align: right;">230.63</td><td style = "text-align: right;">253.58</td><td style = "font-style: italic; text-align: right;">missing</td><td style = "font-style: italic; text-align: right;">missing</td><td style = "text-align: right;">233.19</td><td style = "text-align: right;">254.05</td><td style = "text-align: right;">236.21</td><td style = "text-align: right;">254.76</td><td style = "text-align: right;">238.01</td><td style = "text-align: right;">255.29</td><td style = "text-align: right;">238.27</td><td style = "text-align: right;">254.57</td><td style = "text-align: right;">232.96</td><td style = "text-align: right;">246.91</td><td style = "text-align: right;">55.155</td><td style = "text-align: right;">46.82</td><td style = "text-align: right;">28</td><td style = "text-align: left;">AMSR_E_L2A_BrightnessTemperatures_V12_201012120832_A.hdf</td><td style = "text-align: right;">-9587</td><td style = "text-align: right;">79.43</td><td style = "text-align: right;">54.71</td><td style = "text-align: left;">2014-09-03T12:00:00Z</td><td style = "text-align: left;">ASCAT_CERSAT_IFREMER</td><td style = "text-align: left;">ASCAT_20140903.nc</td><td style = "text-align: right;">-18.2566</td><td style = "text-align: right;">missing</td><td style = "text-align: right;">3</td><td style = "text-align: right;">0</td><td style = "text-align: right;">0.4</td><td style = "text-align: right;">79.38</td><td style = "text-align: right;">54.884</td><td style = "text-align: left;">2010-12-13T12:00:00Z</td><td style = "text-align: left;">SMOS_UHAM</td><td style = "text-align: left;">SMOS_40deg_e12.5_20101213.nc</td><td style = "text-align: right;">244.34</td><td style = "text-align: right;">227.793</td><td style = "text-align: right;">4.63171</td><td style = "text-align: right;">4.76411</td><td style = "text-align: right;">200</td><td style = "text-align: right;">32</td><td style = "text-align: right;">20101212</td><td style = "text-align: right;">217.4</td><td style = "text-align: right;">246.1</td><td style = "text-align: right;">53.1</td><td style = "text-align: right;">4.9</td><td style = "text-align: right;">2.7</td><td style = "text-align: right;">122.625</td><td style = "text-align: right;">13473.4</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">368</td><td style = "text-align: right;">72.217</td><td style = "text-align: right;">-69.522</td><td style = "text-align: left;">2010-12-12</td><td style = "text-align: left;">THINICE_UB</td><td style = "text-align: right;">1</td><td style = "text-align: right;">NaN</td><td style = "text-align: right;">72.0</td><td style = "text-align: right;">-69.75</td><td style = "text-align: left;">2010-12-12T12:00:00Z</td><td style = "text-align: left;">NWP_ECMWF</td><td style = "text-align: left;">2010q4.nc</td><td style = "text-align: right;">1013.9</td><td style = "text-align: right;">-0.68</td><td style = "text-align: right;">1.71</td><td style = "text-align: right;">1.84</td><td style = "text-align: right;">250.98</td><td style = "text-align: right;">249.68</td><td style = "text-align: right;">249.05</td><td style = "text-align: right;">252.68</td><td style = "text-align: right;">260.49</td><td style = "text-align: right;">266.73</td><td style = "text-align: right;">271.46</td><td style = "text-align: right;">248.62</td><td style = "text-align: right;">1.9653</td><td style = "text-align: right;">0.0</td><td style = "text-align: right;">0.006668</td><td style = "text-align: right;">0.0</td><td style = "text-align: right;">296.65</td><td style = "text-align: right;">-0.048</td><td style = "text-align: right;">-0.0</td><td style = "text-align: right;">-0.0</td><td style = "text-align: right;">0.7214</td><td style = "text-align: right;">0.9373</td><td style = "text-align: right;">72.244</td><td style = "text-align: right;">-69.516</td><td style = "text-align: left;">2010-12-12T14:17:39Z</td><td style = "text-align: left;">AMSR_NSIDCWENTZ_REV3</td><td style = "text-align: right;">232.59</td><td style = "text-align: right;">254.34</td><td style = "font-style: italic; text-align: right;">missing</td><td style = "font-style: italic; text-align: right;">missing</td><td style = "text-align: right;">227.92</td><td style = "text-align: right;">252.77</td><td style = "text-align: right;">225.69</td><td style = "text-align: right;">250.16</td><td style = "text-align: right;">224.29</td><td style = "text-align: right;">248.08</td><td style = "text-align: right;">220.46</td><td style = "text-align: right;">240.35</td><td style = "text-align: right;">196.25</td><td style = "text-align: right;">206.19</td><td style = "text-align: right;">55.225</td><td style = "text-align: right;">-128.1</td><td style = "text-align: right;">231</td><td style = "text-align: left;">AMSR_E_L2A_BrightnessTemperatures_V12_201012121329_A.hdf</td><td style = "text-align: right;">8259</td><td style = "text-align: right;">72.19</td><td style = "text-align: right;">-69.5</td><td style = "text-align: left;">2014-09-03T12:00:00Z</td><td style = "text-align: left;">ASCAT_CERSAT_IFREMER</td><td style = "text-align: left;">ASCAT_20140903.nc</td><td style = "text-align: right;">-18.5462</td><td style = "text-align: right;">missing</td><td style = "text-align: right;">12</td><td style = "text-align: right;">0</td><td style = "text-align: right;">0.4</td><td style = "text-align: right;">72.181</td><td style = "text-align: right;">-69.507</td><td style = "text-align: left;">2010-12-13T12:00:00Z</td><td style = "text-align: left;">SMOS_UHAM</td><td style = "text-align: left;">SMOS_40deg_e12.5_20101213.nc</td><td style = "text-align: right;">251.974</td><td style = "text-align: right;">238.134</td><td style = "text-align: right;">5.53016</td><td style = "text-align: right;">5.86379</td><td style = "text-align: right;">40</td><td style = "text-align: right;">71</td><td style = "text-align: right;">20101212</td><td style = "text-align: right;">223.9</td><td style = "text-align: right;">247.2</td><td style = "text-align: right;">53.7</td><td style = "text-align: right;">0.7</td><td style = "text-align: right;">1.6</td><td style = "text-align: right;">148.032</td><td style = "text-align: right;">19159.9</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">369</td><td style = "text-align: right;">72.552</td><td style = "text-align: right;">-65.645</td><td style = "text-align: left;">2010-12-12</td><td style = "text-align: left;">THINICE_UB</td><td style = "text-align: right;">1</td><td style = "text-align: right;">0.38</td><td style = "text-align: right;">72.75</td><td style = "text-align: right;">-66.0</td><td style = "text-align: left;">2010-12-12T12:00:00Z</td><td style = "text-align: left;">NWP_ECMWF</td><td style = "text-align: left;">2010q4.nc</td><td style = "text-align: right;">1014.5</td><td style = "text-align: right;">0.43</td><td style = "text-align: right;">0.78</td><td style = "text-align: right;">0.89</td><td style = "text-align: right;">254.31</td><td style = "text-align: right;">252.76</td><td style = "text-align: right;">250.81</td><td style = "text-align: right;">254.29</td><td style = "text-align: right;">261.33</td><td style = "text-align: right;">267.06</td><td style = "text-align: right;">271.46</td><td style = "text-align: right;">252.01</td><td style = "text-align: right;">1.96</td><td style = "text-align: right;">0.00026</td><td style = "text-align: right;">0.009437</td><td style = "text-align: right;">0.0</td><td style = "text-align: right;">311.03</td><td style = "text-align: right;">-0.107</td><td style = "text-align: right;">-0.0</td><td style = "text-align: right;">-0.0</td><td style = "text-align: right;">0.678</td><td style = "text-align: right;">0.8758</td><td style = "text-align: right;">72.579</td><td style = "text-align: right;">-65.613</td><td style = "text-align: left;">2010-12-12T14:16:58Z</td><td style = "text-align: left;">AMSR_NSIDCWENTZ_REV3</td><td style = "text-align: right;">220.1</td><td style = "text-align: right;">249.44</td><td style = "font-style: italic; text-align: right;">missing</td><td style = "font-style: italic; text-align: right;">missing</td><td style = "text-align: right;">215.81</td><td style = "text-align: right;">247.95</td><td style = "text-align: right;">221.05</td><td style = "text-align: right;">246.94</td><td style = "text-align: right;">222.75</td><td style = "text-align: right;">246.35</td><td style = "text-align: right;">224.5</td><td style = "text-align: right;">243.23</td><td style = "text-align: right;">219.01</td><td style = "text-align: right;">230.59</td><td style = "text-align: right;">55.245</td><td style = "text-align: right;">-110.04</td><td style = "text-align: right;">208</td><td style = "text-align: left;">AMSR_E_L2A_BrightnessTemperatures_V12_201012121329_A.hdf</td><td style = "text-align: right;">8218</td><td style = "text-align: right;">72.56</td><td style = "text-align: right;">-65.57</td><td style = "text-align: left;">2014-09-03T12:00:00Z</td><td style = "text-align: left;">ASCAT_CERSAT_IFREMER</td><td style = "text-align: left;">ASCAT_20140903.nc</td><td style = "text-align: right;">-18.6986</td><td style = "text-align: right;">missing</td><td style = "text-align: right;">9</td><td style = "text-align: right;">0</td><td style = "text-align: right;">0.4</td><td style = "text-align: right;">72.524</td><td style = "text-align: right;">-65.495</td><td style = "text-align: left;">2010-12-13T12:00:00Z</td><td style = "text-align: left;">SMOS_UHAM</td><td style = "text-align: left;">SMOS_40deg_e12.5_20101213.nc</td><td style = "text-align: right;">246.406</td><td style = "text-align: right;">229.768</td><td style = "text-align: right;">4.89569</td><td style = "text-align: right;">5.0534</td><td style = "text-align: right;">34</td><td style = "text-align: right;">75</td><td style = "text-align: right;">20101212</td><td style = "text-align: right;">217.2</td><td style = "text-align: right;">258.5</td><td style = "text-align: right;">52.5</td><td style = "text-align: right;">1.9</td><td style = "text-align: right;">4.4</td><td style = "text-align: right;">66.0185</td><td style = "text-align: right;">214.285</td></tr></tbody></table></div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">retrievallm</span><span class="o">.</span><span class="p">(</span><span class="n">fulltable</span><span class="p">[</span><span class="o">!</span><span class="p">,</span><span class="s">&quot;tbh53&quot;</span><span class="p">],</span><span class="n">fulltable</span><span class="p">[</span><span class="o">!</span><span class="p">,</span><span class="s">&quot;tbv53&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>369-element Vector{Tuple{Float64, Float64}}:
+ (25.131569987490654, 5.837255750344498)
+ (35.32063441859541, 14.43089361074618)
+ (13.604509041095065, 1.8751062019217744)
+ (32.582541365234626, 11.356693961911255)
+ (13.647115240523785, 1.883760350356335)
+ (21.020832938427922, 3.9755249623557023)
+ (25.94467097409818, 6.286609938012284)
+ (30.538245781899626, 9.485076006306745)
+ (8.23943701365431, 1.0156210415123341)
+ (27.76377046900532, 7.408887053520825)
+ ⋮
+ (72.80800274055952, 392.9190176843671)
+ (122.3408657801763, 13355.161690257875)
+ (65.86902043198144, 211.44633866286003)
+ (79.57988025826218, 717.7242177753683)
+ (152.9738921295843, 19465.705341145338)
+ (119.66247184290643, 12192.272624278146)
+ (122.62483064899938, 13473.401498832827)
+ (148.0323764558634, 19159.909891855124)
+ (66.01849462146932, 214.28523773241497)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">fulltable</span><span class="p">[</span><span class="o">!</span><span class="p">,</span><span class="s">&quot;tbh53&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>369-element Vector{Float64}:
+ 174.4
+ 193.4
+ 143.6
+ 189.6
+ 145.2
+ 164.8
+ 178.2
+ 185.4
+ 122.6
+ 179.9
+   ⋮
+ 211.2
+ 224.1
+ 210.9
+ 215.8
+ 231.0
+ 219.1
+ 217.4
+ 223.9
+ 217.2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">print</span><span class="p">(</span><span class="n">names</span><span class="p">(</span><span class="n">fulltable</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&quot;# latitude&quot;, &quot;longitude&quot;, &quot;date&quot;, &quot;reference-id&quot;, &quot;SIC&quot;, &quot;SIT&quot;, &quot;latitude&quot;, &quot;longitude_1&quot;, &quot;time&quot;, &quot;reference-id_1&quot;, &quot;upstreamfile&quot;, &quot;msl&quot;, &quot;u10&quot;, &quot;v10&quot;, &quot;ws&quot;, &quot;t2m&quot;, &quot;skt&quot;, &quot;istl1&quot;, &quot;istl2&quot;, &quot;istl3&quot;, &quot;istl4&quot;, &quot;sst&quot;, &quot;d2m&quot;, &quot;tcwv&quot;, &quot;tclw&quot;, &quot;tciw&quot;, &quot;ssrd&quot;, &quot;strd&quot;, &quot;e&quot;, &quot;tp&quot;, &quot;sf&quot;, &quot;fal&quot;, &quot;ci&quot;, &quot;latitude_1&quot;, &quot;longitude_2&quot;, &quot;time_1&quot;, &quot;identification&quot;, &quot;6.9H&quot;, &quot;6.9V&quot;, &quot;7.3H&quot;, &quot;7.3V&quot;, &quot;10.7H&quot;, &quot;10.7V&quot;, &quot;18.7H&quot;, &quot;18.7V&quot;, &quot;23.8H&quot;, &quot;23.8V&quot;, &quot;36.5H&quot;, &quot;36.5V&quot;, &quot;89.0H&quot;, &quot;89.0V&quot;, &quot;Earth_Incidence&quot;, &quot;Earth_Azimuth&quot;, &quot;scanpos&quot;, &quot;upstreamfile_1&quot;, &quot;timediff&quot;, &quot;latitude_2&quot;, &quot;longitude_3&quot;, &quot;time_2&quot;, &quot;reference-id_2&quot;, &quot;upstreamfile_2&quot;, &quot;sigma_40&quot;, &quot;sigma_40_mask&quot;, &quot;nb_samples&quot;, &quot;warning&quot;, &quot;std&quot;, &quot;latitude_3&quot;, &quot;longitude_4&quot;, &quot;time_3&quot;, &quot;reference-id_3&quot;, &quot;upstreamfile_3&quot;, &quot;SMOS_Tbv&quot;, &quot;SMOS_Tbh&quot;, &quot;SMOS_RMSE_v&quot;, &quot;SMOS_RMSE_h&quot;, &quot;SMOS_nmp&quot;, &quot;SMOS_dataloss&quot;, &quot;date_1&quot;, &quot;tbh53&quot;, &quot;tbv53&quot;, &quot;mean_inc&quot;, &quot;tbh53_std&quot;, &quot;tbv53_std&quot;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">include</span><span class="p">(</span><span class="s">&quot;../algorithm/src/OEM_with_SIT.jl&quot;</span><span class="p">)</span>
+<span class="k">using</span><span class="w"> </span><span class="o">.</span><span class="n">OEM</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: replacing module OEM.
+WARNING: using OEM.lm_retrieval in module Main conflicts with an existing identifier.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span><span class="n">axs</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span><span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="c">#scatter(fulltable[!,:SIT],fulltable[!,&quot;10.7H&quot;])</span>
+<span class="n">channels</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;6.9V&quot;</span><span class="p">,</span><span class="s">&quot;6.9H&quot;</span><span class="p">,</span><span class="s">&quot;10.7V&quot;</span><span class="p">,</span><span class="s">&quot;10.7H&quot;</span><span class="p">,</span><span class="s">&quot;18.7V&quot;</span><span class="p">,</span><span class="s">&quot;18.7H&quot;</span><span class="p">,</span><span class="s">&quot;23.8V&quot;</span><span class="p">,</span><span class="s">&quot;23.8H&quot;</span><span class="p">,</span><span class="s">&quot;36.5V&quot;</span><span class="p">,</span><span class="s">&quot;36.5H&quot;</span><span class="p">,</span><span class="s">&quot;89.0V&quot;</span><span class="p">,</span><span class="s">&quot;89.0H&quot;</span><span class="p">]</span>
+<span class="n">owtp</span><span class="o">=</span><span class="p">[</span><span class="mf">157.9397756705356</span>
+<span class="w">  </span><span class="mf">74.22054192317813</span>
+<span class="w"> </span><span class="mf">163.4896743050617</span>
+<span class="w">  </span><span class="mf">78.40477088765373</span>
+<span class="w"> </span><span class="mf">175.18191921420814</span>
+<span class="w">  </span><span class="mf">90.60124656474672</span>
+<span class="w"> </span><span class="mf">185.91398347505353</span>
+<span class="w">  </span><span class="mf">99.89685544430296</span>
+<span class="w"> </span><span class="mf">206.667948239106</span>
+<span class="w"> </span><span class="mf">128.36037504633393</span>
+<span class="w"> </span><span class="mf">242.01900700540162</span>
+<span class="w"> </span><span class="mf">175.158277073163</span><span class="p">]</span>
+<span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="o">:</span><span class="mi">12</span>
+<span class="w">    </span><span class="n">nanidx</span><span class="o">=.!</span><span class="n">isnan</span><span class="o">.</span><span class="p">(</span><span class="n">fulltable</span><span class="p">[</span><span class="o">!</span><span class="p">,</span><span class="n">channels</span><span class="p">[</span><span class="n">i</span><span class="p">]])</span>
+<span class="w">    </span><span class="n">axs</span><span class="o">.</span><span class="n">flat</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">fulltable</span><span class="p">[</span><span class="n">nanidx</span><span class="p">,</span><span class="ss">:newSIT</span><span class="p">],</span><span class="n">fulltable</span><span class="p">[</span><span class="n">nanidx</span><span class="p">,</span><span class="n">channels</span><span class="p">[</span><span class="n">i</span><span class="p">]],</span><span class="n">c</span><span class="o">=</span><span class="n">fulltable</span><span class="p">[</span><span class="n">nanidx</span><span class="p">,</span><span class="ss">:strd</span><span class="p">],</span><span class="n">cmap</span><span class="o">=</span><span class="s">&quot;viridis&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">cf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">pp</span><span class="p">)</span><span class="o">=</span><span class="n">ff</span><span class="p">([</span><span class="n">owtp</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">pp</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">pp</span><span class="p">[</span><span class="mi">2</span><span class="p">]])</span><span class="o">.</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="w">    </span><span class="n">hp</span><span class="o">=</span><span class="n">curve_fit</span><span class="p">(</span><span class="n">cf</span><span class="p">,</span><span class="n">fulltable</span><span class="p">[</span><span class="n">nanidx</span><span class="p">,</span><span class="ss">:newSIT</span><span class="p">],</span><span class="n">fulltable</span><span class="p">[</span><span class="n">nanidx</span><span class="p">,</span><span class="n">channels</span><span class="p">[</span><span class="n">i</span><span class="p">]],[</span><span class="mi">200</span><span class="p">,</span><span class="mf">2.0</span><span class="p">])</span><span class="o">.</span><span class="n">param</span>
+<span class="w">    </span><span class="n">hp</span><span class="o">=</span><span class="p">[</span><span class="n">owtp</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">hp</span><span class="o">...</span><span class="p">]</span>
+<span class="w">    </span><span class="c">#println(hp[3])</span>
+<span class="w">    </span><span class="c">#axs[p].scatter(fulltable[!,:newSIT].* 100,fulltable[!,channels[i]])</span>
+<span class="w">    </span><span class="n">xx</span><span class="o">=</span><span class="n">collect</span><span class="p">(</span><span class="mi">0</span><span class="o">:</span><span class="mi">1</span><span class="o">:</span><span class="mi">150</span><span class="p">)</span>
+<span class="w">    </span><span class="n">axs</span><span class="o">.</span><span class="n">flat</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span><span class="n">ff</span><span class="p">(</span><span class="n">hp</span><span class="p">)</span><span class="o">.</span><span class="p">(</span><span class="n">xx</span><span class="p">),</span><span class="n">color</span><span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="c">#plt.colorbar(axs.flat[i])</span>
+<span class="k">end</span>
+<span class="n">gcf</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/thin_fit_10_0.png" src="_images/thin_fit_10_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="o">.</span><span class="n">flat</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">ax</span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"># 1 method for callable object:<ul><li> (f::<b>PythonCall.Py</b>)(args...; <i>kwargs...</i>) in PythonCall at <a href="file:///home/huntemann/.julia/packages/PythonCall/3GRYN/src/Py.jl" target="_blank">/home/huntemann/.julia/packages/PythonCall/3GRYN/src/Py.jl:352</a></li> </ul></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fulltable</span><span class="p">[</span><span class="o">!</span><span class="p">,</span><span class="ss">:SIT</span><span class="p">],</span><span class="s">&quot;.&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="kt">MIME</span><span class="p">(</span><span class="s">&quot;image/png&quot;</span><span class="p">),</span><span class="n">fig</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/thin_fit_12_0.png" src="_images/thin_fit_12_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">fulltable</span><span class="p">[</span><span class="o">!</span><span class="p">,</span><span class="s">&quot;89.0V&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>428-element Vector{Union{Missing, Float64}}:
+ 260.13
+ 252.67
+ 249.11
+ 252.43
+ 256.74
+ 254.77
+ 256.26
+ 253.64
+ 254.35
+ 257.36
+   ⋮
+ 249.14
+ 245.31
+ 246.91
+ 206.19
+ 230.59
+ 242.02
+ 220.73
+ 229.81
+ 249.2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">fn</span><span class="o">=</span><span class="s">&quot;../data/THINICE_SIC1-AMSR-N_wsmos.text&quot;</span>
+<span class="n">mdf</span><span class="o">=</span><span class="n">CSV</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span><span class="n">DataFrame</span><span class="p">)</span>
+<span class="n">sit</span><span class="o">=</span><span class="n">mdf</span><span class="p">[</span><span class="o">!</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
+<span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="o">:</span><span class="mi">43</span>
+<span class="w">    </span><span class="n">println</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$i</span><span class="s"> </span><span class="si">$</span><span class="p">(</span><span class="n">names</span><span class="p">(</span><span class="n">mdf</span><span class="p">)[</span><span class="n">i</span><span class="p">])</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 # lat
+2 lon
+3 timestamp
+4 referenceID
+5 SIC
+6 thin-ice thickness
+7 thin-ice thickness std
+8 lat
+9 lon_1
+10 timestamp_1
+11 sensorID
+12 6.9V
+13 6.9H
+14 10.7V
+15 10.7H
+16 18.7V
+17 18.7H
+18 23.8V
+19 23.8H
+20 36.5V
+21 36.5H
+22 89.0V
+23 89.0H
+24 upstream-file
+25 1.4HV10
+26 1.4H3035
+27 1.4V3035
+28 1.4H4050
+29 1.4V4050
+30 1.4H5055
+31 1.4V5055
+32 1.4H5456
+33 1.4V5456
+34 1.4HV10std
+35 1.4H3035std
+36 1.4V3035std
+37 1.4H4050err
+38 1.4V4050err
+39 1.4H5055std
+40 1.4V5055std
+41 1.4H5456std
+42 1.4V5456std
+43 SMOS_SIT
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@.</span><span class="w"> </span><span class="n">ff</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">p</span><span class="p">)</span><span class="o">=</span><span class="n">p</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">-</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">-</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">*</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="o">/</span><span class="n">p</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">sit</span><span class="o">=</span><span class="n">mdf</span><span class="p">[</span><span class="o">!</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
+
+<span class="n">idx</span><span class="o">=</span><span class="w"> </span><span class="o">.!</span><span class="p">(</span><span class="n">sit</span><span class="o">==-</span><span class="mi">999</span><span class="p">)</span><span class="w"> </span><span class="o">.&amp;</span><span class="w"> </span><span class="o">.!</span><span class="p">(</span><span class="n">sit</span><span class="o">.&gt;</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>28740-element BitVector:
+ 1
+ 1
+ 1
+ 1
+ 1
+ 1
+ 1
+ 1
+ 1
+ 1
+ ⋮
+ 1
+ 1
+ 1
+ 1
+ 1
+ 1
+ 1
+ 1
+ 1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span><span class="n">axs</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span><span class="n">nrows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">ncols</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">axs</span><span class="o">=</span><span class="n">pyconvert</span><span class="p">(</span><span class="kt">Array</span><span class="p">,</span><span class="n">axs</span><span class="p">)</span>
+<span class="n">owtp</span><span class="o">=</span><span class="p">[</span><span class="mf">157.9397756705356</span>
+<span class="w">  </span><span class="mf">74.22054192317813</span>
+<span class="w"> </span><span class="mf">163.4896743050617</span>
+<span class="w">  </span><span class="mf">78.40477088765373</span>
+<span class="w"> </span><span class="mf">175.18191921420814</span>
+<span class="w">  </span><span class="mf">90.60124656474672</span>
+<span class="w"> </span><span class="mf">185.91398347505353</span>
+<span class="w">  </span><span class="mf">99.89685544430296</span>
+<span class="w"> </span><span class="mf">206.667948239106</span>
+<span class="w"> </span><span class="mf">128.36037504633393</span>
+<span class="w"> </span><span class="mf">242.01900700540162</span>
+<span class="w"> </span><span class="mf">175.158277073163</span><span class="p">]</span><span class="w"> </span><span class="c">#ow tiepoints</span>
+<span class="k">for</span><span class="w"> </span><span class="n">p</span><span class="o">=</span><span class="mi">1</span><span class="o">:</span><span class="mi">12</span>
+<span class="w">    </span><span class="c">#println(p)</span>
+<span class="w">    </span><span class="n">index</span><span class="o">=</span><span class="mi">11</span><span class="o">+</span><span class="n">p</span>
+<span class="c">#idexes=</span>
+<span class="w">    </span><span class="n">dv</span><span class="o">=</span><span class="n">mdf</span><span class="p">[</span><span class="o">!</span><span class="p">,</span><span class="n">index</span><span class="p">]</span>
+<span class="w">    </span><span class="n">name</span><span class="o">=</span><span class="n">names</span><span class="p">(</span><span class="n">mdf</span><span class="p">)[</span><span class="n">index</span><span class="p">]</span>
+<span class="w">    </span><span class="n">cf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">pp</span><span class="p">)</span><span class="o">=</span><span class="n">ff</span><span class="p">(</span><span class="n">x</span><span class="p">,[</span><span class="n">owtp</span><span class="p">[</span><span class="n">p</span><span class="p">],</span><span class="n">pp</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">pp</span><span class="p">[</span><span class="mi">2</span><span class="p">]])</span>
+<span class="w">    </span><span class="n">hp</span><span class="o">=</span><span class="n">curve_fit</span><span class="p">(</span><span class="n">cf</span><span class="p">,</span><span class="n">sit</span><span class="o">.*</span><span class="mi">100</span><span class="p">,</span><span class="n">dv</span><span class="p">,[</span><span class="mi">200</span><span class="p">,</span><span class="mf">2.0</span><span class="p">])</span><span class="o">.</span><span class="n">param</span>
+<span class="w">    </span><span class="n">hp</span><span class="o">=</span><span class="p">[</span><span class="n">owtp</span><span class="p">[</span><span class="n">p</span><span class="p">],</span><span class="n">hp</span><span class="o">...</span><span class="p">]</span>
+<span class="w">    </span><span class="c">#println(hp[3])</span>
+<span class="w">    </span><span class="n">axs</span><span class="p">[</span><span class="n">p</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">sit</span><span class="o">.*</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="n">dv</span><span class="p">)</span>
+<span class="w">    </span><span class="n">xx</span><span class="o">=</span><span class="n">collect</span><span class="p">(</span><span class="mi">0</span><span class="o">:</span><span class="mi">1</span><span class="o">:</span><span class="mi">30</span><span class="p">)</span>
+<span class="w">    </span><span class="n">axs</span><span class="p">[</span><span class="n">p</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span><span class="n">ff</span><span class="o">.</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span><span class="kt">Ref</span><span class="p">(</span><span class="n">hp</span><span class="p">)),</span><span class="n">color</span><span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">axs</span><span class="p">[</span><span class="n">p</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+<span class="w">    </span><span class="n">axs</span><span class="p">[</span><span class="n">p</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">70</span><span class="p">,</span><span class="mi">300</span><span class="p">)</span>
+<span class="w">    </span><span class="n">axs</span><span class="p">[</span><span class="n">p</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="k">end</span>
+<span class="n">display</span><span class="p">(</span><span class="kt">MIME</span><span class="p">(</span><span class="s">&quot;image/png&quot;</span><span class="p">),</span><span class="n">fig</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8.956615582385908
+11.894364589753874
+8.52431046569442
+11.645437092902535
+7.734378368070544
+10.165054195271782
+7.473947263410875
+9.128550147675183
+7.6681838621416425
+8.98643673857489
+2.8041750136460695
+5.686319297256588
+</pre></div>
+</div>
+<img alt="_images/thin_fit_18_1.png" src="_images/thin_fit_18_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">fulltable</span><span class="o">.</span><span class="n">SIT</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>428-element Vector{Float64}:
+    0.18
+    0.3
+    0.1
+    0.26
+    0.11
+    0.2
+    0.19
+    0.24
+    0.07
+    0.18
+    ⋮
+    0.51
+    0.51
+    0.51
+ -999.0
+    0.38
+    0.51
+    0.51
+    0.51
+    0.45
+</pre></div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "julia-1.8"
+        },
+        kernelOptions: {
+            kernelName: "julia-1.8",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'julia-1.8'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Marcus Huntemann, Janna Rückert and Gunnar Spreen, University of Bremen<br/>
+  
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

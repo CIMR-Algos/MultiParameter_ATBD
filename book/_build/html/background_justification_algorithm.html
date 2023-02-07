@@ -4,8 +4,9 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Background and justification of selected algorithm &#8212; ATBD Multi Parameter Retrieval</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Background and justification of selected algorithm &#8212; CIMR L2 Multi Parameter Retrieval ATBD v1</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -98,7 +99,7 @@ const thebe_selector_output = ".output, .cell_output"
       <img src="_static/logo.jpg" class="logo" alt="logo">
       
       
-      <h1 class="site-logo" id="site-title">ATBD Multi Parameter Retrieval</h1>
+      <h1 class="site-logo" id="site-title">CIMR L2 Multi Parameter Retrieval ATBD v1</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -239,7 +240,7 @@ title="Fullscreen mode"
   </span>
 
 </button>
-<a href="https://github.com/CIMR-Algos/ATBD-Template"
+<a href="https://github.com/CIMR-Algos/MultiParameter_ATBD"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="bottom"
@@ -322,18 +323,21 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="background-and-justification-of-selected-algorithm">
+  <section class="tex2jax_ignore mathjax_ignore" id="background-and-justification-of-selected-algorithm">
 <h1>Background and justification of selected algorithm<a class="headerlink" href="#background-and-justification-of-selected-algorithm" title="Permalink to this headline">#</a></h1>
 <p>The multi parameter retrieval consists of several empirical and physical models
 which are applied and inverted using a specific cost function. Each individual
 algorithm and method was applied and validated to some extent for previous
 satellite missions in the past. For ocean surface this includes contributions
-from <span id="id1">[]</span> and for sea ice
-<span id="id2">[<a class="reference internal" href="references.html#id11" title="Nizy Mathew, Georg Heygster, and Christian Melsheimer. Surface emissivity of the arctic sea ice at amsr-e frequencies. IEEE Transactions on Geoscience and Remote Sensing, 47:4115-4124, 2009. doi:10.1109/TGRS.2009.2023667.">Mathew <em>et al.</em>, 2009</a>, <a class="reference internal" href="references.html#id3" title="M. Huntemann, G. Heygster, L. Kaleschke, T. Krumpen, M. Mäkynen, and M. Drusch. Empirical sea ice thickness retrieval during the freeze-up period from smos high incident angle observations. The Cryosphere, 8(2):439–451, 2014.">Huntemann <em>et al.</em>, 2014</a>]</span>.
+from <span id="id1">[<a class="reference internal" href="references.html#id12" title="Thomas Meissner, Frank J. Wentz, and Lucrezia Ricciardulli. The emission and scattering of l-band microwave radiation from rough ocean surfaces and wind speed measurements from the aquarius sensor. Journal of Geophysical Research: Oceans, 119:6499-6522, 9 2014. URL: http://doi.wiley.com/10.1002/2014JC009837, doi:10.1002/2014JC009837.">Meissner <em>et al.</em>, 2014</a>, <a class="reference internal" href="references.html#id13" title="Thomas Meissner, Frank J. Wentz, and David M. Le Vine. The salinity retrieval algorithms for the nasa aquarius version 5 and smap version 3 releases. Remote Sensing, 2018. URL: https://www.mdpi.com/2072-4292/10/7/1121, doi:10.3390/rs10071121.">Meissner <em>et al.</em>, 2018</a>, <a class="reference internal" href="references.html#id10" title="Fj Wentz and T Meissner. Algorithm theoretical basis document (atbd): amsr ocean algorithm (version 2). 2000. URL: http://scholar.google.com/scholar?hl=en&amp;btnG=Search&amp;q=intitle:Algorithm+Theoretical+Basis+Document+(+ATBD+)+AMSR+Ocean+Algorithm#2.">Wentz and Meissner, 2000</a>, <a class="reference internal" href="references.html#id14" title="Fj Wentz and T Meissner. Algorithm theoretical basis document (atbd): amsr ocean algorithm. RSS Tech. Rpt, 1998. URL: http://scholar.google.com/scholar?hl=en&amp;btnG=Search&amp;q=intitle:Algorithm+Theoretical+Basis+Document+(+ATBD+)+AMSR+Ocean+Algorithm#2.">Wentz and Meissner, 1998</a>]</span> and for sea ice
+<span id="id2">[<a class="reference internal" href="references.html#id15" title="Rasmus T. Tonboe. A mass and thermodynamic model for sea ice. 2005.">Tonboe, 2005</a>, <a class="reference internal" href="references.html#id16" title="RASMUS T. Tonboe. The simulated sea ice thermal microwave emission at window and sounding frequencies. Tellus, Series A: Dynamic Meteorology and Oceanography, 62:333-344, 5 2010. URL: http://tellusa.net/index.php/tellusa/article/view/15683, doi:10.1111/j.1600-0870.2010.00434.x.">Tonboe, 2010</a>, <a class="reference internal" href="references.html#id11" title="Nizy Mathew, Georg Heygster, and Christian Melsheimer. Surface emissivity of the arctic sea ice at amsr-e frequencies. IEEE Transactions on Geoscience and Remote Sensing, 47:4115-4124, 2009. doi:10.1109/TGRS.2009.2023667.">Mathew <em>et al.</em>, 2009</a>, <a class="reference internal" href="references.html#id17" title="L. Kaleschke, X. Tian-Kunze, N. Maaß, M. Mäkynen, and M. Drusch. Sea ice thickness retrieval from smos brightness temperatures during the arctic freeze-up period. Geophysical Research Letters, 3 2012. URL: http://www.agu.org/pubs/crossref/2012/2012GL050916.shtml, doi:10.1029/2012GL050916.">Kaleschke <em>et al.</em>, 2012</a>, <a class="reference internal" href="references.html#id3" title="M. Huntemann, G. Heygster, L. Kaleschke, T. Krumpen, M. Mäkynen, and M. Drusch. Empirical sea ice thickness retrieval during the freeze-up period from smos high incident angle observations. The Cryosphere, 8(2):439–451, 2014.">Huntemann <em>et al.</em>, 2014</a>, <a class="reference internal" href="references.html#id22" title="X. Tian-Kunze, L. Kaleschke, N. Maaß, M. Mäkynen, N. Serra, M. Drusch, and T. Krumpen. Smos-derived thin sea ice thickness: algorithm baseline, product specifications and initial verification. Cryosphere, 8:997-1018, 5 2014. URL: http://www.the-cryosphere.net/8/997/2014/, doi:10.5194/tc-8-997-2014.">Tian-Kunze <em>et al.</em>, 2014</a>]</span>.
 The inversion of the compositional forward model is then performed using an
 optimal estimation scheme. The method is based on the works of
-<span id="id3">[<a class="reference internal" href="references.html#id8" title="Leif Toudal Pedersen. Retrieval of sea ice concentration by means of microwave radiometry. 1991.">Pedersen, 1991</a>, <a class="reference internal" href="references.html#id5" title="Raul Cristian Scarlat, Georg Heygster, and Leif Toudal Pedersen. Experiences with an optimal estimation algorithm for surface and atmospheric parameter retrieval from passive microwave data in the arctic. IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing, 10(9):3934–3947, 2017. doi:10.1109/JSTARS.2017.2739858.">Scarlat <em>et al.</em>, 2017</a>, <a class="reference internal" href="references.html#id7" title="Raul Cristian Scarlat. Improving an optimal estimation algorithm for surface and atmospheric parameter retrieval using passive microwave data in the arctic. 2018. URL: https://media.suub.uni-bremen.de/handle/elib/1496.">Scarlat, 2018</a>, <a class="reference internal" href="references.html#id6" title="Raul Cristian Scarlat, Gunnar Spreen, Georg Heygster, Marcus Huntemann, Cătălin Paţilea, Leif Toudal Pedersen, and Roberto Saldo. Sea ice and atmospheric parameter retrieval from satellite microwave radiometers: synergy of AMSR2 and SMOS compared with the CIMR candidate mission. Journal of Geophysical Research: Oceans, 2020. doi:https://doi.org/10.1029/2019JC015749.">Scarlat <em>et al.</em>, 2020</a>]</span>.</p>
-</div>
+<span id="id3">[<a class="reference internal" href="references.html#id8" title="Leif Toudal Pedersen. Retrieval of sea ice concentration by means of microwave radiometry. 1991.">Pedersen, 1991</a>, <a class="reference internal" href="references.html#id5" title="Raul Cristian Scarlat, Georg Heygster, and Leif Toudal Pedersen. Experiences with an optimal estimation algorithm for surface and atmospheric parameter retrieval from passive microwave data in the arctic. IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing, 10(9):3934–3947, 2017. doi:10.1109/JSTARS.2017.2739858.">Scarlat <em>et al.</em>, 2017</a>, <a class="reference internal" href="references.html#id7" title="Raul Cristian Scarlat. Improving an optimal estimation algorithm for surface and atmospheric parameter retrieval using passive microwave data in the arctic. 2018. URL: https://media.suub.uni-bremen.de/handle/elib/1496.">Scarlat, 2018</a>, <a class="reference internal" href="references.html#id6" title="Raul Cristian Scarlat, Gunnar Spreen, Georg Heygster, Marcus Huntemann, Cătălin Paţilea, Leif Toudal Pedersen, and Roberto Saldo. Sea ice and atmospheric parameter retrieval from satellite microwave radiometers: synergy of AMSR2 and SMOS compared with the CIMR candidate mission. Journal of Geophysical Research: Oceans, 2020. doi:https://doi.org/10.1029/2019JC015749.">Scarlat <em>et al.</em>, 2020</a>]</span>.
+The output of the multi parameter retrieval is supposed to be valuable addition
+information and may serve as a priori input for the various ocean and sea ice
+algorithms.</p>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -383,9 +387,8 @@ optimal estimation scheme. The method is based on the works of
     <div class="footer-content row">
         <footer class="col footer"><p>
   
-    By CIMR Devalgo<br/>
+    By Marcus Huntemann, Janna Rückert and Gunnar Spreen, University of Bremen<br/>
   
-      &copy; Copyright 2022.<br/>
 </p>
         </footer>
     </div>
