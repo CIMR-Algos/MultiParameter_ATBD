@@ -117,7 +117,7 @@ function lm_retrieval(Ta,Sₑ,Sₐ,xₐ,F,x₀; verbose=false,debug=false)
     #function to minimize with changing input x
     J(y,x,Sₑ⁻¹,Sₐ⁻¹,xₐ,Fx)=(y.-Fx)'*(Sₑ⁻¹*(y.-Fx))+(xₐ.-x)'*(Sₐ⁻¹*(xₐ.-x)) #first two temps of eq 5.3
     xᵢ=x₀
-    
+
     
     result=ForwardDiff.DiffResults.JacobianResult(Ta,xₐ)
     γ=1e-5 #set to 0 for gauss newton
@@ -846,21 +846,23 @@ function inv_function_apri_ice_lm(T_A, S_e, S_p, ny, startguess, num_ite=50, d2m
         sitguess = ssg(T_A[2]) #from 2 to 82 cm sit guess
 
         #  Reanalysis values without logarithms
-        p_a = [10.11 3.863 0.1633 274.5 273 C_is1 F_MY1 sitguess 35]
+        #p_a = [10.11 3.863 0.1633 274.5 273 C_is1 F_MY1 sitguess 35]
 
         #     startguess = [9.4919515 3.8402195 0.0061435 271.43274 264.233308; 9.4919515 3.8402195 0.0061435 271.43274 264.233308]
         #     startguess = [startguess;startguess]
         #         nn=1n
         # 
-        p_a[1] = startguess[nn, 1] #WSP
-        p_a[2] = startguess[nn, 2] #TWV
-        p_a[3] = startguess[nn, 3] #CLW
-        p_a[4] = startguess[nn, 4] #SST (skt)
-        p_a[5] = startguess[nn, 5] #T2m  
+       # p_a[1] = startguess[nn, 1] #WSP
+       # p_a[2] = startguess[nn, 2] #TWV
+       # p_a[3] = startguess[nn, 3] #CLW
+       # p_a[4] = startguess[nn, 4] #SST (skt)
+       # p_a[5] = startguess[nn, 5] #T2m  
         #  p_a[8] = startguess[nn,8] #SIT
 
 
+        p_a=startguess[nn,:]'
         p_start = p_a
+
 
         #         del_p = [2.0 2.0 1.0 2.0 2.0 0.2 0.2]
         #                 #Wsp TWV CLW SST T2m SIC MYIF
