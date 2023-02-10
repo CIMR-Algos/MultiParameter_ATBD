@@ -8,8 +8,8 @@ The input data for the multi-parameter retrieval includes all channels at horizo
 
 The output data consist of the parameters, namely {term}`WSP`, {term}`TWV`,
 {term}`CLW`, {term}`SST`, {term}`IST`, {term}`SIC`, {term}`MYIF` and
-{term}`SIT`. Time and location for the resampling. The uncertainties are assumed
-gaussian in the retrieval and are provided along with the parameters. 
+{term}`SIT` as well as time and location for the resampling. The uncertainties are assumed
+Gaussian in the retrieval and are provided along with the parameters. 
 
 ## Auxiliary data
 Auxillary data includes the {term}`TEC` for the transformation to account for
