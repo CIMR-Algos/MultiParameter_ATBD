@@ -71,7 +71,7 @@ graph TD
 ```
 
 
-## Algorithm Assumptions and Simplifications
+## Algorithm assumptions and simplifications
 
 Compared to individual state-of-the-art algorithms for the retrieval of individual quantities, the
 multi-parameter retrieval uses a simplified approach. Particular trade-offs
@@ -179,6 +179,10 @@ with $\mathbf {\hat M}$ is the Jacobian of the optimal solution of
 diagonal elements of $\mathbf{\hat S}_a$.
 
 
+```{note}
+$\mathbf S_e$ is often set higher than the pure radiometric uncertainty of the brightness temperatures, to account for the uncertainty of the forward model. This can be named an *effective error covariance of the measurements*. The effective contribution from the forward model error is not evaluated yet, but estimated to be below 2 K for all channels.
+```
+(fw-model)=
 ## Mathematical description of the Forward Model
 
 The Forward Model is the compositional forward model. It consists of individual
@@ -192,6 +196,7 @@ The surface contribution to the brightness temperature is given by
 :label: eq:surface
 T_{b,s} = C_{\text{ow}}ε_{\text{ow}}T_{\text{ow}}+C_{\text{fyi}}ε_{\text{fyi}}T_{\text{fyi}}+C_{\text{myi}}ε_{\text{myi}}T_{\text{myi}},
 ```
+
 
 where $C_{\text{ow}}$, $C_{\text{fyi}}$, and $C_{\text{myi}}$ are the area
 fraction of ocean water, first year ice, and multi year ice, respectively.
@@ -215,7 +220,12 @@ dependent coefficients from {cite}`Mathew2009` (see {numref}`tab:emtemp`), and
 $ε_{t,p}$ is the frequency-dependent emissivity for the polarization $p$ and ice type $t$ from {numref}`tab:c_ice`.
 {cite}`Mathew2009` did not provide parametrization for L-band, but to match a
 temperature dependence of emitted radiation at L-band we derive the effective
-temperature as with {eq}`eq:Nizy` using $a_t=0.1$ and $b_t=0$ for both, first year and multi year ice.
+temperature as with {eq}`eq:Nizy` using $a_t=0.1$ and $b_t=0$ for both, first year and multi year ice. The emissivities used for L-band are taken from {cite}`Scarlat2020` with slight modifications and are given in {numref}`tab:c_ice`.
+
+```{note}
+$T_{C}$ in this parametrization is the IST in the retrieval as the only temperature dependence. 
+The assumption is that in thermal equilibrium the IST is equal to the air temperature at the surface.
+```
 
 ### Sea ice thickness
 The ice thickness dependence at all frequencies is introduced via modification of the emission from the ice surface for the first year ice fraction.
@@ -226,15 +236,15 @@ T_{b,p} = a_{p}-(a_{p}-b_{p})\exp\left(-\frac{\text{SIT}}{c_{p}}\right)
 ```
 with the index $p$ indicate polarization ($h$ or $v$) the coefficients $a_{p}$,
 $b_{p}$, and $c_{p}$ from {cite}`Scarlat2020` (see {numref}`tab:fy_thick`). To
-combine ice temperatuer and ice thickness dependence, the ice emissivity is
+combine ice temperature and ice thickness dependence, the ice emissivity is
 modified by the ice thickness  by substituting $a_{p}$ with the ice temperature
-dependent $U_{T, t, p}$ from {eq}`eq:Nizy` for $t=\text{FYI}$. This was not performed in
+sedeitivedent $U_{T, t, p}$ from {eq}`eq:Nizy` for $t=\text{FYI}$. This was not performed in
 {cite}`Scarlat2020` but is essential for the minimization of the cost function
 to not introduce discontinuities in the forward model. The MYI emissivity is not
 affected by the ice thickness in this forward model, as it was not part of the
 thickness sensitivity study in {cite}`Scarlat2020`. As a consequence, the
 retrieval of ice thickness accounts only for the FYI fraction and thus is very
-sensitive when the FYI fraction is small.
+noisy when the FYI fraction is small.
 
 ### Ocean surface model
 
