@@ -2,14 +2,19 @@
 
 # Input data
 
-The input data for the multi-parameter retrieval includes all channels at horizontal and vertical polarization and their uncertainties coming from the L1b processor. In addition, time and location is required for calculation of field of resampled TBs. The uncertainties are assumed gaussian in the retrieval. 
+The input data for the multi-parameter retrieval includes all channels at
+horizontal and vertical polarization and their uncertainties coming from the
+L1b processor. In addition, time and location is required for calculation of
+field of resampled TBs. The evaluation of the algorithm is planned on the
+C-band footprints, with all other channels being resampled to it. The
+uncertainties are assumed Gaussian in the retrieval. 
 
 ## Output data
 
 The output data consist of the parameters, namely {term}`WSP`, {term}`TWV`,
 {term}`CLW`, {term}`SST`, {term}`IST`, {term}`SIC`, {term}`MYIF` and
-{term}`SIT`. Time and location for the resampling. The uncertainties are assumed
-gaussian in the retrieval and are provided along with the parameters. 
+{term}`SIT` as well as time and location for the resampling. The uncertainties are assumed
+Gaussian in the retrieval and are provided along with the parameters. 
 
 ## Auxiliary data
 Auxillary data includes the {term}`TEC` for the transformation to account for

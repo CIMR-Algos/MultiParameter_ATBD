@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
@@ -42,7 +42,7 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -54,7 +54,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>mermaid.initialize({startOnLoad:true});</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Acronyms" href="acronyms.html" />
+    <link rel="next" title="Applicable and reference documents" href="applicable_ref_docs.html" />
     <link rel="prev" title="ATBD Multi Parameter Retrieval" href="intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -122,6 +122,11 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="applicable_ref_docs.html">
+   Applicable and reference documents
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="acronyms.html">
    Acronyms
   </a>
@@ -163,7 +168,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="OEM_SIT.html">
-   OEM SIT
+   First assessment of the algorithm
   </a>
  </li>
  <li class="toctree-l1">
@@ -333,9 +338,7 @@ respects individual contributions to the brightness temperatures at each
 frequency and their uncertainties provided from the <a class="reference internal" href="acronyms.html#term-CIMR"><span class="xref std std-term">CIMR</span></a> L1b data. The
 individual error covariances of the different parameters and an a priori state
 can be used as input. The a priori is partly taken from <a class="reference internal" href="acronyms.html#term-ECMWF"><span class="xref std std-term">ECMWF</span></a> analysis
-and partly derived from the brightness temperatures itself. As more quantities
-are retrieved than brightness temperatures are acquired, the inversion is
-ill-posed and relies on quality a priori information. The output of this multi
+for compatible quantities. The output of this multi
 parameter retrieval is physically consistent and can be used in turn as a priori
 for the other retrieval parameters. The method is based on the works of
 <span id="id1">[<a class="reference internal" href="references.html#id8" title="Leif Toudal Pedersen. Retrieval of sea ice concentration by means of microwave radiometry. 1991.">Pedersen, 1991</a>, <a class="reference internal" href="references.html#id5" title="Raul Cristian Scarlat, Georg Heygster, and Leif Toudal Pedersen. Experiences with an optimal estimation algorithm for surface and atmospheric parameter retrieval from passive microwave data in the arctic. IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing, 10(9):3934–3947, 2017. doi:10.1109/JSTARS.2017.2739858.">Scarlat <em>et al.</em>, 2017</a>, <a class="reference internal" href="references.html#id7" title="Raul Cristian Scarlat. Improving an optimal estimation algorithm for surface and atmospheric parameter retrieval using passive microwave data in the arctic. 2018. URL: https://media.suub.uni-bremen.de/handle/elib/1496.">Scarlat, 2018</a>, <a class="reference internal" href="references.html#id6" title="Raul Cristian Scarlat, Gunnar Spreen, Georg Heygster, Marcus Huntemann, Cătălin Paţilea, Leif Toudal Pedersen, and Roberto Saldo. Sea ice and atmospheric parameter retrieval from satellite microwave radiometers: synergy of AMSR2 and SMOS compared with the CIMR candidate mission. Journal of Geophysical Research: Oceans, 2020. doi:https://doi.org/10.1029/2019JC015749.">Scarlat <em>et al.</em>, 2020</a>]</span>.</p>
@@ -353,7 +356,7 @@ for the other retrieval parameters. The method is based on the works of
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -375,10 +378,10 @@ for the other retrieval parameters. The method is based on the works of
             <p class="prev-next-title">ATBD Multi Parameter Retrieval</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="acronyms.html" title="next page">
+    <a class='right-next' id="next-link" href="applicable_ref_docs.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Acronyms</p>
+        <p class="prev-next-title">Applicable and reference documents</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

@@ -5,7 +5,12 @@ The tables listed here are part of the forward model used in the multi parameter
 retrieval. The following Tables {numref}`%s <tab:mc_atmo>`, {numref}`%s
 <tab:RayMie>`, {numref}`%s <tab:mc_geo>`, {numref}`%s <tab:mc_m>` are reprinted
 from {cite}`Wentz2000` with the corresponding formulae are described in
-{ref}`fw-model`.  
+{ref}`fw-model`. 
+
+```{note}
+For completeness, the tables also include the coefficients for 23.8 GHz and 89 GHz, which are not available on the CIMR satellite. 
+These coefficients are not used in the retrieval.
+```
 
 ```{table} Coefficients for atmospheric model 
 :name: tab:mc_atmo
@@ -36,7 +41,7 @@ from {cite}`Wentz2000` with the corresponding formulae are described in
 | $a_{L5}$      | 1.2216e+00   | 1.1795e+00   | 1.0636e+00   | 1.0220e+00    | 9.5460e-01    | 7.9610e-01  |
 ```
 
-```{table} Coefficients for Geometric Optics
+```{table} Coefficients for geometric optics
 :name: tab:mc_geo
 | Frequency GHz | 6.9           | 10.7          | 18.7          | 23.8          | 36.5          | 89.0        |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ---         |
@@ -64,28 +69,26 @@ from {cite}`Wentz2000` with the corresponding formulae are described in
 
 ```{table} Coefficients ice emissivities
 :name: tab:c_ice
-| Frequency GHz | 6.9          | 10.7         | 18.7         | 23.8         | 36.5         | 89.0  |
-| ------------  | ------------ | ------------ | ------------ | ------------ | ------------ | ---   |
-| eps_FY_V      | 0.958        | 0.960        | 0.965        | 0.960        | 0.946        | 0.615 |
-| eps_FY_H      | 0.868        | 0.879        | 0.887        | 0.882        | 0.864        | 0.488 |
-| eps_MY_V      | 0.972        | 0.948        | 0.885        | 0.839        | 0.731        | 0.666 |
-| eps_MY_H      | 0.866        | 0.845        | 0.799        | 0.763        | 0.675        | 0.630 |
+| Frequency GHz |    1.4       | 6.9          | 10.7         | 18.7         | 23.8         | 36.5         | 89.0  |
+| ------------  | ------------ | ------------ | ------------ | ------------ | ------------ | ------------ | ---   |
+| eps_FY_V      |     0.92     | 0.958        | 0.960        | 0.965        | 0.960        | 0.946        | 0.615 |
+| eps_FY_H      |     0.86     | 0.868        | 0.879        | 0.887        | 0.882        | 0.864        | 0.488 |
+| eps_MY_V      |     0.94     | 0.972        | 0.948        | 0.885        | 0.839        | 0.731        | 0.666 |
+| eps_MY_H      |     0.85     | 0.866        | 0.845        | 0.799        | 0.763        | 0.675        | 0.630 |
 ```
 
-```{table} Coefficients for the first year ice thickness sensitivity coefficients
+```{table} Coefficients for the first year ice thickness sensitivity
 :name: tab:fy_thick
 | Frequency GHz | 6.9          | 10.7         | 18.7         | 23.8         | 36.5         | 89.0      |
 | ------------  | ------------ | ------------ | ------------ | ------------ | ------------ | ---       |
-| a_v        | 251.170      | 241.434      | 247.310      | 248.773      | 250.338      | 252.346   |
-| b_v        | 121.778      | 9846.905     | 629.706      | 17586.945    | 12532.980    | 190.665   |
-| c_v        | 6.667        | 0.123        | 0.060        | 0.106        | 0.117        | 1.823     |
-| a_h        | 220.703      | 228.617      | 238.249      | 240.193      | 242.620      | 238.396   |
-| b_h        | -16.118      | -0.404       | 29.602       | 62.125       | 83.872       | 15333.029 |
-| c_h        | 7.183        | 7.402        | 7.215        | 7.280        | 6.707        | 0.037     |
+| b_v         | 157.94       |163.49        |175.182       |185.914       |206.668       |242.019    |
+| c_v        | 8.957        |8.524         |7.734         |7.474         |7.668         |2.804      |
+| b_h        |74.221        |78.405        |90.601        |99.897        |128.36        |175.158    |
+| c_h        | 11.894       |11.645        |10.165        |9.129         |8.986         |5.686  | 
 ```
 
 
-```{table} linear regression Coefficients for emitting layer temperature calculation for DFJM
+```{table} linear regression Coefficients for emitting layer temperature calculation for Winter
 :name: tab:emtemp
 | Frequency GHz | 6.9          | 10.7         | 18.7         | 23.8         | 36.5         | 89.0      |
 | ------------  | ------------ | ------------ | ------------ | ------------ | ------------ | ---       |

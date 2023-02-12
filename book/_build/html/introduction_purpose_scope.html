@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
@@ -42,7 +42,7 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -122,6 +122,11 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="applicable_ref_docs.html">
+   Applicable and reference documents
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="acronyms.html">
    Acronyms
   </a>
@@ -163,7 +168,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="OEM_SIT.html">
-   OEM SIT
+   First assessment of the algorithm
   </a>
  </li>
  <li class="toctree-l1">
@@ -331,7 +336,7 @@ will be described in this document. It is applied to <a class="reference interna
 is resampled to a common footprint for all frequencies (we call L1R). It is
 using all <a class="reference internal" href="acronyms.html#term-CIMR"><span class="xref std std-term">CIMR</span></a> frequency channels, namely 1.4, 6.9, 10.7, 18.7, and 36.5
 GHz and <a class="reference internal" href="acronyms.html#term-ECMWF"><span class="xref std std-term">ECMWF</span></a> Analysis as input. The output of this multi parameter
-retrieval is in the same resolution format, i.e. L2R. It is physically
+retrieval is in the same resolution format, i.e., L2R. It is physically
 consistent and can be used in turn as a priori for the other retrieval
 parameters.</p>
 <p>This document is describing the algorithm and processing steps of the L2R multi
@@ -339,8 +344,8 @@ parameter retrieval product. The document is intended for the <a class="referenc
 interested parties. It is not intended to replace a product user guide. The
 algorithm is implemented in the <em>draft</em> multi parameter retrieval algorithm which
 is distributed in the “algorithm” directory of this repository.</p>
-<p>To this date, there are no instruments in operation which are measure all
-frequencies at the same time as the <a class="reference internal" href="acronyms.html#term-CIMR"><span class="xref std std-term">CIMR</span></a>. Therefore, at the development
+<p>To this date, there are no instruments in operation which measure all
+frequencies at the same time as the <a class="reference internal" href="acronyms.html#term-CIMR"><span class="xref std std-term">CIMR</span></a>. Therefore, for the development
 of the algorithm, data from <a class="reference internal" href="acronyms.html#term-AMSR2"><span class="xref std std-term">AMSR2</span></a> and <a class="reference internal" href="acronyms.html#term-SMOS"><span class="xref std std-term">SMOS</span></a> were used as input.
 This has a direct impact on the retrieval performance as the collocation of the
 measurements is not fixed. For surface parameters, this might be less of an
@@ -365,7 +370,7 @@ of the retrieval. At the moment daily means are used as input, which is only rel
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
