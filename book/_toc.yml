@@ -23,7 +23,7 @@ chapters:
 - file: algorithm_performance_assessment
   title: Algorithm Performance Assessment 
 - file: OEM_SIT.ipynb
-  title: OEM SIT
+  title: First assessment of the algorithm
 - file: references
   title: References
 - file: annex

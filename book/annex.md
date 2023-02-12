@@ -41,7 +41,7 @@ These coefficients are not used in the retrieval.
 | $a_{L5}$      | 1.2216e+00   | 1.1795e+00   | 1.0636e+00   | 1.0220e+00    | 9.5460e-01    | 7.9610e-01  |
 ```
 
-```{table} Coefficients for Geometric Optics
+```{table} Coefficients for geometric optics
 :name: tab:mc_geo
 | Frequency GHz | 6.9           | 10.7          | 18.7          | 23.8          | 36.5          | 89.0        |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ---         |
@@ -77,7 +77,7 @@ These coefficients are not used in the retrieval.
 | eps_MY_H      |     0.85     | 0.866        | 0.845        | 0.799        | 0.763        | 0.675        | 0.630 |
 ```
 
-```{table} Coefficients for the first year ice thickness sensitivity coefficients
+```{table} Coefficients for the first year ice thickness sensitivity
 :name: tab:fy_thick
 | Frequency GHz | 6.9          | 10.7         | 18.7         | 23.8         | 36.5         | 89.0      |
 | ------------  | ------------ | ------------ | ------------ | ------------ | ------------ | ---       |
@@ -88,7 +88,7 @@ These coefficients are not used in the retrieval.
 ```
 
 
-```{table} linear regression Coefficients for emitting layer temperature calculation for DFJM
+```{table} linear regression Coefficients for emitting layer temperature calculation for Winter
 :name: tab:emtemp
 | Frequency GHz | 6.9          | 10.7         | 18.7         | 23.8         | 36.5         | 89.0      |
 | ------------  | ------------ | ------------ | ------------ | ------------ | ------------ | ---       |

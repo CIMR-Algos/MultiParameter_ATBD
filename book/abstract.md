@@ -8,9 +8,7 @@ respects individual contributions to the brightness temperatures at each
 frequency and their uncertainties provided from the {term}`CIMR` L1b data. The
 individual error covariances of the different parameters and an a priori state
 can be used as input. The a priori is partly taken from {term}`ECMWF` analysis
-and partly derived from the brightness temperatures itself. As more quantities
-are retrieved than brightness temperatures are acquired, the inversion is
-ill-posed and relies on quality a priori information. The output of this multi
+for compatible quantities. The output of this multi
 parameter retrieval is physically consistent and can be used in turn as a priori
 for the other retrieval parameters. The method is based on the works of
 {cite}`Pedersen1991,Scarlat2017,Scarlat2018,Scarlat2020`.
