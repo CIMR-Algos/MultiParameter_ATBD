@@ -1,0 +1,1050 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Baseline Algorithm Definition &#8212; CIMR L2 Multi Parameter Retrieval ATBD v1</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Algorithm Input and Output Data Definition (IODD)" href="algorithm_input_output_data_definition.html" />
+    <link rel="prev" title="Level-2 product definition" href="L2_product_definition.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">CIMR L2 Multi Parameter Retrieval ATBD v1</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    ATBD Multi Parameter Retrieval
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="abstract.html">
+   Abstract
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="applicable_ref_docs.html">
+   Applicable and reference documents
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="acronyms.html">
+   Acronyms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="definitions.html">
+   Definitions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="introduction_purpose_scope.html">
+   Introduction, purpose and scope
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="background_justification_algorithm.html">
+   Background and justification of selected algorithm
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="L2_product_definition.html">
+   Level-2 product definition
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Baseline Algorithm Definition
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="algorithm_input_output_data_definition.html">
+   Algorithm Input and Output Data Definition (IODD)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="algorithm_performance_assessment.html">
+   Algorithm Performance Assessment (Version 2 ATBD)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="OEM_SIT.html">
+   First assessment of the algorithm
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="references.html">
+   References
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="annex.html">
+   Annex
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/CIMR-Algos/MultiParameter_ATBD"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/baseline_algorithm_definition.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cimr-level-1b-re-sampling-approach">
+   CIMR Level-1b re-sampling approach
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#level-2-end-to-end-algorithm-functional-flow-diagram">
+   Level-2 end to end algorithm functional flow diagram
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#algorithm-assumptions-and-simplifications">
+   Algorithm assumptions and simplifications
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#functional-description-of-each-algorithm-step">
+   Functional description of each algorithm step
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mathematical-description-of-the-forward-model">
+   Mathematical description of the Forward Model
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sea-ice-type">
+     Sea ice type
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sea-ice-thickness">
+     Sea ice thickness
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ocean-surface-model">
+     Ocean surface model
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dielectric-constant-of-sea-water">
+     Dielectric constant of sea water
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#atmosphere">
+     Atmosphere
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#addition-of-the-l-band-forward-model">
+     Addition of the L-band forward model
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#brightness-temperature-at-instrument-level">
+     Brightness temperature at instrument level
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#input-data">
+   Input data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#output-data">
+   Output data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#auxiliary-data">
+     Auxiliary data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ancillary-data">
+     Ancillary data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#validation-process">
+     Validation process
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Baseline Algorithm Definition</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cimr-level-1b-re-sampling-approach">
+   CIMR Level-1b re-sampling approach
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#level-2-end-to-end-algorithm-functional-flow-diagram">
+   Level-2 end to end algorithm functional flow diagram
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#algorithm-assumptions-and-simplifications">
+   Algorithm assumptions and simplifications
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#functional-description-of-each-algorithm-step">
+   Functional description of each algorithm step
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mathematical-description-of-the-forward-model">
+   Mathematical description of the Forward Model
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sea-ice-type">
+     Sea ice type
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sea-ice-thickness">
+     Sea ice thickness
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ocean-surface-model">
+     Ocean surface model
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dielectric-constant-of-sea-water">
+     Dielectric constant of sea water
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#atmosphere">
+     Atmosphere
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#addition-of-the-l-band-forward-model">
+     Addition of the L-band forward model
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#brightness-temperature-at-instrument-level">
+     Brightness temperature at instrument level
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#input-data">
+   Input data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#output-data">
+   Output data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#auxiliary-data">
+     Auxiliary data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ancillary-data">
+     Ancillary data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#validation-process">
+     Validation process
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="baseline-algorithm-definition">
+<h1>Baseline Algorithm Definition<a class="headerlink" href="#baseline-algorithm-definition" title="Permalink to this headline">#</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
+<p>In the following the main algorithm for the multi parameter retrieval is
+described in detail. The algorithm is based on the works of
+<span id="id1">[<a class="reference internal" href="references.html#id8" title="Leif Toudal Pedersen. Retrieval of sea ice concentration by means of microwave radiometry. 1991.">Pedersen, 1991</a>, <a class="reference internal" href="references.html#id5" title="Raul Cristian Scarlat, Georg Heygster, and Leif Toudal Pedersen. Experiences with an optimal estimation algorithm for surface and atmospheric parameter retrieval from passive microwave data in the arctic. IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing, 10(9):3934–3947, 2017. doi:10.1109/JSTARS.2017.2739858.">Scarlat <em>et al.</em>, 2017</a>, <a class="reference internal" href="references.html#id7" title="Raul Cristian Scarlat. Improving an optimal estimation algorithm for surface and atmospheric parameter retrieval using passive microwave data in the arctic. 2018. URL: https://media.suub.uni-bremen.de/handle/elib/1496.">Scarlat, 2018</a>, <a class="reference internal" href="references.html#id6" title="Raul Cristian Scarlat, Gunnar Spreen, Georg Heygster, Marcus Huntemann, Cătălin Paţilea, Leif Toudal Pedersen, and Roberto Saldo. Sea ice and atmospheric parameter retrieval from satellite microwave radiometers: synergy of AMSR2 and SMOS compared with the CIMR candidate mission. Journal of Geophysical Research: Oceans, 2020. doi:https://doi.org/10.1029/2019JC015749.">Scarlat <em>et al.</em>, 2020</a>]</span>. The algorithm is
+divided into several steps, which are described in the following.</p>
+</section>
+<section id="cimr-level-1b-re-sampling-approach">
+<h2>CIMR Level-1b re-sampling approach<a class="headerlink" href="#cimr-level-1b-re-sampling-approach" title="Permalink to this headline">#</a></h2>
+<p>The CIMR Level-1b data is first resampled to the C-band footprints using
+(TBD) resample tool. The target footprint with C-band is a compromise between
+resolution and accuracy given sensitivities of the inversion of the forward
+model. The main restrain being the L-band channel which has a
+high influence on the retrieval, on ocean because of SSS and sea ice due to SIT. Higher up sampling of L-band than to the C-band resolution would require accurate knowledge about the antenna pattern of the instrument and a trade-off between accuracy and resolution.</p>
+</section>
+<section id="level-2-end-to-end-algorithm-functional-flow-diagram">
+<h2>Level-2 end to end algorithm functional flow diagram<a class="headerlink" href="#level-2-end-to-end-algorithm-functional-flow-diagram" title="Permalink to this headline">#</a></h2>
+<p>The following diagram shows the functional flow of the algorithm.</p>
+<div class="mermaid">
+            graph TD
+	subgraph Input data
+		subgraph CIMR L1b
+			TBs[TOA TBs]
+			TBe[TOA TB error]
+		end
+		subgraph External
+			ECMWF[ECMWF analysis]
+			ERA5[&quot;Historical ERA5&quot;]
+		end
+	end
+	subgraph Inversion
+		F[Forward model]
+		cost[Cost function]
+		apriori[A priori] 
+		OS[Optimal state]
+
+	end
+
+	subgraph Output data L1R
+		geo[Geophysical variables]
+		unc[Geophsysical uncertainties]
+		outtb[Brightness tempreature residuals]
+		flags[Quality flags]
+	end
+
+	resampling[Resampling processor L1R]
+
+	TBs --&gt; resampling
+	TBe --&gt; resampling
+	ECMWF --&gt; resampling
+	resampling -- Measurement vector --&gt; cost
+	resampling -- Measurement uncertainty --&gt; cost
+	resampling -- State vector --&gt; apriori 
+	resampling -- State uncertainty --&gt; apriori
+
+	ERA5 --Covariance estimate--&gt; apriori
+	apriori --&gt; cost
+	F--&gt;cost
+	cost--&gt;F
+
+	cost --&gt; OS
+	OS --&gt; geo
+	OS --&gt; unc 
+	OS --&gt; outtb
+	OS --&gt; flags
+        </div></section>
+<section id="algorithm-assumptions-and-simplifications">
+<h2>Algorithm assumptions and simplifications<a class="headerlink" href="#algorithm-assumptions-and-simplifications" title="Permalink to this headline">#</a></h2>
+<p>Compared to individual state-of-the-art algorithms for the retrieval of individual quantities, the
+multi-parameter retrieval uses a simplified approach. Particular trade-offs
+include:</p>
+<ul class="simple">
+<li><p>Some Ocean parameters contain many empirical values, developed and validated
+for different instruments which might have to be adjusted to match CIMR
+instrument characteristics.</p></li>
+<li><p>The sea ice thickness is retrieved as a combination of first year ice
+emissivity and the ocean emissivity. As this, it is prone to noise in the
+ocean emission, which can lead to erroneous occurrence of sea ice of low
+thickness, as the first year ice emissivity is identical to the ocean
+emissivity at 0 cm thickness.</p></li>
+<li><p>The empirical parametrization of sea ice thickness stems from uncertain
+atmospheric conditions, so that the ice thickness dependence of higher
+frequency channels might be confounded with the dependence on the atmospheric
+conditions.</p></li>
+<li><p>The sensitivity of the CIMR channels to CLW, in particular over sea ice is
+low, so that the uncertainty of CLW is high. In addition, the effect of
+decreased CLW over first year ice is similar to the effect of an increased
+MYI fraction, so that these two signals cannot be adequately separated in the
+current retrieval.</p></li>
+<li><p>In the present version of the algorithm, the forward model is assumed
+near-linear in its characteristic and the retrieval is unconstrained. This
+might lead to a bias in the retrieval of the parameters when other parameters
+might converge to nonphysical values. In test cases, this happened mostly
+with</p>
+<ul>
+<li><p>IST &gt; 273.15 K</p></li>
+<li><p>SST &lt; 273.15 K</p></li>
+<li><p>TWV &lt; 0 Kg/m<span class="math notranslate nohighlight">\(^2\)</span></p></li>
+</ul>
+</li>
+<li><p>There are more modern approaches for the forward model of the ocean emission,
+in particular at L-band. This will influence the retrieval of the ocean
+parameters, in particular <a class="reference internal" href="acronyms.html#term-SSS"><span class="xref std std-term">SSS</span></a> and <a class="reference internal" href="acronyms.html#term-SST"><span class="xref std std-term">SST</span></a>. The current algorithm is the approach
+of <span id="id2">[<a class="reference internal" href="references.html#id9" title="Christopher S. Ruf. Vicarious calibration of an ocean salinity radiometer from low earth orbit. Journal of Atmospheric and Oceanic Technology, 20:1656-1670, 2003. doi:10.1175/1520-0426(2003)020&lt;1656:VCOAOS&gt;2.0.CO;2.">Ruf, 2003</a>]</span> and <span id="id3">[<a class="reference internal" href="references.html#id6" title="Raul Cristian Scarlat, Gunnar Spreen, Georg Heygster, Marcus Huntemann, Cătălin Paţilea, Leif Toudal Pedersen, and Roberto Saldo. Sea ice and atmospheric parameter retrieval from satellite microwave radiometers: synergy of AMSR2 and SMOS compared with the CIMR candidate mission. Journal of Geophysical Research: Oceans, 2020. doi:https://doi.org/10.1029/2019JC015749.">Scarlat <em>et al.</em>, 2020</a>]</span>, but a switch to another
+parametrization like <span id="id4">[<a class="reference internal" href="references.html#id13" title="Thomas Meissner, Frank J. Wentz, and David M. Le Vine. The salinity retrieval algorithms for the nasa aquarius version 5 and smap version 3 releases. Remote Sensing, 2018. URL: https://www.mdpi.com/2072-4292/10/7/1121, doi:10.3390/rs10071121.">Meissner <em>et al.</em>, 2018</a>]</span> can be considered. However, the SSS is
+the parameter with the weakest signal in the forward model, so that other
+parametrization have to be improved, to justify this effort.</p></li>
+<li><p>The Forward model is restricted to winter conditions over sea ice. The summer
+conditions are highly variable across frequencies and cannot be adequately
+described by the current forward model. In particular the definition of first
+year ice and multiyear ice is ambiguous in melting conditions. In addition,
+the <a class="reference internal" href="acronyms.html#term-SIT"><span class="xref std std-term">SIT</span></a> parametrization is only valid for winter conditions.</p></li>
+</ul>
+</section>
+<section id="functional-description-of-each-algorithm-step">
+<h2>Functional description of each algorithm step<a class="headerlink" href="#functional-description-of-each-algorithm-step" title="Permalink to this headline">#</a></h2>
+<p>The retrieval is following a typical scheme with the objective to minimize</p>
+<div class="math notranslate nohighlight" id="equation-eq-chi2">
+<span class="eqno">(1)<a class="headerlink" href="#equation-eq-chi2" title="Permalink to this equation">#</a></span>\[
+\begin{align}
+χ^2(\mathbf y,\mathbf x,\mathbf S_e,\mathbf S_a,\mathbf x_a) = \left(\mathbf y-F(\mathbf x)\right)^\mathbf{T}\mathbf S_e^{-1}(\mathbf
+y-F(\mathbf x))+(\mathbf x_a-\mathbf x)^{\mathbf T}\mathbf S_a^{-1}(\mathbf x_a
+- \mathbf x) 
+\end{align}
+\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight" id="equation-eqxy">
+<span class="eqno">(2)<a class="headerlink" href="#equation-eqxy" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align}
+\mathbf y= \begin{bmatrix}
+T_{b,h,1.4}\\
+T_{b,v,1.4}\\
+T_{b,h,6.9}\\
+T_{b,v,6.9}\\
+T_{b,h,10.7}\\
+T_{b,v,10.7}\\
+T_{b,h,18.7}\\
+T_{b,v,18.7}\\
+T_{b,h,36.5}\\
+T_{b,v,36.5}\\
+\end{bmatrix}, \quad
+\mathbf x= \begin{bmatrix}
+\text{WSP}\\
+\text{TWV}\\
+\text{CLW}\\
+\text{SST}\\
+\text{IST}\\
+\text{SIC}\\
+\text{MYIF}\\
+\text{SIT}\\
+\text{SSS}\\
+\end{bmatrix}
+\end{align}\end{split}\]</div>
+<p>i.e., <span class="math notranslate nohighlight">\(\mathbf{y}\)</span> is the vector of input brightness temperatures (measurement vector) and
+<span class="math notranslate nohighlight">\(\mathbf x\)</span> is the vector with the corresponding physical quantities (state
+vector), <span class="math notranslate nohighlight">\(\mathbf S_e\)</span> is the error covariance matrix of the input brightness
+temperatures, <span class="math notranslate nohighlight">\(\mathbf S_a\)</span> is the covariance matrix of the a priori values,
+<span class="math notranslate nohighlight">\(\textbf x_a\)</span> is the a priori value, and <span class="math notranslate nohighlight">\(F\)</span> is the forward operator, which is
+the compositional forward model described in <a class="reference internal" href="#fw-model"><span class="std std-ref">Mathematical description of the Forward Model</span></a>.  The optimal
+solution <span class="math notranslate nohighlight">\(\hat {\mathbf y}\)</span> which minimizes equation <a class="reference internal" href="#equation-eq-chi2">(1)</a> (and maximizes the posterior probability density function) is found by
+iteration. The uncertainty of <span class="math notranslate nohighlight">\(\mathbf y\)</span> can then be obtained as</p>
+<div class="math notranslate nohighlight" id="equation-eq-error">
+<span class="eqno">(3)<a class="headerlink" href="#equation-eq-error" title="Permalink to this equation">#</a></span>\[\mathbf {\hat S}_a= (\mathbf S_a^{-1}+\mathbf{ \hat M}^\mathbf T \mathbf S_e^{-1}\mathbf {\hat M})^{-1}, \]</div>
+<p>with <span class="math notranslate nohighlight">\(\mathbf {\hat M}\)</span> is the Jacobian of the optimal solution of
+<a class="reference internal" href="#equation-eq-chi2">(1)</a>. The uncertainty of the individual parameters is then given by the
+diagonal elements of <span class="math notranslate nohighlight">\(\mathbf{\hat S}_a\)</span>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><span class="math notranslate nohighlight">\(\mathbf S_e\)</span> is often set higher than the pure radiometric uncertainty of the brightness temperatures, to account for the uncertainty of the forward model. This can be named an <em>effective error covariance of the measurements</em>. The effective contribution from the forward model error is not evaluated yet, but estimated to be below 2 K for all channels.</p>
+</div>
+</section>
+<section id="mathematical-description-of-the-forward-model">
+<span id="fw-model"></span><h2>Mathematical description of the Forward Model<a class="headerlink" href="#mathematical-description-of-the-forward-model" title="Permalink to this headline">#</a></h2>
+<p>The Forward Model is the compositional forward model. It consists of individual
+components, namely the ocean surface, the sea ice, and the atmosphere. At the
+low frequency channels of the <a class="reference internal" href="acronyms.html#term-CIMR"><span class="xref std std-term">CIMR</span></a> satellite, the sensitivity to
+atmospheric parameters is relatively small, but nevertheless the atmosphere
+needs to be considered.
+The forward model for Ocean and Atmosphere for frequencies 6.9, 10.7, 18.7, and 36.5 GHz is used from the AMSR2 ATBD from <span id="id5">[<a class="reference internal" href="references.html#id10" title="Fj Wentz and T Meissner. Algorithm theoretical basis document (atbd): amsr ocean algorithm (version 2). 2000. URL: http://scholar.google.com/scholar?hl=en&amp;btnG=Search&amp;q=intitle:Algorithm+Theoretical+Basis+Document+(+ATBD+)+AMSR+Ocean+Algorithm#2.">Wentz and Meissner, 2000</a>]</span>.
+The surface contribution to the brightness temperature is given by</p>
+<div class="math notranslate nohighlight" id="equation-eq-surface">
+<span class="eqno">(4)<a class="headerlink" href="#equation-eq-surface" title="Permalink to this equation">#</a></span>\[T_{b,s} = C_{\text{ow}}ε_{\text{ow}}T_{\text{ow}}+C_{\text{fyi}}ε_{\text{fyi}}T_{\text{fyi}}+C_{\text{myi}}ε_{\text{myi}}T_{\text{myi}},\]</div>
+<p>where <span class="math notranslate nohighlight">\(C_{\text{ow}}\)</span>, <span class="math notranslate nohighlight">\(C_{\text{fyi}}\)</span>, and <span class="math notranslate nohighlight">\(C_{\text{myi}}\)</span> are the area
+fraction of ocean water, first year ice, and multi year ice, respectively.
+<span class="math notranslate nohighlight">\(ε_{\text{ow}}\)</span>, <span class="math notranslate nohighlight">\(ε_{\text{fyi}}\)</span>, and <span class="math notranslate nohighlight">\(ε_{\text{myi}}\)</span> are the emissivity of
+ocean water, first year ice, and multi year ice, respectively. <span class="math notranslate nohighlight">\(T_{\text{ow}}\)</span>,
+<span class="math notranslate nohighlight">\(T_{\text{fyi}}\)</span>, and <span class="math notranslate nohighlight">\(T_{\text{myi}}\)</span> are the brightness temperature of ocean
+water, first year ice, and multi year ice, respectively. <span class="math notranslate nohighlight">\(C_{\text{ow}}\)</span>,
+<span class="math notranslate nohighlight">\(C_{\text{fyi}}\)</span>, and <span class="math notranslate nohighlight">\(C_{\text{myi}}\)</span> are adding up to one.</p>
+<section id="sea-ice-type">
+<h3>Sea ice type<a class="headerlink" href="#sea-ice-type" title="Permalink to this headline">#</a></h3>
+<p>For sea ice, the frequency-dependent emissivities
+for first year ice and multi year ice are derived from <span id="id6">[<a class="reference internal" href="references.html#id11" title="Nizy Mathew, Georg Heygster, and Christian Melsheimer. Surface emissivity of the arctic sea ice at amsr-e frequencies. IEEE Transactions on Geoscience and Remote Sensing, 47:4115-4124, 2009. doi:10.1109/TGRS.2009.2023667.">Mathew <em>et al.</em>, 2009</a>]</span> as</p>
+<div class="math notranslate nohighlight" id="equation-eq-nizy">
+<span class="eqno">(5)<a class="headerlink" href="#equation-eq-nizy" title="Permalink to this equation">#</a></span>\[U_{T, t, p}=(a_{t}T_{C}+b_{t}+273.15)ε_{t, p}\]</div>
+<p>with <span class="math notranslate nohighlight">\(U_{t,h}\)</span> being the temperature-corrected upwelling brightness temperature for the polarization <span class="math notranslate nohighlight">\(p\)</span>
+at the air temperature at the surface <span class="math notranslate nohighlight">\(T_{C}\)</span> (in °C), <span class="math notranslate nohighlight">\(a_{t}\)</span> and <span class="math notranslate nohighlight">\(b_{t}\)</span> are the frequency
+dependent coefficients from <span id="id7">[<a class="reference internal" href="references.html#id11" title="Nizy Mathew, Georg Heygster, and Christian Melsheimer. Surface emissivity of the arctic sea ice at amsr-e frequencies. IEEE Transactions on Geoscience and Remote Sensing, 47:4115-4124, 2009. doi:10.1109/TGRS.2009.2023667.">Mathew <em>et al.</em>, 2009</a>]</span> (see <a class="reference internal" href="annex.html#tab-emtemp"><span class="std std-numref">Table 7</span></a>), and
+<span class="math notranslate nohighlight">\(ε_{t,p}\)</span> is the frequency-dependent emissivity for the polarization <span class="math notranslate nohighlight">\(p\)</span> and ice type <span class="math notranslate nohighlight">\(t\)</span> from <a class="reference internal" href="annex.html#tab-c-ice"><span class="std std-numref">Table 5</span></a>.
+<span id="id8">[<a class="reference internal" href="references.html#id11" title="Nizy Mathew, Georg Heygster, and Christian Melsheimer. Surface emissivity of the arctic sea ice at amsr-e frequencies. IEEE Transactions on Geoscience and Remote Sensing, 47:4115-4124, 2009. doi:10.1109/TGRS.2009.2023667.">Mathew <em>et al.</em>, 2009</a>]</span> did not provide parametrization for L-band, but to match a
+temperature dependence of emitted radiation at L-band we derive the effective
+temperature as with <a class="reference internal" href="#equation-eq-nizy">(5)</a> using <span class="math notranslate nohighlight">\(a_t=0.1\)</span> and <span class="math notranslate nohighlight">\(b_t=0\)</span> for both, first year and multi year ice. The emissivities used for L-band are taken from <span id="id9">[<a class="reference internal" href="references.html#id6" title="Raul Cristian Scarlat, Gunnar Spreen, Georg Heygster, Marcus Huntemann, Cătălin Paţilea, Leif Toudal Pedersen, and Roberto Saldo. Sea ice and atmospheric parameter retrieval from satellite microwave radiometers: synergy of AMSR2 and SMOS compared with the CIMR candidate mission. Journal of Geophysical Research: Oceans, 2020. doi:https://doi.org/10.1029/2019JC015749.">Scarlat <em>et al.</em>, 2020</a>]</span> with slight modifications and are given in <a class="reference internal" href="annex.html#tab-c-ice"><span class="std std-numref">Table 5</span></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><span class="math notranslate nohighlight">\(T_{C}\)</span> in this parametrization is the IST in the retrieval as the only temperature dependence.
+The assumption is that in thermal equilibrium the IST is equal to the air temperature at the surface.</p>
+</div>
+</section>
+<section id="sea-ice-thickness">
+<h3>Sea ice thickness<a class="headerlink" href="#sea-ice-thickness" title="Permalink to this headline">#</a></h3>
+<p>The ice thickness dependence at all frequencies is introduced via modification of the emission from the ice surface for the first year ice fraction.
+The ice emissivity is modified by the ice thickness <span class="math notranslate nohighlight">\(\text{SIT}\)</span> according to</p>
+<div class="math notranslate nohighlight" id="equation-eq-ice-thickness">
+<span class="eqno">(6)<a class="headerlink" href="#equation-eq-ice-thickness" title="Permalink to this equation">#</a></span>\[T_{b,p} = a_{p}-(a_{p}-b_{p})\exp\left(-\frac{\text{SIT}}{c_{p}}\right)\]</div>
+<p>with the index <span class="math notranslate nohighlight">\(p\)</span> indicate polarization (<span class="math notranslate nohighlight">\(h\)</span> or <span class="math notranslate nohighlight">\(v\)</span>) the coefficients <span class="math notranslate nohighlight">\(a_{p}\)</span>,
+<span class="math notranslate nohighlight">\(b_{p}\)</span>, and <span class="math notranslate nohighlight">\(c_{p}\)</span> from <span id="id10">[<a class="reference internal" href="references.html#id6" title="Raul Cristian Scarlat, Gunnar Spreen, Georg Heygster, Marcus Huntemann, Cătălin Paţilea, Leif Toudal Pedersen, and Roberto Saldo. Sea ice and atmospheric parameter retrieval from satellite microwave radiometers: synergy of AMSR2 and SMOS compared with the CIMR candidate mission. Journal of Geophysical Research: Oceans, 2020. doi:https://doi.org/10.1029/2019JC015749.">Scarlat <em>et al.</em>, 2020</a>]</span> (see <a class="reference internal" href="annex.html#tab-fy-thick"><span class="std std-numref">Table 6</span></a>). To
+combine ice temperature and ice thickness dependence, the ice emissivity is
+modified by the ice thickness  by substituting <span class="math notranslate nohighlight">\(a_{p}\)</span> with the ice temperature
+sedeitivedent <span class="math notranslate nohighlight">\(U_{T, t, p}\)</span> from <a class="reference internal" href="#equation-eq-nizy">(5)</a> for <span class="math notranslate nohighlight">\(t=\text{FYI}\)</span>. This was not performed in
+<span id="id11">[<a class="reference internal" href="references.html#id6" title="Raul Cristian Scarlat, Gunnar Spreen, Georg Heygster, Marcus Huntemann, Cătălin Paţilea, Leif Toudal Pedersen, and Roberto Saldo. Sea ice and atmospheric parameter retrieval from satellite microwave radiometers: synergy of AMSR2 and SMOS compared with the CIMR candidate mission. Journal of Geophysical Research: Oceans, 2020. doi:https://doi.org/10.1029/2019JC015749.">Scarlat <em>et al.</em>, 2020</a>]</span> but is essential for the minimization of the cost function
+to not introduce discontinuities in the forward model. The MYI emissivity is not
+affected by the ice thickness in this forward model, as it was not part of the
+thickness sensitivity study in <span id="id12">[<a class="reference internal" href="references.html#id6" title="Raul Cristian Scarlat, Gunnar Spreen, Georg Heygster, Marcus Huntemann, Cătălin Paţilea, Leif Toudal Pedersen, and Roberto Saldo. Sea ice and atmospheric parameter retrieval from satellite microwave radiometers: synergy of AMSR2 and SMOS compared with the CIMR candidate mission. Journal of Geophysical Research: Oceans, 2020. doi:https://doi.org/10.1029/2019JC015749.">Scarlat <em>et al.</em>, 2020</a>]</span>. As a consequence, the
+retrieval of ice thickness accounts only for the FYI fraction and thus is very
+noisy when the FYI fraction is small.</p>
+</section>
+<section id="ocean-surface-model">
+<h3>Ocean surface model<a class="headerlink" href="#ocean-surface-model" title="Permalink to this headline">#</a></h3>
+<p>While for the sea ice an empirical model is used for the emissivity, for the
+emission from the ocean the model uses the Fresnel reflection coefficient as a
+basis, which relies on the dielectric constant of the sea water. The emission from calm sea water after <span id="id13">[<a class="reference internal" href="references.html#id18" title="Thomas Meissner and Frank J. Wentz. The emissivity of the ocean surface between 6 and 90 ghz over a large range of wind speeds and earth incidence angles. IEEE Transactions on Geoscience and Remote Sensing, 50:3004-3026, 8 2012. URL: http://ieeexplore.ieee.org/lpdocs/epic03/wrapper.htm?arnumber=6145646, doi:10.1109/TGRS.2011.2179662.">Meissner and Wentz, 2012</a>]</span> is given by</p>
+<div class="math notranslate nohighlight" id="equation-eq-em-ocean">
+<span class="eqno">(7)<a class="headerlink" href="#equation-eq-em-ocean" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align}
+E_{0p} &amp;= 1-|r_p|^2\\ 
+r_v &amp;= \frac{ε\cos(θ_i)-\sqrt{ε-\sin^2(θ_i)}}{ε\cos(θ_i)+\sqrt{ε-\sin^2(θ_i)}}\\
+r_h &amp;= \frac{\cos(θ_i)-\sqrt{ε-\sin^2(θ_i)}}{\cos(θ_i)+\sqrt{ε-\sin^2(θ_i)}}
+\end{align}\end{split}\]</div>
+<p>with <span class="math notranslate nohighlight">\(ε\)</span> being the dielectric constant of the sea water.
+To account for the roughness and other disturbances on the ocean surface, the power reflectivity at each polarization <span class="math notranslate nohighlight">\(R_{0p}=|r_p|^2\)</span> needs to be adjusted. The contribution of different ocean surface types are modeled by different parameters again following <span id="id14">[<a class="reference internal" href="references.html#id10" title="Fj Wentz and T Meissner. Algorithm theoretical basis document (atbd): amsr ocean algorithm (version 2). 2000. URL: http://scholar.google.com/scholar?hl=en&amp;btnG=Search&amp;q=intitle:Algorithm+Theoretical+Basis+Document+(+ATBD+)+AMSR+Ocean+Algorithm#2.">Wentz and Meissner, 2000</a>]</span>. The reflectivity is a composition of foam covered ocean and clear ocean. With a reduction of the ocean surface emission through the foam by a factor κ, the composite reflectivity is given by</p>
+<div class="math notranslate nohighlight">
+\[R = (1-f_{\text{foam}})\cdot R_{\text{clear}}+f_{\text{foam}}\cdot κ\cdot R_{\text{clear}}\]</div>
+<p>with <span class="math notranslate nohighlight">\(f_{\text{foam}}\)</span> being the fraction of the ocean surface covered by foam and <span class="math notranslate nohighlight">\(R_{\text{clear}}\)</span> being the reflectivity of the clear ocean. With a small loss from diffraction expressed in the term <span class="math notranslate nohighlight">\(β\)</span> we can express the reflectivity as</p>
+<div class="math notranslate nohighlight" id="equation-eq-genroughness">
+<span class="eqno">(8)<a class="headerlink" href="#equation-eq-genroughness" title="Permalink to this equation">#</a></span>\[R_{\text{clear}} = (1-\beta)R_{\text{geo}}\]</div>
+<p>with <span class="math notranslate nohighlight">\(R_{\text{geo}}\)</span> being the reflectivity from a standart geometric optics
+model<span id="id15">[<a class="reference internal" href="references.html#id21" title="Frank J. Wentz. A two-scale scattering model for foam-free sea microwave brightness temperatures. Journal of Geophysical Research (1896-1977), 80(24):3441-3446, 1975. URL: https://agupubs.onlinelibrary.wiley.com/doi/abs/10.1029/JC080i024p03441, arXiv:https://agupubs.onlinelibrary.wiley.com/doi/pdf/10.1029/JC080i024p03441, doi:https://doi.org/10.1029/JC080i024p03441.">Wentz, 1975</a>]</span> defined later in <a class="reference internal" href="#equation-eq-roughness">(10)</a>. The combination can then be expressed by combining the foam and the
+diffraction term into one quantity <span class="math notranslate nohighlight">\(F=f_{\text{foam}} + \beta -f_{foam}\cdot β - f_{foam} κβ\)</span>, which is a monotonic function of wind speed and is addressed by
+<span id="id16">[<a class="reference internal" href="references.html#id10" title="Fj Wentz and T Meissner. Algorithm theoretical basis document (atbd): amsr ocean algorithm (version 2). 2000. URL: http://scholar.google.com/scholar?hl=en&amp;btnG=Search&amp;q=intitle:Algorithm+Theoretical+Basis+Document+(+ATBD+)+AMSR+Ocean+Algorithm#2.">Wentz and Meissner, 2000</a>]</span> as <em>catch-all</em> term. They determined <span class="math notranslate nohighlight">\(F\)</span> empirically from
+experiments with various radiometeres. A fit for F is given by</p>
+<div class="math notranslate nohighlight" id="equation-eq-catchall">
+<span class="eqno">(9)<a class="headerlink" href="#equation-eq-catchall" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{aligned}
+F &amp; = m_1W  &amp;(W&lt;W_1)\\
+F &amp; = m_1W + \frac{(m_2-m_1)(W-W_1)^2}{2(W_2-W_1)}  &amp;(W_1 \leq W \leq W_2)\\
+F &amp; = m_2W - (m_2-m_1)(W_2+W_1)  &amp;(W&gt;W_2),
+\end{aligned}\end{split}\]</div>
+<p>a quadratic spline with knots at <span class="math notranslate nohighlight">\(W_1=3~\text{m/s}\)</span> and <span class="math notranslate nohighlight">\(W_2=12~\text{m/s}\)</span> for v- and <span class="math notranslate nohighlight">\(W_1=7~\text{m/s}\)</span> and <span class="math notranslate nohighlight">\(W_2=12~\text{m/s}\)</span> for h-polarization. The coefficients <span class="math notranslate nohighlight">\(m_1\)</span> and <span class="math notranslate nohighlight">\(m_2\)</span> are given in <a class="reference internal" href="annex.html#tab-mc-m"><span class="std std-numref">Table 4</span></a> in the appendix.</p>
+<p>The geometrical optics surface roughness (<span class="math notranslate nohighlight">\(R_{geo}\)</span> from <a class="reference internal" href="#equation-eq-genroughness">(8)</a>  is used as modeled by <span id="id17">[<a class="reference internal" href="references.html#id10" title="Fj Wentz and T Meissner. Algorithm theoretical basis document (atbd): amsr ocean algorithm (version 2). 2000. URL: http://scholar.google.com/scholar?hl=en&amp;btnG=Search&amp;q=intitle:Algorithm+Theoretical+Basis+Document+(+ATBD+)+AMSR+Ocean+Algorithm#2.">Wentz and Meissner, 2000</a>]</span> as</p>
+<div class="math notranslate nohighlight" id="equation-eq-roughness">
+<span class="eqno">(10)<a class="headerlink" href="#equation-eq-roughness" title="Permalink to this equation">#</a></span>\[R_{geo} = R_0 - (r_0 + r1(θ_i-53) + r_2(T_S-288) + r_3(θ_i-53)(T_S-288))W.\]</div>
+<p>Here <span class="math notranslate nohighlight">\(R_0\)</span> is the specular reflection, θ<span class="math notranslate nohighlight">\(_i\)</span> is the incidence angle, T<span class="math notranslate nohighlight">\(_S\)</span> is
+the sea surface temperature, and W is the wind speed. The coefficients for each
+polarization and frequency are in the appendix in <a class="reference internal" href="annex.html#tab-mc-geo"><span class="std std-numref">Table 3</span></a>.</p>
+</section>
+<section id="dielectric-constant-of-sea-water">
+<h3>Dielectric constant of sea water<a class="headerlink" href="#dielectric-constant-of-sea-water" title="Permalink to this headline">#</a></h3>
+<p>The dielectric constant of sea water depends on salinity and temperature <span id="id18">[<a class="reference internal" href="references.html#id19" title="Thomas Meissner and Frank J. Wentz. The complex dielectric constant of pure and sea water from microwave satellite observations. IEEE Transactions on Geoscience and Remote Sensing, 42:1836-1849, 2004. doi:10.1109/TGRS.2004.831888.">Meissner and Wentz, 2004</a>]</span> as</p>
+<div class="math notranslate nohighlight" id="equation-eq-eps-seawater">
+<span class="eqno">(11)<a class="headerlink" href="#equation-eq-eps-seawater" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{aligned}
+\varepsilon(T, S)=\frac{\varepsilon_{\mathrm{S}}(T, S)-\varepsilon_1(T, S)}{1+i \nu / \nu_1(T, S)} &amp; +\frac{\varepsilon_1(T, S)-\varepsilon_{\infty}(T, S)}{1+i \nu / \nu_2(T, S)} \\
+&amp; +\varepsilon_{\infty}(T, S)-i \frac{\sigma(T, S)}{\left(2 \pi \varepsilon_0\right) \nu}
+\end{aligned}\end{split}\]</div>
+<p>with ε<span class="math notranslate nohighlight">\(_1\)</span> as the intermediate frequency dielectric constant, ε<span class="math notranslate nohighlight">\(_S\)</span> as the static dielectric constant, ε<span class="math notranslate nohighlight">\(_\infty\)</span> as the high-frequency dielectric constant, <span class="math notranslate nohighlight">\(\nu_1\)</span> and <span class="math notranslate nohighlight">\(\nu_2\)</span> as first and second Debye relaxation frequencies, respectively and σ as the conductivity. Fits for S=0 are given by <span id="id19">[<a class="reference internal" href="references.html#id19" title="Thomas Meissner and Frank J. Wentz. The complex dielectric constant of pure and sea water from microwave satellite observations. IEEE Transactions on Geoscience and Remote Sensing, 42:1836-1849, 2004. doi:10.1109/TGRS.2004.831888.">Meissner and Wentz, 2004</a>]</span> as</p>
+<div class="math notranslate nohighlight" id="equation-eq-eps-fresh">
+<span class="eqno">(12)<a class="headerlink" href="#equation-eq-eps-fresh" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{aligned}
+\varepsilon_{\mathrm{S}}(T, S=0)&amp;=\frac{3.70886 \cdot 10^4-8.2168 \cdot 10^1
+T}{4.21854 \cdot 10^2+T}\\
+ \varepsilon_1(T, S=0)&amp;=a_0+a_1 T+a_2 T^2 \\
+ \nu_1(T, S=0)&amp;=\frac{45+T}{a_3+a_4 T+a_5 T^2} \\
+ \varepsilon_{\infty}(T, S=0)&amp;=a_6+a_7 T \\
+ \nu_2(T, S=0)&amp;=\frac{45+T}{a_8+a_9 T+a_{10} T^2} \\
+\end{aligned}\end{split}\]</div>
+<p>where the salinity dependence is modeled <span id="id20">[<a class="reference internal" href="references.html#id19" title="Thomas Meissner and Frank J. Wentz. The complex dielectric constant of pure and sea water from microwave satellite observations. IEEE Transactions on Geoscience and Remote Sensing, 42:1836-1849, 2004. doi:10.1109/TGRS.2004.831888.">Meissner and Wentz, 2004</a>]</span> as</p>
+<div class="math notranslate nohighlight" id="equation-eq-eps-sal">
+<span class="eqno">(13)<a class="headerlink" href="#equation-eq-eps-sal" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{aligned}
+\varepsilon_{\mathrm{S}}(T, S) &amp; =\varepsilon_{\mathrm{S}}(T, S=0) \cdot \exp \left[b_0 S+b_1 S^2+b_2 T S\right] \\
+\nu_1(T, S) &amp; =\nu_1(T, S=0) \cdot\left[1+S \cdot\left(b_3+b_4 T+b_5 T^2\right)\right] \\
+\varepsilon_1(T, S) &amp; =\varepsilon_1(T, S=0) \cdot \exp \left[b_6 S+b_7 S^2+b_8 T S\right] \\
+\nu_2(T, S) &amp; =\nu_2(T, S=0) \cdot\left[1+S \cdot\left(b_9+b_{10} T\right)\right] \\
+\varepsilon_{\infty}(T, S) &amp; =\varepsilon_{\infty}(T, S=0) \cdot\left[1+S \cdot\left(b_{11}+b_{12} T\right)\right].
+\end{aligned}\end{split}\]</div>
+<p>However, <span id="id21">[<a class="reference internal" href="references.html#id18" title="Thomas Meissner and Frank J. Wentz. The emissivity of the ocean surface between 6 and 90 ghz over a large range of wind speeds and earth incidence angles. IEEE Transactions on Geoscience and Remote Sensing, 50:3004-3026, 8 2012. URL: http://ieeexplore.ieee.org/lpdocs/epic03/wrapper.htm?arnumber=6145646, doi:10.1109/TGRS.2011.2179662.">Meissner and Wentz, 2012</a>]</span> published an update to the salinity dependence of ε<span class="math notranslate nohighlight">\(_S\)</span> and ν<span class="math notranslate nohighlight">\(_1\)</span> as</p>
+<div class="math notranslate nohighlight" id="equation-eq-eps-water-sal-update">
+<span class="eqno">(14)<a class="headerlink" href="#equation-eq-eps-water-sal-update" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{aligned}
+ε_S(T_S,S) &amp; = ε_S(T_S,S=0) \cdot \exp [b_0S +b_1S^2+b_2T_SS]\\
+\nu_1\left(T_S, S\right) &amp; =\nu_1\left(T_S, S=0\right) \cdot  {\left[1+S \cdot\left(d_0+d_1 T_S+d_2 T_S^2+d_3 T_S^3+d_4 t_s^4\right)\right] }.
+\end{aligned}\end{split}\]</div>
+<p>We use this most recent update in the forward model.</p>
+<p>For conductivity we follow <span id="id22">[<a class="reference internal" href="references.html#id19" title="Thomas Meissner and Frank J. Wentz. The complex dielectric constant of pure and sea water from microwave satellite observations. IEEE Transactions on Geoscience and Remote Sensing, 42:1836-1849, 2004. doi:10.1109/TGRS.2004.831888.">Meissner and Wentz, 2004</a>]</span> and <span id="id23">[<a class="reference internal" href="references.html#id18" title="Thomas Meissner and Frank J. Wentz. The emissivity of the ocean surface between 6 and 90 ghz over a large range of wind speeds and earth incidence angles. IEEE Transactions on Geoscience and Remote Sensing, 50:3004-3026, 8 2012. URL: http://ieeexplore.ieee.org/lpdocs/epic03/wrapper.htm?arnumber=6145646, doi:10.1109/TGRS.2011.2179662.">Meissner and Wentz, 2012</a>]</span> who used the earlier work by <span id="id24">[<a class="reference internal" href="references.html#id20" title="AP Stogryn, HT Bull, K Rubayi, and S Iravanchy. The microwave permittivity of sea and fresh water. GenCorp Aerojet, Azusa, CA, 1995.">Stogryn <em>et al.</em>, 1995</a>]</span> as</p>
+<div class="math notranslate nohighlight" id="equation-eq-sigma">
+<span class="eqno">(15)<a class="headerlink" href="#equation-eq-sigma" title="Permalink to this equation">#</a></span>\[\sigma(T,S) = \sigma(T,S=35) \cdot R_{15}(S)\frac{R_T(S)}{R_{15}(S)},\]</div>
+<p>with</p>
+<div class="math notranslate nohighlight" id="equation-eq-sigma-support">
+<span class="eqno">(16)<a class="headerlink" href="#equation-eq-sigma-support" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{aligned}
+ \sigma(T, S=35) &amp; = 2.903602+8.607 \cdot 10^{-2} \cdot T+4.738817 \cdot 10^{-4} \cdot T^2\\
+&amp; -2.991 \cdot 10^{-6} \cdot T^3+4.3047 \cdot 10^{-9} \cdot T^4 \\
+ R_{15}(S) &amp; = S \cdot \frac{37.5109+5.45216 \cdot S+1.4409 \cdot 10^{-2} \cdot S^2}{1004.75+182.283 \cdot S+S^2} \\
+ \frac{R_T(S)}{R_{15}(S)} &amp; =1+\frac{\alpha_0(T-15)}{\alpha_1+T} \\
+ \alpha_0 &amp; = \frac{6.9431+3.2841 \cdot S-9.9486 \cdot 10^{-2} \cdot S^2}{84.850+69.024 \cdot S+S^2} \\
+ \alpha_1 &amp; = 49.843-0.2276 \cdot S+0.198 \cdot 10^{-2} \cdot S^2.
+\end{aligned}\end{split}\]</div>
+</section>
+<section id="atmosphere">
+<h3>Atmosphere<a class="headerlink" href="#atmosphere" title="Permalink to this headline">#</a></h3>
+<p>To get back to emissivity in order to account for the atmospheric contribution
+to the brightness temperatures at surface level, the brightness temperature is just devided by the ice and ocean surface temperatures</p>
+<div class="math notranslate nohighlight" id="equation-eq-ist">
+<span class="eqno">(17)<a class="headerlink" href="#equation-eq-ist" title="Permalink to this equation">#</a></span>\[ε_p = \frac{T_{b,p}}{T}\]</div>
+<p>With <span class="math notranslate nohighlight">\(C_{\text{myi}}+C_{\text{fyi}}=\text{SIC}\)</span> and <span class="math notranslate nohighlight">\(\text{SIC}\cdot C_\text{myi} =
+\text{MYIF}\)</span> being part of the state vector <a class="reference internal" href="#equation-eqxy">(2)</a>, the state defines
+the surface area fraction of all three considered surface types.</p>
+<p>The reflectivity of
+the surface, <span class="math notranslate nohighlight">\(R_{\text{surf}}\)</span>, is given by</p>
+<div class="math notranslate nohighlight" id="equation-eq-surfref">
+<span class="eqno">(18)<a class="headerlink" href="#equation-eq-surfref" title="Permalink to this equation">#</a></span>\[R_{\text{surf}} = 1 -
+ε_{\text{ow}}C_{\text{ow}} - ε_{\text{fyi}}C_{\text{fyi}} -
+ε_{\text{myi}}C_{\text{myi}}.\]</div>
+<p>The atmospheric contribution to the brightness temperature is calculated from
+the parametrization from <span id="id25">[<a class="reference internal" href="references.html#id10" title="Fj Wentz and T Meissner. Algorithm theoretical basis document (atbd): amsr ocean algorithm (version 2). 2000. URL: http://scholar.google.com/scholar?hl=en&amp;btnG=Search&amp;q=intitle:Algorithm+Theoretical+Basis+Document+(+ATBD+)+AMSR+Ocean+Algorithm#2.">Wentz and Meissner, 2000</a>]</span>. They fitted the downwelling and
+upwelling effective temperature using a least-squares fit to the <a class="reference internal" href="acronyms.html#term-TWV"><span class="xref std std-term">TWV</span></a>.
+The fit is given by</p>
+<div class="math notranslate nohighlight" id="equation-eq-atm">
+<span class="eqno">(19)<a class="headerlink" href="#equation-eq-atm" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align}
+T_D &amp;=b_0+b_1V+b_2V^2+b_3V^3+b_4V^4+b_5\zeta(T_s-T_v)\\
+T_U &amp;=T_D+b_6+b7V\\
+\end{align}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(T_v = 273.16+0.8337 V - 3.029\cdot 10^{-5}V^{3.33}\)</span> for V&lt;48 and
+<span class="math notranslate nohighlight">\(T_v=301.16\)</span> for V&gt;48, <span class="math notranslate nohighlight">\(\zeta(x)=1.05x(1-x^2)/1200\)</span> for <span class="math notranslate nohighlight">\(|x|&lt;20\ \text{K}\)</span> and
+<span class="math notranslate nohighlight">\(\zeta(x)=\text{sign}(x)\cdot 14\ \text{K}\)</span> for <span class="math notranslate nohighlight">\(|x|&gt;20\ \text{K}\)</span>.</p>
+<p>The absorption by oxygen is given by</p>
+<div class="math notranslate nohighlight" id="equation-eq-abs-oxy">
+<span class="eqno">(20)<a class="headerlink" href="#equation-eq-abs-oxy" title="Permalink to this equation">#</a></span>\[A_o = a_{O1}+a_{O2}(T_{D}-270).\]</div>
+<p>The vapor absorption is given by</p>
+<div class="math notranslate nohighlight" id="equation-eq-abs-vap">
+<span class="eqno">(21)<a class="headerlink" href="#equation-eq-abs-vap" title="Permalink to this equation">#</a></span>\[A_V = a_{V1}V+a_{V2}V^2.\]</div>
+<p>The liquid water absorption is given by</p>
+<div class="math notranslate nohighlight" id="equation-eq-abs-liq">
+<span class="eqno">(22)<a class="headerlink" href="#equation-eq-abs-liq" title="Permalink to this equation">#</a></span>\[A_L = a_{L1}(x-a_{L2}(T_L - 283))L,\]</div>
+<p>with <span class="math notranslate nohighlight">\(L\)</span> being the liquid water path.</p>
+<p>The total atmospheric attenuation is given by a combination of the individual terms from <a class="reference internal" href="#equation-eq-abs-oxy">(20)</a>, <a class="reference internal" href="#equation-eq-abs-vap">(21)</a>, and <a class="reference internal" href="#equation-eq-abs-liq">(22)</a>:</p>
+<div class="math notranslate nohighlight" id="equation-eq-abs-tot">
+<span class="eqno">(23)<a class="headerlink" href="#equation-eq-abs-tot" title="Permalink to this equation">#</a></span>\[\tau = \exp\left(-\frac{A_o+A_V+A_L}{\cos\theta}\right)\]</div>
+<p>with <span class="math notranslate nohighlight">\(\theta\)</span> being the incidence angle.</p>
+<p>An appropriate approximation of the atmospheric integration for up- and downwelling brightness temperature used by <span id="id26">[<a class="reference internal" href="references.html#id10" title="Fj Wentz and T Meissner. Algorithm theoretical basis document (atbd): amsr ocean algorithm (version 2). 2000. URL: http://scholar.google.com/scholar?hl=en&amp;btnG=Search&amp;q=intitle:Algorithm+Theoretical+Basis+Document+(+ATBD+)+AMSR+Ocean+Algorithm#2.">Wentz and Meissner, 2000</a>]</span> is given by</p>
+<div class="math notranslate nohighlight" id="equation-eq-tbud">
+<span class="eqno">(24)<a class="headerlink" href="#equation-eq-tbud" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{aligned}
+T_{b,u} &amp;= (1-\tau)(T_U)\\
+T_{b,d} &amp;= (1-\tau)(T_D)\\
+\end{aligned}\end{split}\]</div>
+<p>This makes the upwelling and downwelling brightness temperature differ only slightly by some Kelvin.</p>
+</section>
+<section id="addition-of-the-l-band-forward-model">
+<h3>Addition of the L-band forward model<a class="headerlink" href="#addition-of-the-l-band-forward-model" title="Permalink to this headline">#</a></h3>
+<p>The addition for 1.4GHz was done by <span id="id27">[<a class="reference internal" href="references.html#id6" title="Raul Cristian Scarlat, Gunnar Spreen, Georg Heygster, Marcus Huntemann, Cătălin Paţilea, Leif Toudal Pedersen, and Roberto Saldo. Sea ice and atmospheric parameter retrieval from satellite microwave radiometers: synergy of AMSR2 and SMOS compared with the CIMR candidate mission. Journal of Geophysical Research: Oceans, 2020. doi:https://doi.org/10.1029/2019JC015749.">Scarlat <em>et al.</em>, 2020</a>]</span> and is based on <span id="id28">[<a class="reference internal" href="references.html#id9" title="Christopher S. Ruf. Vicarious calibration of an ocean salinity radiometer from low earth orbit. Journal of Atmospheric and Oceanic Technology, 20:1656-1670, 2003. doi:10.1175/1520-0426(2003)020&lt;1656:VCOAOS&gt;2.0.CO;2.">Ruf, 2003</a>]</span>.</p>
+<p>The atmospheric attennuation for L-band is</p>
+<div class="math notranslate nohighlight" id="equation-eq-tau-l">
+<span class="eqno">(25)<a class="headerlink" href="#equation-eq-tau-l" title="Permalink to this equation">#</a></span>\[\tau = \exp\left(-\frac{0.009364 + 0.000024127V }{\cos(\theta)}\right),\]</div>
+<p>with <span class="math notranslate nohighlight">\(V\)</span> being the <a class="reference internal" href="acronyms.html#term-TWV"><span class="xref std std-term">TWV</span></a> in mm and <span class="math notranslate nohighlight">\(\theta\)</span> being the incidence angle.</p>
+<p>The up- and downwelling brightness temperature for L-band is given by</p>
+<div class="math notranslate nohighlight" id="equation-eq-tbud-l">
+<span class="eqno">(26)<a class="headerlink" href="#equation-eq-tbud-l" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align}
+T_{b,u} &amp;= (1-\tau)(\text{ST}+258.15)\\
+T_{b,d} &amp;= (1-\tau)(\text{ST}+263.15)
+\end{align}\end{split}\]</div>
+<p>with ST being the surface temperature in K. Over open ocean, this is
+<a class="reference internal" href="acronyms.html#term-SST"><span class="xref std std-term">SST</span></a> and over ice it is <a class="reference internal" href="acronyms.html#term-IST"><span class="xref std std-term">IST</span></a>. The composite upwelling and
+downwelling brightness temperature is then
+calculated with the weight of the ice concentration.</p>
+<p>The effect of wind roughening for L-band over open ocean is given by</p>
+<div class="math notranslate nohighlight" id="equation-eq-rough-l">
+<span class="eqno">(27)<a class="headerlink" href="#equation-eq-rough-l" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align}
+\epsilon_h &amp;= E_{0,h} + u(0.0007 + 0.000015\theta) \\
+\epsilon_v &amp;= E_{0,v} + 0.0007u, 
+\end{align}\end{split}\]</div>
+<p>with <span class="math notranslate nohighlight">\(u\)</span> being the wind speed in m/s, <span class="math notranslate nohighlight">\(\theta\)</span> the incidence angle in degrees, and <span class="math notranslate nohighlight">\(E_{0,h}\)</span> and <span class="math notranslate nohighlight">\(E_{0,v}\)</span> being the emissivity of the surface in the horizontal and vertical polarization from <a class="reference internal" href="#equation-eq-em-ocean">(7)</a>.</p>
+</section>
+<section id="brightness-temperature-at-instrument-level">
+<h3>Brightness temperature at instrument level<a class="headerlink" href="#brightness-temperature-at-instrument-level" title="Permalink to this headline">#</a></h3>
+<p>Bringing together the different models for all frequencies, the brightness temperature at the instrument level is given by</p>
+<div class="math notranslate nohighlight">
+\[T_{b,p} = T_{b,u} + \left((T_{c} 𝜏 + T_{b,d})(1 − \epsilon_p) + T_{b,s}\right) \tau,\]</div>
+<p>with <span class="math notranslate nohighlight">\(p\)</span> being the polarization and <span class="math notranslate nohighlight">\(T_c\)</span> being the cosmic background temperature. <span class="math notranslate nohighlight">\(T_{b,s}\)</span> is the surface emitted brightness temperature for the combined surface and <span class="math notranslate nohighlight">\(\epsilon_p\)</span> is the emissivity of the combined surface for the polarization <span class="math notranslate nohighlight">\(p\)</span>.</p>
+</section>
+</section>
+<section id="input-data">
+<h2>Input data<a class="headerlink" href="#input-data" title="Permalink to this headline">#</a></h2>
+<p>As input for the retrieval, the L1B data product from the CIMR instrument,
+where mainly brightness temperatures from the instrument and their
+uncertainties are required. Technically, missing values are allowed for
+both, in case of malfunctioning channels, but the retrieval retrieval
+uncertainties will be larger. In addition, for a better contrain of the
+solution space, <a class="reference internal" href="acronyms.html#term-ECMWF"><span class="xref std std-term">ECMWF</span></a> analysis data are highly recommended as additional input (see <a class="reference internal" href="#sec-auxiliary-data"><span class="std std-ref">Auxiliary data</span></a> below).
+<span class="math notranslate nohighlight">\(\mathbf{y}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{S}_e\)</span> from <a class="reference internal" href="#equation-eq-chi2">(1)</a> are set with the brightness temperatures and their uncertainties from the L1B data product.</p>
+</section>
+<section id="output-data">
+<h2>Output data<a class="headerlink" href="#output-data" title="Permalink to this headline">#</a></h2>
+<p>The output data will include the retrieved geophysical parameteres listed in
+<a class="reference internal" href="#equation-eqxy">(2)</a> and their posterior uncertainties. In addition, quality flags will
+be written be derived for each quantity and the retrieval procedure in general.
+The exact definition of the flags will be decided on, at a later stage. A
+backup inversion mechanism will be implemented using a different optmization
+scheme, in case the main retrieval fails. The exact method is yet to be decided
+on, but there are flags reserved for this purpose.</p>
+<section id="auxiliary-data">
+<span id="sec-auxiliary-data"></span><h3>Auxiliary data<a class="headerlink" href="#auxiliary-data" title="Permalink to this headline">#</a></h3>
+<p><a class="reference internal" href="acronyms.html#term-ECMWF"><span class="xref std std-term">ECMWF</span></a> surface analysis data is used as background values for the retrieval. The
+variables used are <a class="reference internal" href="acronyms.html#term-WSP"><span class="xref std std-term">WSP</span></a>, <a class="reference internal" href="acronyms.html#term-TWV"><span class="xref std std-term">TWV</span></a>, <a class="reference internal" href="acronyms.html#term-CLW"><span class="xref std std-term">CLW</span></a>, <a class="reference internal" href="acronyms.html#term-T2M"><span class="xref std std-term">T2M</span></a>,
+<a class="reference internal" href="acronyms.html#term-TSK"><span class="xref std std-term">TSK</span></a>. They are used to fill the <span class="math notranslate nohighlight">\(\mathbf{S}_a\)</span> matrix and the
+<span class="math notranslate nohighlight">\(\mathbf{x}_a\)</span> in <a class="reference internal" href="#equation-eq-chi2">(1)</a>. For near real time retrieval, the
+<span class="math notranslate nohighlight">\(\mathbf{S}_a\)</span> and <span class="math notranslate nohighlight">\(\mathbf{x}_a\)</span> can used with monthly or seasonal values, as
+the retrieval is not sensitive to the exact values of the background variables.</p>
+</section>
+<section id="ancillary-data">
+<h3>Ancillary data<a class="headerlink" href="#ancillary-data" title="Permalink to this headline">#</a></h3>
+<p>Ancillary data is not planned to be used in this retrieval at this stage.</p>
+</section>
+<section id="validation-process">
+<h3>Validation process<a class="headerlink" href="#validation-process" title="Permalink to this headline">#</a></h3>
+<p>For validation of the Multi Parameter Retrieval, the comparison to the
+individual specialized products are planned, with the addition of their
+validation datasets. For a complete retrieval with currently operational
+instruments, however, the time period of the validation data must be alligned
+with the operational period of the <a class="reference internal" href="acronyms.html#term-AMSR2"><span class="xref std std-term">AMSR2</span></a> and <a class="reference internal" href="acronyms.html#term-SMOS"><span class="xref std std-term">SMOS</span></a> sensors.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="L2_product_definition.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Level-2 product definition</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="algorithm_input_output_data_definition.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Algorithm Input and Output Data Definition (IODD)</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Marcus Huntemann, Janna Rückert and Gunnar Spreen, University of Bremen<br/>
+  
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
