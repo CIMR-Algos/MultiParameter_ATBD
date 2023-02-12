@@ -1,6 +1,6 @@
 # ATBD Multi Parameter Retrieval 
 
-This document describes the algorithm theoretical basis for the Multi Parameter Retrieval product.
+This document describes the algorithm theoretical basis for the multi parameter retrieval product.
 
 
 ```{tableofcontents}
