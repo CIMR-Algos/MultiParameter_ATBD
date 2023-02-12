@@ -46,8 +46,7 @@ repository:
 html:
   use_issues_button: false
   use_repository_button: true
-
-extra_footer: |
+  extra_footer: |
     <p>
     This ATBD was developed in the context of the ESA-funded CIMR DEVALGO study (2022-2024) (contract 4000137493).
     <br>
