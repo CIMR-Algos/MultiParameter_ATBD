@@ -23,7 +23,7 @@ chapters:
   title: Algorithm Input and Output Data Definition (IODD)
 - file: algorithm_performance_assessment
   title: Algorithm Performance Assessment 
-- file: OEM_SIT.ipynb
+- file: first_assessment.ipynb
   title: First assessment of the algorithm
 - file: references
   title: References
