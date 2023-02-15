@@ -410,7 +410,7 @@ A_V = a_{V1}V+a_{V2}V^2.
 The liquid water absorption is given by
 ```{math}
 :label: eq:abs_liq
-A_L = a_{L1}(x-a_{L2}(T_L - 283))L,
+A_L = a_{L1}(1-a_{L2}(T_L - 283))L,
 ```
 
 with $L$ being the liquid water path.
